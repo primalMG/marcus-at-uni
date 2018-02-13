@@ -14,6 +14,8 @@
 		E7AD278520333F900041B3F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AD278320333F900041B3F5 /* LaunchScreen.storyboard */; };
 		E7AD279020333F900041B3F5 /* RecipeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD278F20333F900041B3F5 /* RecipeAppTests.swift */; };
 		E7AD279B20333F900041B3F5 /* RecipeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD279A20333F900041B3F5 /* RecipeAppUITests.swift */; };
+		E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD27A8203347A10041B3F5 /* Account Page.swift */; };
+		E7AD27AB203349190041B3F5 /* TipsNTricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD27AA203349190041B3F5 /* TipsNTricks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		E7AD279620333F900041B3F5 /* RecipeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AD279A20333F900041B3F5 /* RecipeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppUITests.swift; sourceTree = "<group>"; };
 		E7AD279C20333F900041B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7AD27A8203347A10041B3F5 /* Account Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Page.swift"; sourceTree = "<group>"; };
+		E7AD27AA203349190041B3F5 /* TipsNTricks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsNTricks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				E7AD278120333F900041B3F5 /* Assets.xcassets */,
 				E7AD278320333F900041B3F5 /* LaunchScreen.storyboard */,
 				E7AD278620333F900041B3F5 /* Info.plist */,
+				E7AD27A8203347A10041B3F5 /* Account Page.swift */,
+				E7AD27AA203349190041B3F5 /* TipsNTricks.swift */,
 			);
 			path = RecipeApp;
 			sourceTree = "<group>";
@@ -260,6 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7AD277D20333F900041B3F5 /* ViewController.swift in Sources */,
+				E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */,
+				E7AD27AB203349190041B3F5 /* TipsNTricks.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

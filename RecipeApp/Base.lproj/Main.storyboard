@@ -1,24 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sCK-at-rjw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Marcus At Uni-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fxm-R9-XHe">
+                                <rect key="frame" x="450" y="64" width="243" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgY-e9-AOD">
+                                        <rect key="frame" x="0.0" y="0.0" width="243" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.48844637133957747" blue="0.47645008664893662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <state key="normal" title="Recipe List">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.67794705311895642" blue="0.53895161999175789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cgY-e9-AOD" firstAttribute="top" secondItem="fxm-R9-XHe" secondAttribute="top" id="NPS-LF-QT4"/>
+                                    <constraint firstAttribute="trailing" secondItem="cgY-e9-AOD" secondAttribute="trailing" id="Uni-pr-6e8"/>
+                                    <constraint firstItem="cgY-e9-AOD" firstAttribute="leading" secondItem="fxm-R9-XHe" secondAttribute="leading" id="xSI-ac-ZqG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fxm-R9-XHe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="2la-RM-lsB">
+                                <variation key="heightClass=regular-widthClass=compact" constant="450"/>
+                            </constraint>
+                            <constraint firstItem="fxm-R9-XHe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3bE-ve-fGE"/>
+                            <constraint firstItem="fxm-R9-XHe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TVY-aR-eSy"/>
+                            <constraint firstAttribute="trailing" secondItem="fxm-R9-XHe" secondAttribute="trailing" id="xnU-GK-nZE">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-318"/>
+                            </constraint>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2la-RM-lsB"/>
+                                <exclude reference="3bE-ve-fGE"/>
+                                <exclude reference="TVY-aR-eSy"/>
+                                <exclude reference="xnU-GK-nZE"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="2la-RM-lsB"/>
+                                <include reference="3bE-ve-fGE"/>
+                                <include reference="TVY-aR-eSy"/>
+                                <include reference="xnU-GK-nZE"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Marcus At Uni" id="Yex-lX-eRg">
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="ey3-cx-dq5">
+                            <connections>
+                                <action selector="btnMenu:" destination="BYZ-38-t0r" id="EOp-Pq-Fdq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leadingConstraint" destination="2la-RM-lsB" id="otX-F2-3Lg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="684" y="191.1544227886057"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8iV-pY-xBw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sCK-at-rjw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Veq-ph-55v">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="dik-mZ-a4L"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dp5-rx-7pc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-50" y="191"/>
         </scene>
     </scenes>
 </document>
