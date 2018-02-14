@@ -8,17 +8,20 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let drawOption = ["Recipe List","Tips 'n' Tricks","Account"]
+    
+    
+    let Recipes = ["Test 1","Pasta","Chicken"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (drawOption.count)
+        return (Recipes.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = drawOption[indexPath.row]
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "recipes")
+        cell.textLabel?.text = Recipes[indexPath.row]
         
         return(cell)
     }
@@ -28,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,12 +45,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //Drawer Menu
     @IBAction func btnMenu(_ sender: Any) {
         if (menuState){
-            leadingConstraint.constant = 450
+            leadingConstraint.constant = 430
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
         }else{
-           leadingConstraint.constant = 132
+           leadingConstraint.constant = 175
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -56,10 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 
-    @IBAction func btnTips(_ sender: Any) {
-        
-    }
-    
+
 
     
 }

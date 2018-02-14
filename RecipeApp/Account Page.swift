@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import UIKit
 
 class AccountPage: UIViewController {
@@ -21,6 +20,8 @@ class AccountPage: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     
 }
