@@ -13,7 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-    let Recipes = ["Test 1","Pasta","Chicken"]
+    let Recipes = ["Mac n Cheese","Pasta","Chicken"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (Recipes.count)
