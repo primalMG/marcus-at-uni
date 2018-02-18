@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class AccountPage: UIViewController {
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,15 @@ class AccountPage: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var txtUsername: UITextField!
     
+    @IBOutlet weak var txtPass: UITextField!
     
+    @IBAction func btnForgotPass(_ sender: Any) {
+            
+    }
+    
+    @IBOutlet weak var btnLogin: UIButton!
+
     
 }
