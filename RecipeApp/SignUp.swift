@@ -38,9 +38,8 @@ class SignUp: UIViewController {
         if let email = txtEmail.text, let pass = txtPass.text{
             Auth.auth().createUser(withEmail: email, password: pass, completion: { (correctEmail, error) in
                 if correctEmail != nil {
-                    self.performSegue(withIdentifier: "SignInPage", sender: self)
                 } else {
-                    
+                    self.lblBlank.isHidden = false
                 }
             })
         }

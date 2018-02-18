@@ -11,7 +11,15 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     let Recipes = ["Mac n Cheese","Pasta","Chicken"]
     
@@ -26,18 +34,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return(cell)
     }
     
-
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+
     
     var menuState = false
     

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class AccountPage: UIViewController {
     
@@ -24,14 +25,24 @@ class AccountPage: UIViewController {
     }
     
     @IBOutlet weak var txtUsername: UITextField!
-    
     @IBOutlet weak var txtPass: UITextField!
-    
+  
     @IBAction func btnForgotPass(_ sender: Any) {
-            
+            //send the user an email... with a link to allow them to reset pass
     }
     
-    @IBOutlet weak var btnLogin: UIButton!
-
+  
+    @IBAction func btnlogin(_ sender: Any) {
+        if let email = txtUsername.text, let pass = txtPass.text{
+            Auth.auth().signIn(withEmail: email, password: pass, completion: { (emailExists, Error) in
+                if emailExists != nil{
+                    //let a brother know he's good.
+                }else{
+                    //let a brother know he's bad.
+                }
+            })
+        }
+    }
+    
     
 }
