@@ -7,12 +7,17 @@
 //
 
 import UIKit
-
+import FirebaseDatabase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    var ref : DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DisplayingRecipes()
+        ref = Database.database().reference()
+        getRecipes()
+        searchbar()
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-
+    func getRecipes(){
+        // getting the recipes from the database
+    }
+    
     
     var recipeArray = [Recipe]()
     var selectedRecipe = [Recipe]()
@@ -51,14 +59,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipes") as? TableCell else {
+        let cell = UITableViewCell(withIdentifier: "recipes")
+    }
+    
+    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipes") as? TableCell else {
             return UITableViewCell()
         }
         cell.lblRecipe.text = recipeArray[indexPath.row].name
-        return(cell)
-    }
+        return cell
+    }*/
     
-    private func searching() {
+    
+    private func searchbar() {
         searchBar.delegate = self
     }
     
