@@ -1,23 +1,17 @@
-//
-//  ViewController.swift
-//  RecipeApp
-//
-//  Created by (s) Marcus Gardner on 13/02/2018.
-//  Copyright © 2018 (s) Marcus Gardner. All rights reserved.
-//
-
 import UIKit
 import FirebaseDatabase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var ref : DatabaseReference!
+    var databaseHandle:DatabaseHandle!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DisplayingRecipes()
-        ref = Database.database().reference()
+        
         getRecipes()
         searchbar()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,54 +22,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+     var recipeArray = [Recipe]()
     
+    // getting the recipes from the database
     func getRecipes(){
-        // getting the recipes from the database
+        ref = Database.database().reference()
+        databaseHandle = ref?.child("Recipe").observe(.childAdded, with: { (snapshot) in
+            
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                self.recipeArray.append(recipe)
+            }
+            print(snapshot)
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+
+        })
     }
     
     
-    var recipeArray = [Recipe]()
-    var selectedRecipe = [Recipe]()
-    
-    class Recipe {
-        let name: String
-        
-        init(name: String) {
-            self.name = name
-        }
-    }
-    
-    private func DisplayingRecipes() {
-        recipeArray.append(Recipe(name:"Oxtail Stew"))
-        recipeArray.append(Recipe(name:"Mac n Cheese"))
-        recipeArray.append(Recipe(name:"Rice and Stew"))
-        
-        selectedRecipe = recipeArray
-    }
-    
-    
+   
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipeArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(withIdentifier: "recipes")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
+        
+        let recipes = recipeArray[indexPath.row]
+        cell.textLabel?.text = recipes.name
+        
+        return cell
     }
     
-    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipes") as? TableCell else {
-            return UITableViewCell()
-        }
-        cell.lblRecipe.text = recipeArray[indexPath.row].name
-        return cell
-    }*/
     
     
     private func searchbar() {
         searchBar.delegate = self
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    /*func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else { selectedRecipe = recipeArray
             tableView.reloadData()
             return
@@ -85,6 +76,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
         tableView.reloadData()
     }
+     guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipes") as? TableCell else {
+     return UITableViewCell()
+     }
+     cell.lblRecipe.text = recipeArray[indexPath.row]
+     return cell
+     
+     let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
+     
+     let recipes = recipeArray[indexPath.row]
+     cell.textLabel?.text = recipes.name
+     
+     return cell
+     */
     
 
 
@@ -94,10 +98,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-
-    
-    
-
     
 
     //Drawer Menu

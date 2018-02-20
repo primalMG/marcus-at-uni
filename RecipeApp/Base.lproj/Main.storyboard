@@ -40,30 +40,13 @@
                                 <rect key="frame" x="0.0" y="115" width="375" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipes" rowHeight="73" id="Exh-jw-hs1" customClass="TableCell" customModule="RecipeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipes" rowHeight="73" id="Exh-jw-hs1">
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Exh-jw-hs1" id="a4Y-hv-F5e">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMv-Ln-5YC">
-                                                    <rect key="frame" x="136" y="26" width="102" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="wMv-Ln-5YC" firstAttribute="top" secondItem="a4Y-hv-F5e" secondAttribute="topMargin" constant="15" id="12S-rY-CQK"/>
-                                                <constraint firstItem="wMv-Ln-5YC" firstAttribute="leading" secondItem="a4Y-hv-F5e" secondAttribute="leadingMargin" constant="121" id="aCK-cr-aRo"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wMv-Ln-5YC" secondAttribute="bottom" constant="15" id="cRH-4H-7oW"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wMv-Ln-5YC" secondAttribute="trailing" constant="122" id="wOM-wj-sVg"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="lblRecipe" destination="wMv-Ln-5YC" id="Ycj-xq-ozT"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
