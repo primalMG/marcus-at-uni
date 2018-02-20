@@ -48,6 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //getting the code from the array and counting them...
         return recipeArray.count
     }
     
@@ -58,6 +59,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = recipes.name
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        //selecting the value within the cell
     }
     
     
