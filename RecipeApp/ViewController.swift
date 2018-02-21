@@ -4,6 +4,8 @@ import FirebaseDatabase
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
+    var tableIndex = 0
+    var recipeClicked = [[String:String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
-
         })
     }
     
@@ -62,10 +62,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        //selecting the value within the cell
+        tableIndex = indexPath.row
+        let recipe = self.recipeArray[indexPath.row]
+        performSegue(withIdentifier: "recipeSegue", sender: self)
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "recipeSegue") {
+            let recipeView = segue.destination as! RecipeScreen
+            recipeView.recipeName = recipeClicked
+        }
+    }
     
     private func searchbar() {
         searchBar.delegate = self
@@ -95,6 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      return cell
      */
     
+    
 
 
    
@@ -102,8 +110,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
         
     }
-    
-    
 
     //Drawer Menu
     var menuState = false
