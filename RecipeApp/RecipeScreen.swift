@@ -13,6 +13,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     var ingredientsArray = [Recipe]()
     var stepsArray = [Recipe]()
+    var recScreen: String!
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
     var recipe: Recipe? {
@@ -20,6 +21,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
             navigationItem.title = recipe?.name
         }
     }
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -71,5 +73,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         return cell
         
     }
+    
+    
     
 }

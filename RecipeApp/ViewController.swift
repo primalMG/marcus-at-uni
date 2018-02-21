@@ -5,11 +5,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
     var tableIndex = 0
-    var recipeClicked = [[String:String]]()
+    var recipeClicked: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ref = Database.database().reference()
         getRecipes()
         searchbar()
         tableView.delegate = self
@@ -28,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // getting the recipes from the database
     func getRecipes(){
-        ref = Database.database().reference()
+        
         databaseHandle = ref?.child("Recipe").observe(.childAdded, with: { (snapshot) in
             
             
@@ -56,23 +57,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
         
         let recipes = recipeArray[indexPath.row]
-        cell.textLabel?.text = recipes.name
-        
+        cell.textLabel?.text = recipes.name 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableIndex = indexPath.row
-        let recipe = self.recipeArray[indexPath.row]
-        performSegue(withIdentifier: "recipeSegue", sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
+        recipeClicked = cell.textLabel?.text
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "recipeSegue") {
-            let recipeView = segue.destination as! RecipeScreen
-            recipeView.recipeName = recipeClicked
+        if segue.identifier  == "recipeSegue"{
+            let recipeScreen = segue.destination as! RecipeScreen
+            recipeScreen.recScreen = recipeClicked
         }
     }
+    
+    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     tableIndex = indexPath.row
+     let recipe = self.recipeArray[indexPath.row]
+     performSegue(withIdentifier: "recipeSegue", sender: self)
+     }*/
+    
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recipeSegue"{
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let selectedRow = indexPath.row
+                let recipeSelected = recipeArray[selectedRow]
+
+            }
+        }
+        
+    }*/
     
     private func searchbar() {
         searchBar.delegate = self

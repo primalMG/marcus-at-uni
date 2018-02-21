@@ -12,6 +12,7 @@
 		97A14D80FBC7A8D507061FFA /* Pods_RecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26911C52873CCB47686FD696 /* Pods_RecipeApp.framework */; };
 		E733EECD2034A5B200665AFC /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733EECC2034A5B200665AFC /* Tips.swift */; };
 		E7449AB0203DA751008314AC /* RecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AAF203DA751008314AC /* RecipeScreen.swift */; };
+		E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AB1203DEE3E008314AC /* TipsModel.swift */; };
 		E75096FF20359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E750970020359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E750970120359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
@@ -56,6 +57,7 @@
 		DE7D248A64142519EB122ED8 /* Pods-RecipeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E733EECC2034A5B200665AFC /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		E7449AAF203DA751008314AC /* RecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreen.swift; sourceTree = "<group>"; };
+		E7449AB1203DEE3E008314AC /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
 		E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E761A925203C775C00049563 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		E7895C112039C4300053F733 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				E733EECC2034A5B200665AFC /* Tips.swift */,
 				E7895C112039C4300053F733 /* SignUp.swift */,
 				E761A925203C775C00049563 /* Recipe.swift */,
+				E7449AB1203DEE3E008314AC /* TipsModel.swift */,
 			);
 			path = RecipeApp;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				E7AD277D20333F900041B3F5 /* ViewController.swift in Sources */,
 				E733EECD2034A5B200665AFC /* Tips.swift in Sources */,
 				E7449AB0203DA751008314AC /* RecipeScreen.swift in Sources */,
+				E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */,
 				E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */,
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,

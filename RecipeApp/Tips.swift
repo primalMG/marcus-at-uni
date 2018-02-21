@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-
+    var ref: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        ref = Database.database().reference()
+        getTips()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,17 +28,33 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         // Dispose of any resources that can be recreated.
     }
     
+    var tipsArray = [TipsModel]()
     
-    let listTips = ["creating wedges","Cooking Rice"]
+    func getTips(){
+        databaseHandle = ref?.child("Tips").observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let tips = TipsModel(dictionary: dictionary)
+                self.tipsArray.append(tips)
+            }
+            print(snapshot)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (listTips.count)
+        return tipsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "tips")
-        cell.textLabel?.text = listTips[indexPath.row]
-        return(cell)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tips", for: indexPath)
+        let tips = tipsArray[indexPath.row]
+        cell.textLabel?.text = tips.name
+        
+        return cell
     }
     
     
