@@ -118,6 +118,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E77B9D4F203EF81700BDDD61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E7AD276E20333F900041B3F5 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +150,8 @@
 		E7AD277920333F900041B3F5 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
+				E77B9D4F203EF81700BDDD61 /* Model */,
+				E761A925203C775C00049563 /* Recipe.swift */,
 				E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */,
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
 				E7449AAF203DA751008314AC /* RecipeScreen.swift */,
@@ -154,7 +163,6 @@
 				E7AD27A8203347A10041B3F5 /* Account Page.swift */,
 				E733EECC2034A5B200665AFC /* Tips.swift */,
 				E7895C112039C4300053F733 /* SignUp.swift */,
-				E761A925203C775C00049563 /* Recipe.swift */,
 				E7449AB1203DEE3E008314AC /* TipsModel.swift */,
 			);
 			path = RecipeApp;
@@ -352,15 +360,27 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

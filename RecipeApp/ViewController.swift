@@ -1,7 +1,10 @@
 import UIKit
+import Firebase
+import FirebaseFirestore
 import FirebaseDatabase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
     var tableIndex = 0
@@ -10,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let db = Firestore.firestore()
         ref = Database.database().reference()
         getRecipes()
         searchbar()
@@ -37,7 +41,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let recipe = Recipe(dictionary: dictionary)
                 self.recipeArray.append(recipe)
             }
-            print(snapshot)
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -55,17 +58,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
-        
         let recipes = recipeArray[indexPath.row]
         cell.textLabel?.text = recipes.name 
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)!
-        recipeClicked = cell.textLabel?.text
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "recipeSegue"{
@@ -73,6 +69,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             recipeScreen.recScreen = recipeClicked
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
+        recipeClicked = cell.textLabel?.text
+        performSegue(withIdentifier: "recipeSegue", sender: self)
+    }
+    
+    
+
     
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      tableIndex = indexPath.row
@@ -104,24 +109,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             Recipe.name.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
-    }
-     guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipes") as? TableCell else {
-     return UITableViewCell()
-     }
-     cell.lblRecipe.text = recipeArray[indexPath.row]
-     return cell
-     
-     let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
-     
-     let recipes = recipeArray[indexPath.row]
-     cell.textLabel?.text = recipes.name
-     
-     return cell
-     */
+    }*/
     
     
-
-
    
     //Segue back to the home/Recipe screen
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {

@@ -16,6 +16,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     var recScreen: String!
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
+    
     var recipe: Recipe? {
         didSet{
             navigationItem.title = recipe?.name
@@ -41,23 +42,20 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
+
     func getIngredients() {
-        ref = Database.database().reference()
-        
-        databaseHandle = ref?.child("Ingredients").observe(.childAdded, with: { (snapshot) in
-            
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let ingredients = Recipe(dictionary: dictionary)
-                self.ingredientsArray.append(ingredients)
+        Database.database().reference().child("Recipe").child("Recipe").child("Ingredients").observe(.value) { (snapshot) in
+            if snapshot.exists(){
+                print(snapshot)
+                
+                if let snapDict = snapshot.value as? [String:AnyObject]{
+                    
+                }
             }
-            print(snapshot)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+        }
     }
+    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray.count
