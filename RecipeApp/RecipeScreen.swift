@@ -7,21 +7,14 @@
 //
 
 import UIKit
-import FirebaseDatabase
 
 class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var ingredientsArray = [Recipe]()
-    var stepsArray = [Recipe]()
-    var recScreen: String!
-    var ref : DatabaseReference!
-    var databaseHandle:DatabaseHandle!
+    @IBOutlet weak var recipeName: UILabel!
     
-    var recipe: Recipe? {
-        didSet{
-            navigationItem.title = recipe?.name
-        }
-    }
+    var currentRecipe = [Recipe]()
+    
+
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -32,12 +25,14 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //getIngredients()
         tableView.delegate = self
         tableView.dataSource = self
         
         print("Accessed Recipe")
+        
     
+        recipeName.text = currentRecipe[0].name
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,26 +43,28 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     
     /*func getIngredients() {
-      let ref = Database.database().reference().child("Recipe").queryOrdered(byChild: "Ingredients").queryEqual(toValue: "Ing 1")
-      
-        ref.observe(.value, with: { (snapshot: DataSnapshot) in
-            for snap in snapshot.children{
-                print((snap as! DataSnapshot).key)
+        let db = Firestore.firestore().collection("recipe").getDocuments { (querySnapshot, error) in
+            if error != nil {
+                print("error getting doc")
+            }else{
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
             }
-        })
+        }
     }*/
     
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ingredientsArray.count
+        return currentRecipe.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
         
-        let ingredients = ingredientsArray[indexPath.row]
+        let ingredients = currentRecipe[indexPath.row]
         cell.textLabel?.text = ingredients.name
         
         return cell

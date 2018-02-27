@@ -348,13 +348,21 @@
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOi-ID-p2e">
+                                        <rect key="frame" x="122" y="19" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.62932916350000001" blue="0.42493055280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="0db-Fo-hxa" firstAttribute="centerY" secondItem="734-tM-vrI" secondAttribute="centerY" id="JMP-KB-GKY"/>
                                     <constraint firstItem="0db-Fo-hxa" firstAttribute="top" secondItem="734-tM-vrI" secondAttribute="top" constant="14" id="LbU-g7-sVw"/>
+                                    <constraint firstItem="QOi-ID-p2e" firstAttribute="centerY" secondItem="0db-Fo-hxa" secondAttribute="centerY" id="cLy-EP-XdD"/>
                                     <constraint firstAttribute="trailing" secondItem="RKO-gU-JwN" secondAttribute="trailing" constant="18" id="e0A-g7-G5I"/>
                                     <constraint firstItem="0db-Fo-hxa" firstAttribute="baseline" secondItem="RKO-gU-JwN" secondAttribute="baseline" id="tLh-MK-ghq"/>
+                                    <constraint firstItem="0db-Fo-hxa" firstAttribute="leading" secondItem="QOi-ID-p2e" secondAttribute="trailing" constant="77" id="u3V-Mf-Wmz"/>
                                     <constraint firstItem="RKO-gU-JwN" firstAttribute="leading" secondItem="0db-Fo-hxa" secondAttribute="trailing" constant="24" id="vkf-Gw-HL7"/>
                                 </constraints>
                             </view>
@@ -404,6 +412,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Sdd-6X-3cH"/>
                     <connections>
+                        <outlet property="recipeName" destination="QOi-ID-p2e" id="4Zm-rX-tyS"/>
                         <outlet property="tableView" destination="T8y-zy-gkI" id="06H-Ra-3UP"/>
                     </connections>
                 </viewController>
