@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-import FirebaseDatabase
+
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
@@ -9,16 +9,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var databaseHandle:DatabaseHandle!
     var tableIndex = 0
     var recipeClicked = false
-    
+
+    //recipe.name is how to get the auto id of what is clicked on figure this out...
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
         getRecipes()
-        searchbar()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         }
     
     override func didReceiveMemoryWarning() {
@@ -34,52 +30,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // getting the recipes from the database
     func getRecipes(){
-        let db = Firestore.firestore().collection("Recipe")
-        
-        db.addSnapshotListener { (snapshot, error) in
+        let db = Firestore.firestore()
+        db.collection("Recipe").getDocuments { (snapshot, error) in
             if error != nil {
                 print("error") //please update to table
             }else{
-                guard let snapshot = snapshot else { return }
-                for document in snapshot.documents{
+                for document in snapshot!.documents{
                     
                     let recipe = Recipe(dictionary: document.data() as [String : AnyObject])
                     self.recipeArray.append(recipe)
-                    
                     print(document.data())
-                }
-                
-                DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+                
             }
-            
-            
         }
     }
     
-    private func reference(to collectionReference: String) -> CollectionReference {
-        return Firestore.firestore().collection(collectionReference)
-    }
-    /*func getRecipes(){
-        
-        databaseHandle = ref?.child("Recipe").observe(.childAdded, with: { (snapshot) in
-            
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let recipe = Recipe(dictionary: dictionary)
-                self.recipeArray.append(recipe)
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }*/
-    
-    
-   
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //getting the code from the array and counting them...
         return recipeArray.count
@@ -98,27 +65,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         recipeClicked = true
         recipeSelected.append(recipeArray[cell])
         performSegue(withIdentifier: "recipeSegue", sender: self)
-        print(cell)
     }
     
-    
-
-    
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     tableIndex = indexPath.row
-     let recipe = self.recipeArray[indexPath.row]
-     performSegue(withIdentifier: "recipeSegue", sender: self)
-     }*/
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "recipeSegue"{
-            if let indexPath = tableView.indexPathForSelectedRow{
-                let selectedRow = indexPath.row
-                let recipeSelected = recipeArray[selectedRow]
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (recipeClicked == true) {
+            if let destination = segue.destination as? RecipeScreen {
+                destination.currentRecipe = recipeSelected
             }
         }
-        
+    }
+    
+    /*override func gettingrecipeID(){
+        let db = Firestore.firestore().collection("recipe").document("WHAT VALUE ARE YOU??").collection("Ingredients")
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            String uid = firebaseUser.getUid();
+        }
     }*/
     
     private func searchbar() {

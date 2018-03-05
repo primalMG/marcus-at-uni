@@ -7,42 +7,45 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import FirebaseFirestore
 
 class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-    var ref: DatabaseReference!
-    var databaseHandle: DatabaseHandle!
+    var tableIndex = 0
+    var tipsClicked = false
     
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
         getTips()
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
+    @IBOutlet weak var tableView: UITableView!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     var tipsArray = [TipsModel]()
+    var tipSelected = [TipsModel]()
     
     func getTips(){
-        databaseHandle = ref?.child("Tips").observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let tips = TipsModel(dictionary: dictionary)
-                self.tipsArray.append(tips)
+        let db = Firestore.firestore()
+        db.collection("Tips").getDocuments { (snapshot, error) in
+            if error != nil {
+                print("error") //please update to table
+            }else{
+                for document in snapshot!.documents{
+                    
+                    let tip = TipsModel(dictionary: document.data() as [String : AnyObject])
+                    self.tipsArray.append(tip)
+                    print(document.data())
+                    self.tableView.reloadData()
+                }
             }
-            print(snapshot)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+        }
     }
-    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,10 +56,21 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tips", for: indexPath)
         let tips = tipsArray[indexPath.row]
         cell.textLabel?.text = tips.name
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = indexPath.row
+        tipsClicked = true
+        tipSelected.append(tipsArray[cell])
+        performSegue(withIdentifier: "tipsSegue", sender: self)
+    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if  (tipsClicked == true){
+            if let destination = segue.destination as? TipsViewController {
+                destination.currentTip = tipSelected
+            }
+        }
+    }
 }

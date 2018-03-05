@@ -15,7 +15,7 @@ class Recipe: NSObject {
     
     init(dictionary: [String: Any]) {
         self.name = dictionary["name"] as? String ?? ""
-        self.ingredients = dictionary["ingredients"] as? String ?? ""
+        self.ingredients = dictionary["Ingredients"] as? String ?? ""
         self.steps = dictionary["steps"] as? String ?? ""
     }
     
