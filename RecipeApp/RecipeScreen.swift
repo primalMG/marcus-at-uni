@@ -15,13 +15,12 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     var stepsArray = [Recipe]()
     var recScreen: String!
     var ref : DatabaseReference!
+    var ingredientsRef : DatabaseReference!
     var databaseHandle:DatabaseHandle!
-    
-    var recipe: Recipe? {
-        didSet{
-            navigationItem.title = recipe?.name
-        }
-    }
+    var recipeID = ""
+    var currentRecipe = [Recipe]()
+ 
+
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -31,8 +30,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getIngredients()
+        self.ref = Database.database().reference()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -42,21 +40,26 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
-
+    deinit {
+        self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
+    }
+    
+    
     func getIngredients() {
-        Database.database().reference().child("Recipe").child("Recipe").child("Ingredients").observe(.value) { (snapshot) in
-            if snapshot.exists(){
+        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.childAdded, with: { (snapshot) in
+            
+          
                 print(snapshot)
-                
-                if let snapDict = snapshot.value as? [String:AnyObject]{
-                    
-                }
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                self.ingredientsArray.append(recipe)
             }
-        }
+
+        })
     }
     
 
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray.count
         

@@ -10,6 +10,9 @@ target 'RecipeApp' do
 	pod 'Firebase/Storage'
 	pod 'Firebase/Database'
 	pod 'Firebase/Firestore'
+	pod 'FirebaseUI'
+	pod 'FirebaseUI/Facebook'
+	pod 'FirebaseUI/Twitter'
 end
   
 
