@@ -10,6 +10,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var tableIndex = 0
     var recipeClicked = false
 
+    //recipe.name is how to get the auto id of what is clicked on figure this out...
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,29 +47,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
-    private func reference(to collectionReference: String) -> CollectionReference {
-        return Firestore.firestore().collection(collectionReference)
-    }
-    /*func getRecipes(){
-        
-        databaseHandle = ref?.child("Recipe").observe(.childAdded, with: { (snapshot) in
-            
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let recipe = Recipe(dictionary: dictionary)
-                self.recipeArray.append(recipe)
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }*/
-    
-    
-   
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //getting the code from the array and counting them...
         return recipeArray.count
@@ -87,7 +65,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         recipeClicked = true
         recipeSelected.append(recipeArray[cell])
         performSegue(withIdentifier: "recipeSegue", sender: self)
-        print(cell)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,6 +75,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    /*override func gettingrecipeID(){
+        let db = Firestore.firestore().collection("recipe").document("WHAT VALUE ARE YOU??").collection("Ingredients")
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            String uid = firebaseUser.getUid();
+        }
+    }*/
     
     private func searchbar() {
         searchBar.delegate = self
