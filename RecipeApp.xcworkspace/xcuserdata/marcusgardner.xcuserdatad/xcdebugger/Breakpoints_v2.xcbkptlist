@@ -10,73 +10,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RecipeApp/RecipeScreen.swift"
-            timestampString = "541609633.542514"
+            timestampString = "542017825.5042599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "RecipeScreen"
-            landmarkType = "3">
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeApp/RecipeScreen.swift"
+            timestampString = "542017825.505114"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "getIngredients()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeApp/RecipeScreen.swift"
+            timestampString = "542017825.505904"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getIngredients()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "RecipeApp.RecipeScreen.currentRecipe.getter : Swift.Array&lt;RecipeApp.Recipe&gt;"
+                  symbolName = "RecipeApp.RecipeScreen.getIngredients() -&gt; ()"
                   moduleName = "RecipeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/marcusgardner/Desktop/marcus-at-uni-master/RecipeApp/RecipeScreen.swift"
-                  timestampString = "541609633.6864949"
+                  timestampString = "542017825.561764"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "109">
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "272">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "RecipeApp.RecipeScreen.currentRecipe.setter : Swift.Array&lt;RecipeApp.Recipe&gt;"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.QuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RecipeApp.RecipeScreen.getIngredients() -&gt; ()"
                   moduleName = "RecipeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/marcusgardner/Desktop/marcus-at-uni-master/RecipeApp/RecipeScreen.swift"
-                  timestampString = "541609633.689831"
+                  timestampString = "542017825.565267"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "112">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RecipeApp.RecipeScreen.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; RecipeApp.RecipeScreen"
-                  moduleName = "RecipeApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcusgardner/Desktop/marcus-at-uni-master/RecipeApp/RecipeScreen.swift"
-                  timestampString = "541609633.693213"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "202">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RecipeApp.RecipeScreen.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;RecipeApp.RecipeScreen&gt;"
-                  moduleName = "RecipeApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/marcusgardner/Desktop/marcus-at-uni-master/RecipeApp/RecipeScreen.swift"
-                  timestampString = "541609633.6964279"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "139">
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "21">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -87,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RecipeApp/ViewController.swift"
-            timestampString = "541609633.5426019"
+            filePath = "RecipeApp/RecipeScreen.swift"
+            timestampString = "542017825.506652"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getIngredients()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeApp/RecipeScreen.swift"
+            timestampString = "542017825.507284"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "getIngredients()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

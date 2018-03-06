@@ -14,7 +14,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     @IBOutlet weak var recipeName: UILabel!
     
     var currentRecipe = [Recipe]()
-    
+    var currRecipe = ""
 
     
     
@@ -31,7 +31,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         print("Accessed Recipe")
         
-    
+        getIngredients()
         recipeName.text = currentRecipe[0].name
         
     }
@@ -43,17 +43,20 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     
 
     
-    /*func getIngredients() {
-        let db = Firestore.firestore().collection("recipe").getDocuments { (querySnapshot, error) in
-            if error != nil {
-                print("error getting doc")
-            }else{
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+    func getIngredients() {
+        if let recipes = currentRecipe[0].name{
+            _ = Firestore.firestore().collection("recipe").document(recipes).collection("Ingredients").getDocuments { (querySnapshot, error) in
+                if error != nil {
+                    print("error getting doc")
+                }else{
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
                 }
             }
         }
-    }*/
+        
+    }
     
 
     
