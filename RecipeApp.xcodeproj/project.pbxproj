@@ -18,6 +18,7 @@
 		E750970120359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E761A926203C775C00049563 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761A925203C775C00049563 /* Recipe.swift */; };
 		E7895C122039C4300053F733 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7895C112039C4300053F733 /* SignUp.swift */; };
+		E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A42E21204EE2D8005D259F /* UserModel.swift */; };
 		E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD277A20333F900041B3F5 /* AppDelegate.swift */; };
 		E7AD277D20333F900041B3F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD277C20333F900041B3F5 /* ViewController.swift */; };
 		E7AD278020333F900041B3F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AD277E20333F900041B3F5 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E761A925203C775C00049563 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		E7895C112039C4300053F733 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		E7A42E21204EE2D8005D259F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E7AD277720333F900041B3F5 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AD277A20333F900041B3F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7AD277C20333F900041B3F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				E7449AB1203DEE3E008314AC /* TipsModel.swift */,
 				E761A925203C775C00049563 /* Recipe.swift */,
+				E7A42E21204EE2D8005D259F /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */,
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,
+				E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */,
 				E7895C122039C4300053F733 /* SignUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

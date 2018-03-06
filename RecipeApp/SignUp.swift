@@ -38,22 +38,19 @@ class SignUp: UIViewController {
         if let email = txtEmail.text, let pass = txtPass.text{
             Auth.auth().createUser(withEmail: email, password: pass, completion: { (correctEmail, error) in
                 if correctEmail != nil {
+                    let alert = UIAlertController(title: "Sign up Successful!", message: "You have sucessfully signed up to Marcus at Uni", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+                        (_)in
+                        self.performSegue(withIdentifier: "unwindSegue", sender: self)
+                    })
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true, completion: nil)
                 } else {
                     self.lblBlank.isHidden = false
                 }
             })
         }
-        
-        
-        /* if (the user email and pass is correct){
-         sign them in
-         }else{
-         regect them with a nice little message.
-         }
-         */
     }
-    
-   
 
 
 }

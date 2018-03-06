@@ -43,11 +43,6 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
             }
         })
     }
-
-    
-    func getQuery() -> DatabaseQuery {
-        return self.ref
-    }
    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
         let recipes = recipeArray[indexPath.row]
-        cell.textLabel?.text = recipes.name 
+        cell.textLabel?.text = recipes.name
         return cell
     }
     

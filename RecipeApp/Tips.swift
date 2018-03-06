@@ -13,8 +13,7 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle!
     
-    @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
@@ -28,7 +27,9 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var tableView: UITableView!
     var tipsArray = [TipsModel]()
+    
     
     func getTips(){
         databaseHandle = ref?.child("Tips").observe(.childAdded, with: { (snapshot) in
@@ -53,7 +54,6 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tips", for: indexPath)
         let tips = tipsArray[indexPath.row]
         cell.textLabel?.text = tips.name
-        
         return cell
     }
     

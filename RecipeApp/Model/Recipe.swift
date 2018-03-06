@@ -12,6 +12,7 @@ class Recipe: NSObject {
     var name: String?
     var ingredients: String?
     var steps: String?
+
     
     init(dictionary: [String: Any]) {
         self.name = dictionary["name"] as? String ?? ""

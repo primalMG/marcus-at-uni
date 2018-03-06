@@ -11,6 +11,8 @@ import UIKit
 class RecipeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblName: UILabel!
+ 
+    @IBOutlet weak var lblTipsName: UILabel!
     
     
     override func awakeFromNib() {
