@@ -33,6 +33,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         self.ref = Database.database().reference()
         tableView.delegate = self
         tableView.dataSource = self
+        getIngredients()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,13 +41,13 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
+    /*deinit {
         self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
-    }
+    }*/
     
     
     func getIngredients() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.childAdded, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.childAdded, with: { (snapshot) in
             
           
                 print(snapshot)
@@ -69,7 +70,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
         
         let ingredients = ingredientsArray[indexPath.row]
-        cell.textLabel?.text = ingredients.name
+        cell.textLabel?.text = ingredients.ingredients
         
         return cell
         

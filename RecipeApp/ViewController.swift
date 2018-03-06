@@ -69,16 +69,13 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "recipeSegue"{
-            guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else { return }
-            
-            let recipeSnapshot: DataSnapshot = recipeArray[selectedIndexPath.row]
-            let recipeClicked = recipeSnapshot.key
-            
-            guard let destination = segue.destination as? RecipeScreen else { return }
-            destination.recipeID = recipeClicked
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! RecipeScreen
+                let recipes = recipeArray[indexPath.row].name
+                controller.recipeID = recipes!
             }
         }
-    
+    }
     
     /*func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else { selectedRecipe = recipeArray

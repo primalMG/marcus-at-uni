@@ -123,6 +123,8 @@
 		E77B9D4F203EF81700BDDD61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7449AB1203DEE3E008314AC /* TipsModel.swift */,
+				E761A925203C775C00049563 /* Recipe.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,9 +154,6 @@
 		E7AD277920333F900041B3F5 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
-				E77B9D4F203EF81700BDDD61 /* Model */,
-				E7449AB1203DEE3E008314AC /* TipsModel.swift */,
-				E761A925203C775C00049563 /* Recipe.swift */,
 				E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */,
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
 				E7449AAF203DA751008314AC /* RecipeScreen.swift */,
@@ -167,6 +166,7 @@
 				E733EECC2034A5B200665AFC /* Tips.swift */,
 				E7895C112039C4300053F733 /* SignUp.swift */,
 				E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */,
+				E77B9D4F203EF81700BDDD61 /* Model */,
 			);
 			path = RecipeApp;
 			sourceTree = "<group>";
