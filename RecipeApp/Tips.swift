@@ -54,6 +54,7 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tips", for: indexPath)
         let tips = tipsArray[indexPath.row]
         cell.textLabel?.text = tips.name
+        cell.detailTextLabel?.text = tips.brief
         return cell
     }
     

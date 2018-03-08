@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class TipsDetailViewController: UIViewController {
     
     var tipsID = ""
+    var ref: DatabaseReference!
+    var handle: DatabaseHandle!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         self.title = tipsID
+        
+        TipsDirections()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +28,12 @@ class TipsDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func TipsDirections(){
+        DatabaseHandle = self.ref.child("Tips").child(tipsID).child("Steps").observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+            if let dic
+        })
+    }
 
-
-
+    
 }

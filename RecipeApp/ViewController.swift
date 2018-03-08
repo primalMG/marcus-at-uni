@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     // getting the recipes from the database
     func getRecipes(){
         
-        databaseHandle = ref?.child("Recipe").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref.child("Recipe").observe(.childAdded, with: { (snapshot) in
             
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
