@@ -15,11 +15,12 @@ class TipsDetailViewController: UIViewController {
     var ref: DatabaseReference!
     var handle: DatabaseHandle!
     
-
+    @IBOutlet weak var lblDescription: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = tipsID
-        
+        self.ref = Database.database().reference()
         TipsDirections()
     }
 
@@ -29,9 +30,14 @@ class TipsDetailViewController: UIViewController {
     }
     
     func TipsDirections(){
-        DatabaseHandle = self.ref.child("Tips").child(tipsID).child("Steps").observe(.childAdded, with: { (snapshot) in
+        handle = self.ref.child("Tips").child(tipsID).child("Description").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
-            if let dic
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                _ = TipsModel(dictionary: dictionary)
+            }
+            DispatchQueue.main.async {
+                self.lblDescription.reloadInputViews()
+            }
         })
     }
 

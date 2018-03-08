@@ -294,6 +294,9 @@
                         <viewLayoutGuide key="safeArea" id="sx1-OK-eIM"/>
                     </view>
                     <navigationItem key="navigationItem" title="TipsDetail" id="MG6-ld-C7q"/>
+                    <connections>
+                        <outlet property="lblDescription" destination="vy5-EW-vNn" id="epN-CW-pTh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8y-qB-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
