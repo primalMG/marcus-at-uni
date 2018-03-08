@@ -10,8 +10,10 @@ import UIKit
 
 class TipsModel: NSObject {
     var name: String?
+    var brief: String?
     
     init(dictionary: [String: Any]) {
         self.name = dictionary["name"] as? String ?? ""
+        self.brief = dictionary["Brief"] as? String ?? ""
     }
 }

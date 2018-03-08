@@ -13,6 +13,8 @@
 		E733EECD2034A5B200665AFC /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733EECC2034A5B200665AFC /* Tips.swift */; };
 		E7449AB0203DA751008314AC /* RecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AAF203DA751008314AC /* RecipeScreen.swift */; };
 		E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AB1203DEE3E008314AC /* TipsModel.swift */; };
+		E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DBCE720516A5C0086311C /* TipsDetailViewController.swift */; };
+		E74DBCEA205171460086311C /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DBCE9205171460086311C /* ShoppingListViewController.swift */; };
 		E75096FF20359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E750970020359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E750970120359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
@@ -60,6 +62,8 @@
 		E733EECC2034A5B200665AFC /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		E7449AAF203DA751008314AC /* RecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreen.swift; sourceTree = "<group>"; };
 		E7449AB1203DEE3E008314AC /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
+		E74DBCE720516A5C0086311C /* TipsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsDetailViewController.swift; sourceTree = "<group>"; };
+		E74DBCE9205171460086311C /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E761A925203C775C00049563 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		E7895C112039C4300053F733 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -162,9 +166,11 @@
 				E7449AAF203DA751008314AC /* RecipeScreen.swift */,
 				E7AD277C20333F900041B3F5 /* ViewController.swift */,
 				E7AD277E20333F900041B3F5 /* Main.storyboard */,
+				E74DBCE9205171460086311C /* ShoppingListViewController.swift */,
 				E7AD278120333F900041B3F5 /* Assets.xcassets */,
 				E7AD278320333F900041B3F5 /* LaunchScreen.storyboard */,
 				E7AD278620333F900041B3F5 /* Info.plist */,
+				E74DBCE720516A5C0086311C /* TipsDetailViewController.swift */,
 				E7AD27A8203347A10041B3F5 /* Account Page.swift */,
 				E733EECC2034A5B200665AFC /* Tips.swift */,
 				E7895C112039C4300053F733 /* SignUp.swift */,
@@ -549,11 +555,13 @@
 			files = (
 				E7AD277D20333F900041B3F5 /* ViewController.swift in Sources */,
 				E733EECD2034A5B200665AFC /* Tips.swift in Sources */,
+				E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */,
 				E7449AB0203DA751008314AC /* RecipeScreen.swift in Sources */,
 				E7C0DD9B204D9E08001655D7 /* RecipeTableViewCell.swift in Sources */,
 				E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */,
 				E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */,
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,
+				E74DBCEA205171460086311C /* ShoppingListViewController.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,
 				E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */,
 				E7895C122039C4300053F733 /* SignUp.swift in Sources */,

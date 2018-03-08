@@ -57,6 +57,17 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "tipsDetailSegue", sender: self)
+    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tipsDetailSegue"{
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let controller = segue.destination as! TipsDetailViewController
+                let selectedTip = tipsArray[indexPath.row].name
+                controller.tipsID = selectedTip!
+            }
+        }
+    }
 }
