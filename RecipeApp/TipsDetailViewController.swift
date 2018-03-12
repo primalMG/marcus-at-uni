@@ -11,17 +11,21 @@ import FirebaseDatabase
 
 class TipsDetailViewController: UIViewController {
     
-    var tipsID = ""
+    
     var ref: DatabaseReference!
-    var handle: DatabaseHandle!
+    var databaseHandle:DatabaseHandle!
+    var tipsArray = [TipsModel]()
+    var tipsID = ""
     
     @IBOutlet weak var lblDescription: UILabel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        self.title = tipsID
         self.ref = Database.database().reference()
         TipsDirections()
+        
+        self.title = tipsID
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,15 +34,10 @@ class TipsDetailViewController: UIViewController {
     }
     
     func TipsDirections(){
-        handle = self.ref.child("Tips").child(tipsID).child("Description").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = self.ref.child("Tips").child(tipsID).child("Description").observe(.value , with: { (snapshot) in
             print(snapshot)
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                _ = TipsModel(dictionary: dictionary)
-            }
-            DispatchQueue.main.async {
-                self.lblDescription.reloadInputViews()
-            }
         })
+        
     }
 
     

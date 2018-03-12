@@ -31,8 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     func getRecipes(){
         
         databaseHandle = ref.child("Recipe").observe(.childAdded, with: { (snapshot) in
-            
-            
+            print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
                 self.recipeArray.append(recipe)

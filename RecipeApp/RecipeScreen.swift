@@ -14,8 +14,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     var ingredientsArray = [Recipe]()
     var stepsArray = [Recipe]()
     var ref : DatabaseReference!
-    var ingredientsRef : DatabaseReference!
-    var databaseHandle:DatabaseHandle!
+    var databaseHandle: DatabaseHandle!
     var recipeID = ""
     
 
@@ -28,7 +27,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         getIngredients()
-       // getSteps()
+        getSteps()
         
         self.title = recipeID
     }
@@ -44,7 +43,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     
     func getIngredients() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
                 print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
@@ -57,12 +56,12 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
         })
     }
     
-    /*func getSteps(){
+    func getSteps(){
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("Steps").observe(.childAdded, with: { (snapshot) in
           print(snapshot)
         })
         
-    }*/
+    }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

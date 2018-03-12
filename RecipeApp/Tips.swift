@@ -32,7 +32,7 @@ class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     
     func getTips(){
-        databaseHandle = ref?.child("Tips").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref.child("Tips").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let tips = TipsModel(dictionary: dictionary)
                 self.tipsArray.append(tips)

@@ -10,14 +10,16 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseFacebookAuthUI
 
 class AccountPage: UIViewController {
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+     
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,5 +47,7 @@ class AccountPage: UIViewController {
         }
     }
     
+    
+ 
     
 }
