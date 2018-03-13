@@ -24,7 +24,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="pFc-Y8-BHq"/>
                                 </constraints>
-                                <state key="normal" image="Filter"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" image="Filter">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yR9-sN-ay3">
                                 <rect key="frame" x="0.0" y="59" width="318" height="56"/>
@@ -48,7 +52,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcn-yV-Hck">
-                                                    <rect key="frame" x="89" y="26" width="42" height="21"/>
+                                                    <rect key="frame" x="103" y="26" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,7 +60,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Zcn-yV-Hck" firstAttribute="centerY" secondItem="a4Y-hv-F5e" secondAttribute="centerY" id="IGA-35-y7U"/>
-                                                <constraint firstItem="Zcn-yV-Hck" firstAttribute="leading" secondItem="a4Y-hv-F5e" secondAttribute="leadingMargin" constant="74" id="Znt-pN-Ev2"/>
+                                                <constraint firstItem="Zcn-yV-Hck" firstAttribute="leading" secondItem="a4Y-hv-F5e" secondAttribute="leadingMargin" constant="88" id="Znt-pN-Ev2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.62932916350000001" blue="0.42493055280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -176,7 +180,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Marcus At Uni" id="Yex-lX-eRg">
                         <barButtonItem key="rightBarButtonItem" image="Menu" id="ey3-cx-dq5">
-                            <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="btnMenu:" destination="BYZ-38-t0r" id="EOp-Pq-Fdq"/>
                             </connections>
@@ -191,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518" y="170"/>
+            <point key="canvasLocation" x="517.60000000000002" y="169.56521739130437"/>
         </scene>
         <!--Tips-->
         <scene sceneID="EtP-Vc-WVD">
@@ -315,7 +319,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BtZ-j3-bSi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingList" id="BtZ-j3-bSi">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BtZ-j3-bSi" id="cBQ-pP-DYd">
@@ -534,6 +538,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Recipe Name" id="Sdd-6X-3cH"/>
                     <connections>
+                        <outlet property="imgSelectRecipe" destination="A9R-2i-PkQ" id="jRq-lu-se4"/>
                         <outlet property="tableView" destination="e5Z-ZG-emm" id="K9Y-eq-pW7"/>
                     </connections>
                 </viewController>

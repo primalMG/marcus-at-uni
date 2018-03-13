@@ -19,6 +19,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imgSelectRecipe: UIImageView!
     
 
     override func viewDidLoad() {
@@ -43,7 +44,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     
     func getIngredients() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
                 print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
@@ -57,7 +58,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func getSteps(){
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Steps").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Steps").observe(.value, with: { (snapshot) in
           print(snapshot)
         })
         
@@ -71,7 +72,7 @@ class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
         let ingredients = ingredientsArray[indexPath.row]
-        cell.textLabel?.text = ingredients.name
+        cell.textLabel?.text = ingredients.ingredients
         return cell
     }
 

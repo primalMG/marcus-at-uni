@@ -11,7 +11,8 @@ import UIKit
 class RecipeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblName: UILabel!
- 
+    @IBOutlet weak var imgRecipe: UIImageView!
+    
 
     
     
