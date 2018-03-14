@@ -14,7 +14,7 @@
         <!--Marcus At Uni-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecipesViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.62932916350000001" blue="0.42493055280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
@@ -141,7 +141,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.99890238050000002" green="0.67887544629999996" blue="0.54043513539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.66666668653488159" green="0.53477317916906808" blue="0.6517357674658979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fxm-R9-XHe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="2la-RM-lsB">
                                 <variation key="heightClass=regular-widthClass=compact" constant="430"/>
@@ -201,18 +201,15 @@
         <!--Tips-->
         <scene sceneID="EtP-Vc-WVD">
             <objects>
-                <viewController id="CV5-ZC-Xbe" customClass="Tips" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CV5-ZC-Xbe" customClass="TipsViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tbm-5R-SwD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="INm-FA-foV">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="csZ-c0-zKo">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tips" textLabel="kO4-Zb-gr2" detailTextLabel="OpD-fe-wXN" rowHeight="61" style="IBUITableViewCellStyleSubtitle" id="RXo-K3-gQI" customClass="RecipeTableViewCell" customModule="RecipeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="61"/>
@@ -237,6 +234,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -245,15 +243,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="INm-FA-foV" firstAttribute="leading" secondItem="tbm-5R-SwD" secondAttribute="leading" id="8Ps-4Z-DbV"/>
-                            <constraint firstItem="INm-FA-foV" firstAttribute="bottom" secondItem="csZ-c0-zKo" secondAttribute="top" id="NQA-b5-xAt"/>
-                            <constraint firstItem="INm-FA-foV" firstAttribute="leading" secondItem="csZ-c0-zKo" secondAttribute="leading" id="RfP-gz-znN"/>
-                            <constraint firstItem="INm-FA-foV" firstAttribute="top" secondItem="qsd-P2-P3Q" secondAttribute="top" id="Xu5-5J-4zy"/>
+                            <constraint firstItem="csZ-c0-zKo" firstAttribute="leading" secondItem="tbm-5R-SwD" secondAttribute="leading" id="5lm-pH-KZW"/>
+                            <constraint firstAttribute="trailing" secondItem="csZ-c0-zKo" secondAttribute="trailing" id="QOb-5z-k6J"/>
                             <constraint firstItem="csZ-c0-zKo" firstAttribute="bottom" secondItem="qsd-P2-P3Q" secondAttribute="bottom" id="cG4-Ei-DeZ"/>
-                            <constraint firstItem="INm-FA-foV" firstAttribute="trailing" secondItem="csZ-c0-zKo" secondAttribute="trailing" id="p44-oK-cCR"/>
-                            <constraint firstAttribute="trailing" secondItem="INm-FA-foV" secondAttribute="trailing" id="vOB-84-hDS"/>
+                            <constraint firstItem="csZ-c0-zKo" firstAttribute="top" secondItem="qsd-P2-P3Q" secondAttribute="top" id="ouP-xl-duI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qsd-P2-P3Q"/>
                     </view>
@@ -360,7 +355,7 @@
         <!--Account-->
         <scene sceneID="KhI-Y9-f9U">
             <objects>
-                <viewController id="YNk-5V-3KY" customClass="AccountPage" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YNk-5V-3KY" customClass="AccountPageViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l00-No-yKT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -458,7 +453,7 @@
         <!--Recipe Name-->
         <scene sceneID="crN-hN-OoO">
             <objects>
-                <viewController id="Ybf-FI-6P7" customClass="RecipeScreen" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ybf-FI-6P7" customClass="RecipeDetailViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lnx-Sp-Nvk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -550,7 +545,7 @@
         <!--Sign Up-->
         <scene sceneID="85j-59-gcT">
             <objects>
-                <viewController id="tbg-tl-qga" customClass="SignUp" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tbg-tl-qga" customClass="SignUpViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LqZ-U7-xR3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

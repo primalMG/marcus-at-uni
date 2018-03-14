@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFacebookAuthUI
 
-class AccountPage: UIViewController {
+class AccountPageViewController: UIViewController {
 
     
     override func viewDidLoad() {

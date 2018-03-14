@@ -10,8 +10,8 @@
 		65E7895FC4A0E1A38892EA6E /* Pods_RecipeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403EB8326BDEB5427A9D4D8F /* Pods_RecipeAppTests.framework */; };
 		6CC592D5D89966EC3C144BD8 /* Pods_RecipeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB8DAC65B2D4A80FBD7E05F /* Pods_RecipeAppUITests.framework */; };
 		97A14D80FBC7A8D507061FFA /* Pods_RecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26911C52873CCB47686FD696 /* Pods_RecipeApp.framework */; };
-		E733EECD2034A5B200665AFC /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733EECC2034A5B200665AFC /* Tips.swift */; };
-		E7449AB0203DA751008314AC /* RecipeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AAF203DA751008314AC /* RecipeScreen.swift */; };
+		E733EECD2034A5B200665AFC /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733EECC2034A5B200665AFC /* TipsViewController.swift */; };
+		E7449AB0203DA751008314AC /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */; };
 		E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AB1203DEE3E008314AC /* TipsModel.swift */; };
 		E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DBCE720516A5C0086311C /* TipsDetailViewController.swift */; };
 		E74DBCEA205171460086311C /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74DBCE9205171460086311C /* ShoppingListViewController.swift */; };
@@ -19,16 +19,16 @@
 		E750970020359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E750970120359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E761A926203C775C00049563 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761A925203C775C00049563 /* Recipe.swift */; };
-		E7895C122039C4300053F733 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7895C112039C4300053F733 /* SignUp.swift */; };
+		E7895C122039C4300053F733 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7895C112039C4300053F733 /* SignUpViewController.swift */; };
 		E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A42E21204EE2D8005D259F /* UserModel.swift */; };
 		E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD277A20333F900041B3F5 /* AppDelegate.swift */; };
-		E7AD277D20333F900041B3F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD277C20333F900041B3F5 /* ViewController.swift */; };
+		E7AD277D20333F900041B3F5 /* RecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD277C20333F900041B3F5 /* RecipesViewController.swift */; };
 		E7AD278020333F900041B3F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AD277E20333F900041B3F5 /* Main.storyboard */; };
 		E7AD278220333F900041B3F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7AD278120333F900041B3F5 /* Assets.xcassets */; };
 		E7AD278520333F900041B3F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7AD278320333F900041B3F5 /* LaunchScreen.storyboard */; };
 		E7AD279020333F900041B3F5 /* RecipeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD278F20333F900041B3F5 /* RecipeAppTests.swift */; };
 		E7AD279B20333F900041B3F5 /* RecipeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD279A20333F900041B3F5 /* RecipeAppUITests.swift */; };
-		E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD27A8203347A10041B3F5 /* Account Page.swift */; };
+		E7AD27A9203347A10041B3F5 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD27A8203347A10041B3F5 /* AccountPageViewController.swift */; };
 		E7C0DD9B204D9E08001655D7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */; };
 		E7E671E42059922B00FD31AB /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E671E32059922B00FD31AB /* Caching.swift */; };
 /* End PBXBuildFile section */
@@ -60,18 +60,18 @@
 		817AD4F1E46E28AF0E89412A /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
 		8264FAD3599E3BDD076A5C6C /* Pods-RecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7D248A64142519EB122ED8 /* Pods-RecipeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		E733EECC2034A5B200665AFC /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
-		E7449AAF203DA751008314AC /* RecipeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScreen.swift; sourceTree = "<group>"; };
+		E733EECC2034A5B200665AFC /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		E7449AB1203DEE3E008314AC /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
 		E74DBCE720516A5C0086311C /* TipsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsDetailViewController.swift; sourceTree = "<group>"; };
 		E74DBCE9205171460086311C /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E761A925203C775C00049563 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		E7895C112039C4300053F733 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		E7895C112039C4300053F733 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E7A42E21204EE2D8005D259F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E7AD277720333F900041B3F5 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AD277A20333F900041B3F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E7AD277C20333F900041B3F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E7AD277C20333F900041B3F5 /* RecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewController.swift; sourceTree = "<group>"; };
 		E7AD277F20333F900041B3F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E7AD278120333F900041B3F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7AD278420333F900041B3F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		E7AD279620333F900041B3F5 /* RecipeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AD279A20333F900041B3F5 /* RecipeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppUITests.swift; sourceTree = "<group>"; };
 		E7AD279C20333F900041B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7AD27A8203347A10041B3F5 /* Account Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Page.swift"; sourceTree = "<group>"; };
+		E7AD27A8203347A10041B3F5 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
 		E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		E7E671E32059922B00FD31AB /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,17 +165,17 @@
 			children = (
 				E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */,
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
-				E7449AAF203DA751008314AC /* RecipeScreen.swift */,
-				E7AD277C20333F900041B3F5 /* ViewController.swift */,
+				E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */,
+				E7AD277C20333F900041B3F5 /* RecipesViewController.swift */,
 				E7AD277E20333F900041B3F5 /* Main.storyboard */,
 				E74DBCE9205171460086311C /* ShoppingListViewController.swift */,
 				E7AD278120333F900041B3F5 /* Assets.xcassets */,
 				E7AD278320333F900041B3F5 /* LaunchScreen.storyboard */,
 				E7AD278620333F900041B3F5 /* Info.plist */,
 				E74DBCE720516A5C0086311C /* TipsDetailViewController.swift */,
-				E7AD27A8203347A10041B3F5 /* Account Page.swift */,
-				E733EECC2034A5B200665AFC /* Tips.swift */,
-				E7895C112039C4300053F733 /* SignUp.swift */,
+				E7AD27A8203347A10041B3F5 /* AccountPageViewController.swift */,
+				E733EECC2034A5B200665AFC /* TipsViewController.swift */,
+				E7895C112039C4300053F733 /* SignUpViewController.swift */,
 				E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */,
 				E7E671E02059911D00FD31AB /* Caching */,
 				E77B9D4F203EF81700BDDD61 /* Model */,
@@ -564,19 +564,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7AD277D20333F900041B3F5 /* ViewController.swift in Sources */,
-				E733EECD2034A5B200665AFC /* Tips.swift in Sources */,
+				E7AD277D20333F900041B3F5 /* RecipesViewController.swift in Sources */,
+				E733EECD2034A5B200665AFC /* TipsViewController.swift in Sources */,
 				E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */,
-				E7449AB0203DA751008314AC /* RecipeScreen.swift in Sources */,
+				E7449AB0203DA751008314AC /* RecipeDetailViewController.swift in Sources */,
 				E7C0DD9B204D9E08001655D7 /* RecipeTableViewCell.swift in Sources */,
 				E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */,
-				E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */,
+				E7AD27A9203347A10041B3F5 /* AccountPageViewController.swift in Sources */,
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,
 				E74DBCEA205171460086311C /* ShoppingListViewController.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,
 				E7E671E42059922B00FD31AB /* Caching.swift in Sources */,
 				E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */,
-				E7895C122039C4300053F733 /* SignUp.swift in Sources */,
+				E7895C122039C4300053F733 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class RecipeScreen: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var ingredientsArray = [Recipe]()
     var stepsArray = [Recipe]()

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUp: UIViewController {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var lblBlank: UILabel!
     

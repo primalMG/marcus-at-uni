@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 import FirebaseDatabaseUI
 
-class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
+class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -58,7 +58,14 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
         cell.textLabel?.text = recipes.name
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
+            cell.detailTextLabel?.text = recipes.price
+          
             
+            //implementation for images
+            if let recipeImgUrl = recipes.img {
+                cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
+            }
+
         } else {
             cell.textLabel?.text = recipes.name
             cell.detailTextLabel?.text = recipes.price
@@ -66,7 +73,6 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
             
             //implementation for images
             if let recipeImgUrl = recipes.img {
-                
                 cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
             }
         }
@@ -86,13 +92,13 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
         if segue.identifier == "recipeSegue"{
             if (searchActive){
                 if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let controller = segue.destination as! RecipeScreen
+                    let controller = segue.destination as! RecipeDetailViewController
                     let recipes = filteredRecipe[indexPath.row].name
                     controller.recipeID = recipes!
                 }
             } else {
                 if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let controller = segue.destination as! RecipeScreen
+                    let controller = segue.destination as! RecipeDetailViewController
                     let recipes = recipeArray[indexPath.row].name
                     controller.recipeID = recipes!
                 }

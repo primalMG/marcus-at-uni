@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class Tips: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class TipsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle!
     
