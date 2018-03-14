@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     func getRecipes(){
         
         databaseHandle = ref.child("Recipe").observe(.childAdded, with: { (snapshot) in
-            print(snapshot)
+         //   print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
                 self.recipeArray.append(recipe)
@@ -58,26 +58,38 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
         cell.textLabel?.text = recipes.name
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
+            
         } else {
             cell.textLabel?.text = recipes.name
+            cell.imageView?.image = UIImage(named: "placeholder")
             
-            /*implementation for images
+            //implementation for images
             if let recipeImgUrl = recipes.img {
-                let url = URL(string: recipeImgUrl)
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print(error)
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        cell.imageView?.image = UIImage(data: data!)
-                    }
-                    
-                }).resume()
-            }*/
+                if let url = URL(string: recipeImgUrl) {
+                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        if let imageData = data {
+                            DispatchQueue.main.async {
+                                cell.imageView?.image = UIImage(data: imageData)
+                            }
+                        } else {
+                            print("image data is nil")
+                        }
+                    }).resume()
+                } else {
+                    print("url is nil")
+                }
+            }
         }
         return cell
     }
+    
+    
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "recipeSegue", sender: self)
