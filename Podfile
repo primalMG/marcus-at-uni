@@ -16,7 +16,7 @@ target 'RecipeApp' do
 end
   
 
-  # Pods for RecipeApp
+  # Pods for RecipeAppoxtai
 
   target 'RecipeAppTests' do
     inherit! :search_paths

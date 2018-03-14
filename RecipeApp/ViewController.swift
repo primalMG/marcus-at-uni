@@ -89,8 +89,6 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     
     
     
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "recipeSegue", sender: self)
     }
