@@ -61,33 +61,21 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
             
         } else {
             cell.textLabel?.text = recipes.name
+            cell.detailTextLabel?.text = recipes.price
             cell.imageView?.image = UIImage(named: "placeholder")
             
             //implementation for images
             if let recipeImgUrl = recipes.img {
-                if let url = URL(string: recipeImgUrl) {
-                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                        if error != nil {
-                            print(error!)
-                            return
-                        }
-                        if let imageData = data {
-                            DispatchQueue.main.async {
-                                cell.imageView?.image = UIImage(data: imageData)
-                            }
-                        } else {
-                            print("image data is nil")
-                        }
-                    }).resume()
-                } else {
-                    print("url is nil")
-                }
+                
+                cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
             }
         }
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "recipeSegue", sender: self)

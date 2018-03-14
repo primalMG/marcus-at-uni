@@ -30,6 +30,7 @@
 		E7AD279B20333F900041B3F5 /* RecipeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD279A20333F900041B3F5 /* RecipeAppUITests.swift */; };
 		E7AD27A9203347A10041B3F5 /* Account Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD27A8203347A10041B3F5 /* Account Page.swift */; };
 		E7C0DD9B204D9E08001655D7 /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */; };
+		E7E671E42059922B00FD31AB /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E671E32059922B00FD31AB /* Caching.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E7AD279C20333F900041B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7AD27A8203347A10041B3F5 /* Account Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account Page.swift"; sourceTree = "<group>"; };
 		E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
+		E7E671E32059922B00FD31AB /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				E733EECC2034A5B200665AFC /* Tips.swift */,
 				E7895C112039C4300053F733 /* SignUp.swift */,
 				E7C0DD9A204D9E08001655D7 /* RecipeTableViewCell.swift */,
+				E7E671E02059911D00FD31AB /* Caching */,
 				E77B9D4F203EF81700BDDD61 /* Model */,
 			);
 			path = RecipeApp;
@@ -196,6 +199,14 @@
 				E7AD279C20333F900041B3F5 /* Info.plist */,
 			);
 			path = RecipeAppUITests;
+			sourceTree = "<group>";
+		};
+		E7E671E02059911D00FD31AB /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				E7E671E32059922B00FD31AB /* Caching.swift */,
+			);
+			path = Caching;
 			sourceTree = "<group>";
 		};
 		FB5095227504C58EA92850B4 /* Frameworks */ = {
@@ -563,6 +574,7 @@
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,
 				E74DBCEA205171460086311C /* ShoppingListViewController.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,
+				E7E671E42059922B00FD31AB /* Caching.swift in Sources */,
 				E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */,
 				E7895C122039C4300053F733 /* SignUp.swift in Sources */,
 			);
