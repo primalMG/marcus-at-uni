@@ -53,23 +53,19 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipes", for: indexPath) as! RecipeTableViewCell
+        
         let recipes = recipeArray[indexPath.row]
         cell.textLabel?.text = recipes.name
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
             cell.detailTextLabel?.text = recipes.price
           
-            
-            //implementation for images
-            if let recipeImgUrl = recipes.img {
-                cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
-            }
 
         } else {
+            cell.imageView?.image = UIImage(named: "placeholder")
             cell.textLabel?.text = recipes.name
             cell.detailTextLabel?.text = recipes.price
-            cell.imageView?.image = UIImage(named: "placeholder")
             
             //implementation for images
             if let recipeImgUrl = recipes.img {
@@ -151,9 +147,8 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         menuState = !menuState
     }
     
-
-
-
     
 }
+
+
 

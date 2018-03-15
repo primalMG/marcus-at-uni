@@ -36,6 +36,10 @@ class TipsDetailViewController: UIViewController {
     func TipsDirections(){
         databaseHandle = self.ref.child("Tips").child(tipsID).child("Description").observe(.value , with: { (snapshot) in
             print(snapshot)
+            if let des = snapshot.value as? String {
+                self.lblDescription.text = des
+            }
+            
         })
         
     }
