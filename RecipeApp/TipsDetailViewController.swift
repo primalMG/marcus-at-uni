@@ -18,6 +18,7 @@ class TipsDetailViewController: UIViewController {
     var tipsID = ""
     
     @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var txtViewDescription: UITextView!
     
     override func viewDidLoad() {
         
@@ -37,9 +38,8 @@ class TipsDetailViewController: UIViewController {
         databaseHandle = self.ref.child("Tips").child(tipsID).child("Description").observe(.value , with: { (snapshot) in
             print(snapshot)
             if let des = snapshot.value as? String {
-                self.lblDescription.text = des
+                self.txtViewDescription.text = des
             }
-            
         })
         
     }

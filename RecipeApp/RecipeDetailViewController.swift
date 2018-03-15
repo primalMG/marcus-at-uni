@@ -11,8 +11,8 @@ import FirebaseDatabase
 
 class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var ingredientsArray = [Recipe]()
-    var stepsArray = [Recipe]()
+    var ingredientsArray: [String] = []
+    var stepsArray: [String] = []
     var ref : DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var recipeID = ""
@@ -46,9 +46,11 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     func getIngredients() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
                 print(snapshot)
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let recipe = Recipe(dictionary: dictionary)
-                self.ingredientsArray.append(recipe)
+            
+            
+            for child in snapshot.children {
+                let dictionary = child as! DataSnapshot
+                self.ingredientsArray.append(dictionary.key)
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -60,6 +62,11 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     func getSteps(){
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("Steps").observe(.value, with: { (snapshot) in
           print(snapshot)
+            
+            for child in snapshot.children{
+                let steps = child as! DataSnapshot
+                self.stepsArray.append(steps.key)
+            }
         })
         
     }
@@ -71,11 +78,14 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
-        let ingredients = ingredientsArray[indexPath.row]
-        cell.textLabel?.text = ingredients.ingredients
+        cell.textLabel?.text = ingredientsArray[indexPath.row]
         return cell
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let header = "Ingredients"
+        return header
+    }
     
     
 }

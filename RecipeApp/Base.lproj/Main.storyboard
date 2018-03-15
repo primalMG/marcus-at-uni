@@ -276,31 +276,42 @@
                                     <constraint firstAttribute="height" constant="188" id="nAU-VQ-mmo"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description goes here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy5-EW-vNn">
-                                <rect key="frame" x="16" y="281" width="173" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy5-EW-vNn">
+                                <rect key="frame" x="16" y="281" width="93" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGx-B9-l3x">
+                                <rect key="frame" x="16" y="310" width="343" height="173"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="MGx-B9-l3x" firstAttribute="centerX" secondItem="bwy-Ck-O0M" secondAttribute="centerX" id="2I8-Nk-cd9"/>
                             <constraint firstAttribute="trailing" secondItem="bwy-Ck-O0M" secondAttribute="trailing" id="3Ld-4J-Hfb"/>
+                            <constraint firstItem="sx1-OK-eIM" firstAttribute="bottom" secondItem="MGx-B9-l3x" secondAttribute="bottom" constant="184" id="93U-WF-pAG"/>
                             <constraint firstItem="bwy-Ck-O0M" firstAttribute="top" secondItem="sx1-OK-eIM" secondAttribute="top" id="Qoc-ap-SQc"/>
                             <constraint firstItem="vy5-EW-vNn" firstAttribute="leading" secondItem="sMq-bb-wnv" secondAttribute="leadingMargin" id="f7k-Sw-KZN"/>
+                            <constraint firstItem="MGx-B9-l3x" firstAttribute="leading" secondItem="vy5-EW-vNn" secondAttribute="leading" id="lbU-TR-sQR"/>
                             <constraint firstItem="bwy-Ck-O0M" firstAttribute="leading" secondItem="sMq-bb-wnv" secondAttribute="leading" id="wtw-L2-uLa"/>
                             <constraint firstItem="vy5-EW-vNn" firstAttribute="top" secondItem="bwy-Ck-O0M" secondAttribute="bottom" constant="29" id="yVa-mQ-Fuq"/>
+                            <constraint firstItem="MGx-B9-l3x" firstAttribute="top" secondItem="vy5-EW-vNn" secondAttribute="bottom" constant="8" symbolic="YES" id="zex-1B-H9X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sx1-OK-eIM"/>
                     </view>
                     <navigationItem key="navigationItem" title="TipsDetail" id="MG6-ld-C7q"/>
                     <connections>
                         <outlet property="lblDescription" destination="vy5-EW-vNn" id="epN-CW-pTh"/>
+                        <outlet property="txtViewDescription" destination="MGx-B9-l3x" id="f0z-9a-rpr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8y-qB-JcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="1891"/>
+            <point key="canvasLocation" x="-175.19999999999999" y="1890.4047976011996"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="95V-N1-a1B">
