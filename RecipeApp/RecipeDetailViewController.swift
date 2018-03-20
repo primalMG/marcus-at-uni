@@ -15,7 +15,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var stepsArray: [String] = []
     var ref : DatabaseReference!
     var databaseHandle: DatabaseHandle!
-    var recipeID = ""
+    var recipeID: String!
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -45,9 +45,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func getIngredients() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
-                print(snapshot)
-            
-            
+            print(snapshot)
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
                 self.ingredientsArray.append(dictionary.key)
@@ -55,8 +53,12 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         })
+
+
+        
+
+        
     }
     
     func getSteps(){

@@ -13,7 +13,8 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     var searchActive = false
     var recipeArray = [Recipe]()
     var filteredRecipe = [Recipe]()
- 
+    var selectedRecipe: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -79,30 +80,45 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         return 70
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "recipeSegue", sender: self)
+//        let cell = tableView.cellForRow(at: indexPath)
+//        selectedRecipe = cell!.textLabel?.text
+//    }
+//
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "recipeSegue"{
+//            if (searchActive){
+//                if let indexPath = self.tableView.indexPathForSelectedRow {
+//                    let controller = segue.destination as! RecipeDetailViewController
+//                    let recipes = filteredRecipe[indexPath.row].name
+//                    controller.recipeID = recipes!
+//                }
+//            } else {
+//                if let indexPath = self.tableView.indexPathForSelectedRow {
+//                    let controller = segue.destination as! RecipeDetailViewController
+//                    guard let recipes = recipeArray[indexPath.row].name else { return }
+//                    controller.recipeID = recipes
+//                }
+//            }
+//        }
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "recipeSegue", sender: self)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "recipeSegue"{
-            if (searchActive){
-                if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let controller = segue.destination as! RecipeDetailViewController
-                    let recipes = filteredRecipe[indexPath.row].name
-                    controller.recipeID = recipes!
-                }
-            } else {
-                if let indexPath = self.tableView.indexPathForSelectedRow {
-                    let controller = segue.destination as! RecipeDetailViewController
-                    let recipes = recipeArray[indexPath.row].name
-                    controller.recipeID = recipes!
-                }
-            }
+        if let recipe = recipeArray[indexPath.row].recipeID{
+            selectedRecipe = recipe
+            performSegue(withIdentifier: "recipeSegue", sender: self)
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recipeSegue"{
+            if let destination = segue.destination as? RecipeDetailViewController {
+                destination.recipeID = selectedRecipe
+            }
+        }
+    }
 
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
