@@ -482,15 +482,15 @@
                                     <constraint firstAttribute="height" constant="367" id="H1d-kt-4Kc"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredients" rowHeight="74" id="gR7-r5-FuT">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredients" rowHeight="55" id="gR7-r5-FuT">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gR7-r5-FuT" id="26B-Q0-IgP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3h-uD-tLa">
-                                                    <rect key="frame" x="50" y="27" width="42" height="21"/>
+                                                    <rect key="frame" x="50" y="17" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -500,6 +500,14 @@
                                                 <constraint firstItem="c3h-uD-tLa" firstAttribute="leading" secondItem="26B-Q0-IgP" secondAttribute="leadingMargin" constant="35" id="hzf-0l-RQE"/>
                                                 <constraint firstItem="c3h-uD-tLa" firstAttribute="centerY" secondItem="26B-Q0-IgP" secondAttribute="centerY" id="ikj-hR-a3G"/>
                                             </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="steps" rowHeight="76" id="bbh-Dw-mdN">
+                                        <rect key="frame" x="0.0" y="83" width="375" height="76"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bbh-Dw-mdN" id="5m2-Qo-KWk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -554,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA7-BD-Opo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="569" y="1102"/>
+            <point key="canvasLocation" x="568.79999999999995" y="1101.4992503748126"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="85j-59-gcT">

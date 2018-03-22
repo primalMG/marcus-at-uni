@@ -16,8 +16,18 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var ref : DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var recipeID: String!
+ 
+    func loadingTings(){
+        var recipeName: Recipe? {
+            didSet {
+                navigationItem.title = recipeName?.name
+                print("something")
+            }
+        }
+    }
     
-
+   
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
     
@@ -29,9 +39,11 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         getIngredients()
         getSteps()
+
         
-        self.title = recipeID
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,23 +66,20 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 self.tableView.reloadData()
             }
         })
-
-
-        
-
-        
     }
     
     func getSteps(){
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Steps").observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.value, with: { (snapshot) in
           print(snapshot)
             
             for child in snapshot.children{
                 let steps = child as! DataSnapshot
-                self.stepsArray.append(steps.key)
+                self.ingredientsArray.append(steps.key)
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         })
-        
     }
     
 
@@ -78,16 +87,28 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         return ingredientsArray.count
     }
     
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
+//        cell.textLabel?.text = ingredientsArray[indexPath.row]
+//        return cell
+//    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
-        cell.textLabel?.text = ingredientsArray[indexPath.row]
-        return cell
+      
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
+            cell.textLabel?.text = ingredientsArray[indexPath.row]
+            return cell
+        
     }
+    
+    let headerTitles = ["ingredients","Steps"]
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let header = "Ingredients"
-        return header
+        if section < headerTitles.count {
+            return headerTitles[section]
+        }
+        return nil
     }
-    
-    
 }
+
