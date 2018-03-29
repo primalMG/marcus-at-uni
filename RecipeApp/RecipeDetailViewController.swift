@@ -87,28 +87,31 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (ingredientsArray.count + stepsArray.count)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < ingredientsArray.count{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
-            cell.textLabel?.text = ingredientsArray[indexPath.row]
-            return cell
-        } else {
-            let cellSteps = tableView.dequeueReusableCell(withIdentifier: "steps", for: indexPath)
-            cellSteps.textLabel?.text = stepsArray[indexPath.row - ingredientsArray.count]
-            return cellSteps
+        switch section {
+        case 0:
+            return ingredientsArray.count
+        case 1:
+            return stepsArray.count
+        default:
+            return 0
         }
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
-//            cell.textLabel?.text = ingredientsArray[indexPath.row]
-//            return cell
-//
-//    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath)
+            cell.textLabel?.text = ingredientsArray[indexPath.row]
+            return cell
+        case 1:
+            let stepsCell = tableView.dequeueReusableCell(withIdentifier: "steps", for: indexPath)
+            stepsCell.textLabel?.text = stepsArray[indexPath.row]
+            return stepsCell
+        default:
+            return UITableViewCell()
+        }
+   
+    }
     
     let headerTitles = ["ingredients","Steps"]
 
