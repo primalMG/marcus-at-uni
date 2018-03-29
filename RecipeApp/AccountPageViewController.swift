@@ -14,12 +14,13 @@ import FirebaseFacebookAuthUI
 
 class AccountPageViewController: UIViewController {
 
+    @IBOutlet weak var lblFalse: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-     
+        lblFalse.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,9 +40,15 @@ class AccountPageViewController: UIViewController {
         if let email = txtUsername.text, let pass = txtPass.text{
             Auth.auth().signIn(withEmail: email, password: pass, completion: { (emailExists, Error) in
                 if emailExists != nil{
-                    //let a brother know he's good.
+                    let alert = UIAlertController(title: "Login Successful", message: "Successfully logged in", preferredStyle: .alert)
+                    let OkAction = UIAlertAction(title: "Aight Boom", style: UIAlertActionStyle.default, handler:{
+                        (_) in
+                        self.performSegue(withIdentifier: "unwindSegue", sender: self)
+                    })
+                    alert.addAction(OkAction)
+                    self.present(alert, animated: true, completion: nil)
                 }else{
-                    //let a brother know he's bad.
+                    self.lblFalse.isHidden = false
                 }
             })
         }

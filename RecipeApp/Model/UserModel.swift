@@ -9,10 +9,12 @@
 import UIKit
 
 class UserModel: NSObject {
-    var userName: String?
+    var username: String?
+    var userID: String?
     
     init(dictionary: [String: Any]) {
-        self.userName = dictionary["username"] as? String ?? ""
+        self.username = dictionary["username"] as? String ?? ""
+        self.userID = dictionary["userID"] as? String ?? ""
     }
 
 }

@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class ShoppingListViewController: UIViewController {
-
+class ShoppingListViewController: UIViewController{
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    var ref: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    var ingredientsArray: [String] = []
+    let currUser = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +30,16 @@ class ShoppingListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func funkytow(){
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        <#code#>
+//    }
+    
+    
+    @IBAction func btnAddIng(_ sender: Any) {
         
     }
     

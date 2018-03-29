@@ -9,15 +9,18 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var lblBlank: UILabel!
+    var database: DatabaseHandle!
+    var ref: DatabaseReference!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         lblBlank.isHidden = true
         
         // Do any additional setup after loading the view.
@@ -35,6 +38,9 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func btnSignUp(_ sender: Any) {
+        ref = Database.database().reference()
+        let userID = Auth.auth().currentUser?.uid
+        
         if let email = txtEmail.text, let pass = txtPass.text{
             Auth.auth().createUser(withEmail: email, password: pass, completion: { (correctEmail, error) in
                 if correctEmail != nil {
@@ -45,6 +51,7 @@ class SignUpViewController: UIViewController {
                     })
                     alert.addAction(OKAction)
                     self.present(alert, animated: true, completion: nil)
+                    self.ref.child("users").child(userID!).setValue(["username": self.txtUsername.text])
                 } else {
                     self.lblBlank.isHidden = false
                 }

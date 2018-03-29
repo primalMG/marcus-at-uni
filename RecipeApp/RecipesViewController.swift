@@ -1,6 +1,6 @@
 import UIKit
 import Firebase
-import FirebaseDatabaseUI
+import FirebaseDatabase
 
 class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
     
