@@ -337,20 +337,25 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="KQi-OJ-SdY" id="g8M-2U-bpt"/>
-                                    <outlet property="delegate" destination="KQi-OJ-SdY" id="BiT-Kw-Cok"/>
-                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-qj-6EO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-Kc-BVv">
-                                        <rect key="frame" x="63" y="17" width="74" height="30"/>
+                                        <rect key="frame" x="293" y="17" width="74" height="30"/>
                                         <state key="normal" title="Remove all"/>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Ingredient here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-Ey-wVz">
+                                        <rect key="frame" x="8" y="17" width="168" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="168" id="5M4-Cv-Eph"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnt-It-quU">
-                                        <rect key="frame" x="201" y="17" width="101" height="30"/>
+                                        <rect key="frame" x="184" y="17" width="101" height="30"/>
                                         <state key="normal" title="Add Ingredient"/>
                                         <connections>
                                             <action selector="btnAddIng:" destination="KQi-OJ-SdY" eventType="touchDown" id="pWX-bQ-Pvy"/>
@@ -359,10 +364,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.78034978439825875" blue="0.40451280165307835" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="rnt-It-quU" firstAttribute="baseline" secondItem="gEU-Kc-BVv" secondAttribute="baseline" id="52s-Mi-7xY"/>
-                                    <constraint firstAttribute="trailing" secondItem="rnt-It-quU" secondAttribute="trailing" constant="73" id="D3l-nV-LEd"/>
-                                    <constraint firstItem="rnt-It-quU" firstAttribute="leading" secondItem="gEU-Kc-BVv" secondAttribute="trailing" constant="64" id="ZhJ-ua-dje"/>
-                                    <constraint firstItem="rnt-It-quU" firstAttribute="centerY" secondItem="hjp-qj-6EO" secondAttribute="centerY" id="q1G-Lu-qkP"/>
+                                    <constraint firstItem="gEU-Kc-BVv" firstAttribute="leading" secondItem="rnt-It-quU" secondAttribute="trailing" constant="8" symbolic="YES" id="09s-Fg-yeq"/>
+                                    <constraint firstItem="rnt-It-quU" firstAttribute="leading" secondItem="2Ya-Ey-wVz" secondAttribute="trailing" constant="8" symbolic="YES" id="98Z-ro-1bE"/>
+                                    <constraint firstItem="2Ya-Ey-wVz" firstAttribute="top" secondItem="gEU-Kc-BVv" secondAttribute="top" id="GPQ-EQ-Z9j"/>
+                                    <constraint firstItem="2Ya-Ey-wVz" firstAttribute="top" secondItem="rnt-It-quU" secondAttribute="top" id="XYf-ri-drg"/>
+                                    <constraint firstItem="2Ya-Ey-wVz" firstAttribute="leading" secondItem="hjp-qj-6EO" secondAttribute="leadingMargin" id="ZVb-xc-W07"/>
+                                    <constraint firstItem="2Ya-Ey-wVz" firstAttribute="centerY" secondItem="hjp-qj-6EO" secondAttribute="centerY" id="jza-iL-J0v"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -382,6 +389,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="sZo-q7-fWh"/>
                     <connections>
                         <outlet property="tableView" destination="s6i-yv-pkf" id="T4i-tl-Il8"/>
+                        <outlet property="txtIngredient" destination="2Ya-Ey-wVz" id="vvK-mx-Pwd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRg-m1-36d" userLabel="First Responder" sceneMemberID="firstResponder"/>
