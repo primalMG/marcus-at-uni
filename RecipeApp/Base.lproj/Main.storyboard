@@ -337,6 +337,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KQi-OJ-SdY" id="d7X-7N-RBB"/>
+                                    <outlet property="delegate" destination="KQi-OJ-SdY" id="Kvk-r2-Qbq"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-qj-6EO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="65"/>
@@ -375,14 +379,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="s6i-yv-pkf" secondAttribute="trailing" id="2Ca-vD-vu1"/>
-                            <constraint firstItem="s6i-yv-pkf" firstAttribute="trailing" secondItem="hjp-qj-6EO" secondAttribute="trailing" id="2pI-Iy-Ntb"/>
-                            <constraint firstItem="s6i-yv-pkf" firstAttribute="leading" secondItem="0NI-JD-3SM" secondAttribute="leading" id="8f7-w6-Ed9"/>
+                            <constraint firstItem="s6i-yv-pkf" firstAttribute="bottom" secondItem="rZO-kV-JbG" secondAttribute="bottom" id="6Mj-hn-UFL"/>
                             <constraint firstItem="hjp-qj-6EO" firstAttribute="top" secondItem="rZO-kV-JbG" secondAttribute="top" id="CaE-iC-IhW"/>
+                            <constraint firstItem="s6i-yv-pkf" firstAttribute="leading" secondItem="hjp-qj-6EO" secondAttribute="leading" id="CoK-F8-ptP"/>
+                            <constraint firstItem="s6i-yv-pkf" firstAttribute="top" secondItem="rZO-kV-JbG" secondAttribute="top" constant="63" id="OjU-fe-WUp"/>
+                            <constraint firstItem="s6i-yv-pkf" firstAttribute="leading" secondItem="0NI-JD-3SM" secondAttribute="leading" id="Q6R-ry-Smj"/>
+                            <constraint firstItem="s6i-yv-pkf" firstAttribute="trailing" secondItem="hjp-qj-6EO" secondAttribute="trailing" id="VQk-NQ-uKK"/>
+                            <constraint firstAttribute="trailing" secondItem="s6i-yv-pkf" secondAttribute="trailing" id="WzO-t8-mPJ"/>
                             <constraint firstItem="rZO-kV-JbG" firstAttribute="bottom" secondItem="hjp-qj-6EO" secondAttribute="bottom" constant="538" id="ZF0-C7-Or3"/>
-                            <constraint firstItem="s6i-yv-pkf" firstAttribute="top" secondItem="rZO-kV-JbG" secondAttribute="top" constant="63" id="cj6-IE-WiT"/>
-                            <constraint firstItem="s6i-yv-pkf" firstAttribute="bottom" secondItem="rZO-kV-JbG" secondAttribute="bottom" id="myy-jM-NIt"/>
-                            <constraint firstItem="s6i-yv-pkf" firstAttribute="leading" secondItem="hjp-qj-6EO" secondAttribute="leading" id="ty8-0n-zFh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rZO-kV-JbG"/>
                     </view>

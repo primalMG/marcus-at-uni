@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -56,12 +57,13 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func getIngredients() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
-            for child in snapshot.children {
-                let dictionary = child as! DataSnapshot
-                self.ingredientsArray.append(dictionary.key)
+            
+            if let dictionary = snapshot.value as? String {
+                self.ingredientsArray.append(dictionary)
             }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -69,13 +71,13 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func getSteps(){
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.childAdded, with: { (snapshot) in
           print(snapshot)
             
-            for child in snapshot.children {
-                let steps = child as! DataSnapshot
-                self.stepsArray.append(steps.key)
+            if let dictionary = snapshot.value as? String {
+                self.stepsArray.append(dictionary)
             }
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -113,13 +115,19 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
    
     }
     
-    let headerTitles = ["ingredients","Steps"]
+    let headerTitles = ["Ingredients","Steps"]
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section < headerTitles.count {
             return headerTitles[section]
         }
         return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+        }
     }
 }
 
