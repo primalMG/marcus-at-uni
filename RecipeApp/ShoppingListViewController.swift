@@ -33,14 +33,18 @@ class ShoppingListViewController: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    func ShoppingList(){
+        
+    }
     
     
     @IBAction func btnAddIng(_ sender: Any) {
-        let ingKey = ref.child("user").child(self.currUser!).child("ShoppingList").childByAutoId().key
+        let ingKey = ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().key
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currUser != nil {
-                self.ref.child("user").child(self.currUser!).child("ShoppingList").setValue(["\(ingKey)" : self.txtIngredient.text])
+                self.ref.child("users").child(self.currUser!).childByAutoId().setValue(self.txtIngredient.text)
             }else {
+                self.txtIngredient.text = "please sign in"
                 //redirect to login page...
             }
         }

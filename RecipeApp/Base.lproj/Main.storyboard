@@ -127,7 +127,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="YNk-5V-3KY" kind="show" identifier="unwindSegue" id="Wj7-fN-Y9v"/>
+                                            <segue destination="YNk-5V-3KY" kind="show" identifier="AccountPage" id="Wj7-fN-Y9v"/>
                                         </connections>
                                     </button>
                                 </subviews>
