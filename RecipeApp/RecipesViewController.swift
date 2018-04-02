@@ -2,6 +2,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
 class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -14,6 +15,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     var recipeArray = [Recipe]()
     var filteredRecipe = [Recipe]()
     var selectedRecipe: String!
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,6 +166,14 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     }
     
     @IBAction func btnAccount(_ sender: Any) {
+    let currentUser = Auth.auth().currentUser?.uid
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if currentUser != nil {
+                self.performSegue(withIdentifier: "signedInSegue", sender: nil)
+            } else {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+        }
         
     }
     

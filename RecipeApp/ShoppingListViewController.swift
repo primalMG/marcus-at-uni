@@ -58,10 +58,19 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = deleteAction(at: indexPath)
+//        return UISwipeActionsConfiguration(actions: [delete])
+//    }
+//    
+//    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+//        return 
+//    }
+    
     @IBAction func btnAddIng(_ sender: Any) {
-//        let ingKey = ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().key
+        
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            if self.currUser != nil {
+            if self.currUser != nil, let text = self.txtIngredient.text, !text.isEmpty {
                 self.ref.child("users").child(self.currUser!).childByAutoId().setValue(self.txtIngredient.text)
                 self.txtIngredient.text = ""
             }else {

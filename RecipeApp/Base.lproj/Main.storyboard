@@ -128,7 +128,7 @@
                                         </state>
                                         <connections>
                                             <action selector="btnAccount:" destination="BYZ-38-t0r" eventType="touchDownRepeat" id="2J9-dy-bGG"/>
-                                            <segue destination="YNk-5V-3KY" kind="show" identifier="AccountPage" id="Wj7-fN-Y9v"/>
+                                            <segue destination="YNk-5V-3KY" kind="show" identifier="AccountPage" id="dUn-D6-2CQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -401,10 +401,10 @@
             </objects>
             <point key="canvasLocation" x="1368.8" y="1134.7826086956522"/>
         </scene>
-        <!--Account Page View Controller-->
+        <!--View Controller-->
         <scene sceneID="9r3-jV-KQf">
             <objects>
-                <viewController id="QkJ-ez-abi" customClass="AccountPageViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QkJ-ez-abi" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IS8-OU-mqh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
