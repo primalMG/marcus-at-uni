@@ -66,7 +66,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 self.txtIngredient.text = ""
             }else {
                 self.txtIngredient.text = "please sign in"
-                //redirect to login page...
+                //TODO redirect to login page...
             }
         }
     }

@@ -163,6 +163,10 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         menuState = !menuState
     }
     
+    @IBAction func btnAccount(_ sender: Any) {
+        
+    }
+    
     
 }
 

@@ -17,6 +17,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var ref : DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var recipeID: String!
+    let currentUser = Auth.auth().currentUser?.uid
  
     func loadingTings(){
         var recipeName: Recipe? {
@@ -41,7 +42,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         getIngredients()
         getSteps()
 
-        
     }
     
 
@@ -57,11 +57,12 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func getIngredients() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
             print(snapshot)
             
-            if let dictionary = snapshot.value as? String {
-                self.ingredientsArray.append(dictionary)
+            for child in snapshot.children {
+                let dictionary = child as! DataSnapshot
+                self.ingredientsArray.append(dictionary.value as! String)
             }
             
             DispatchQueue.main.async {
@@ -71,11 +72,12 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func getSteps(){
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.childAdded, with: { (snapshot) in
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.value, with: { (snapshot) in
           print(snapshot)
             
-            if let dictionary = snapshot.value as? String {
-                self.stepsArray.append(dictionary)
+            for child in snapshot.children {
+                let dictionary = child as! DataSnapshot
+                self.stepsArray.append(dictionary.value as! String)
             }
             
             DispatchQueue.main.async {
@@ -125,8 +127,14 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = ingredientsArray[indexPath.row]
+        
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            
+            if self.currentUser != nil {
+                self.ref.child("users").child(self.currentUser!).childByAutoId().setValue(indexPath)
+            } else {
+                print("error")
+            }
         }
     }
 }

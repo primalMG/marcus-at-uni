@@ -127,6 +127,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="btnAccount:" destination="BYZ-38-t0r" eventType="touchDownRepeat" id="2J9-dy-bGG"/>
                                             <segue destination="YNk-5V-3KY" kind="show" identifier="AccountPage" id="Wj7-fN-Y9v"/>
                                         </connections>
                                     </button>
@@ -399,6 +400,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRg-m1-36d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1368.8" y="1134.7826086956522"/>
+        </scene>
+        <!--Account Page View Controller-->
+        <scene sceneID="9r3-jV-KQf">
+            <objects>
+                <viewController id="QkJ-ez-abi" customClass="AccountPageViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IS8-OU-mqh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-RZ-Neg">
+                                <rect key="frame" x="67" y="114" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">here's where a load of information relating to account stuff will go, such as reset password etc... but for now, here's a log out button.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FO1-vY-e4e">
+                                <rect key="frame" x="163" y="286" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UVY-RZ-Neg" firstAttribute="top" secondItem="Q3o-QJ-nF1" secondAttribute="top" constant="94" id="AVw-JS-c2C"/>
+                            <constraint firstItem="FO1-vY-e4e" firstAttribute="centerX" secondItem="IS8-OU-mqh" secondAttribute="centerX" id="HzV-Qf-p2f"/>
+                            <constraint firstItem="Q3o-QJ-nF1" firstAttribute="bottom" secondItem="FO1-vY-e4e" secondAttribute="bottom" constant="351" id="Z71-px-0lH"/>
+                            <constraint firstItem="UVY-RZ-Neg" firstAttribute="leading" secondItem="Q3o-QJ-nF1" secondAttribute="leading" constant="67" id="hGt-uS-X9W"/>
+                            <constraint firstItem="FO1-vY-e4e" firstAttribute="top" secondItem="UVY-RZ-Neg" secondAttribute="bottom" constant="44" id="k5e-2l-CfR"/>
+                            <constraint firstItem="FO1-vY-e4e" firstAttribute="centerX" secondItem="UVY-RZ-Neg" secondAttribute="centerX" id="pWH-Ph-2TW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q3o-QJ-nF1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GxS-Qx-URt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="-516"/>
         </scene>
         <!--Account-->
         <scene sceneID="KhI-Y9-f9U">
