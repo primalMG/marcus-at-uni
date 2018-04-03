@@ -349,6 +349,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-Kc-BVv">
                                         <rect key="frame" x="293" y="17" width="74" height="30"/>
                                         <state key="normal" title="Remove all"/>
+                                        <connections>
+                                            <action selector="btnDeleteAll:" destination="KQi-OJ-SdY" eventType="touchDown" id="qe0-bN-Fnj"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Ingredient here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-Ey-wVz">
                                         <rect key="frame" x="8" y="17" width="168" height="30"/>

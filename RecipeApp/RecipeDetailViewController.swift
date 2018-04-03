@@ -131,7 +131,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currentUser != nil {
-                self.ref.child("users").child(self.currentUser!).childByAutoId().setValue(indexPath)
+                self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId().setValue(indexPath)
             } else {
                 print("error")
             }

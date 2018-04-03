@@ -35,7 +35,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func ShoppingList(){
-        databaseHandle = ref.child("users").child(self.currUser!).observe(.childAdded, with: { (snapshot) in
+        databaseHandle = ref.child("users").child(self.currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
             
             if let dictionary = snapshot.value as? String {
@@ -58,20 +58,28 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let delete = deleteAction(at: indexPath)
-//        return UISwipeActionsConfiguration(actions: [delete])
-//    }
-//    
-//    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-//        return 
-//    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completetion) in
+            self.ref.child("users").child(self.currUser!).child("ShoppingList").child(self.ingredientsArray[indexPath.row]).removeValue()
+            self.ingredientsArray.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+
+        }
+        delete.image = #imageLiteral(resourceName: "Trash")
+        return delete
+    }
     
     @IBAction func btnAddIng(_ sender: Any) {
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currUser != nil, let text = self.txtIngredient.text, !text.isEmpty {
-                self.ref.child("users").child(self.currUser!).childByAutoId().setValue(self.txtIngredient.text)
+                self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().setValue(self.txtIngredient.text)
                 self.txtIngredient.text = ""
             }else {
                 self.txtIngredient.text = "please sign in"
@@ -79,6 +87,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
     }
+    
+    @IBAction func btnDeleteAll(_ sender: Any) {
+        self.ref.child("users").child(self.currUser!).child("ShoppingList").removeValue()
+    }
+    
     
     @IBAction func unwindToShoppingList(_ sender: UIStoryboardSegue){
         
