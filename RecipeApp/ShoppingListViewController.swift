@@ -79,8 +79,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let ingredient = self.ref.child("users").child(self.currUser!).child("ShoppingList")
+        let key = ingredient.key
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completetion) in
-            self.ref.child("users").child(self.currUser!).child("ShoppingList").child(self.ingredientsArray[indexPath.row]).removeValue()
+            ingredient.child(self.ingredientsArray[indexPath.row]).removeValue()
             self.ingredientsArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
 
@@ -89,12 +91,19 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return delete
     }
     
+    //self.ingredientsArray[indexPath.row]
+    
     @IBAction func btnAddIng(_ sender: Any) {
+        let ingredient = self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId()
+        let ingredientKey = ingredient.key
         let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
         let append = UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (action) in
             Auth.auth().addStateDidChangeListener({ (auth, user) in
                 if let txt = alert?.textFields![0], self.currUser != nil{
-                    self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().setValue(txt.text)
+                    let name = ["nameID": ingredientKey,
+                                "Name": txt.text!] as [String : Any]
+                    ingredient.setValue(txt.text)
+                    //self.ref.child("users").child(self.currUser!).child("ShoppingList").setValue(self.ingredientKey)
                 } else {
                     print("error")
                     
