@@ -29,7 +29,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         ref = Database.database().reference()
         // Do any additional setup after loading the view.
         ShoppingList()
-        
+        clear()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +51,17 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         })
     }
     
+    func clear(){
+        databaseHandle = ref.child("users").child(self.currUser!).child("ShoppingList").observe(.childRemoved, with: { (snapshot) in
+
+            self.ingredientsArray.removeAll()
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray.count
     }
@@ -79,21 +90,59 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func btnAddIng(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
+        let append = UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (action) in
+            Auth.auth().addStateDidChangeListener({ (auth, user) in
+                if let txt = alert?.textFields![0], self.currUser != nil{
+                    self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().setValue(txt.text)
+                } else {
+                    print("error")
+                    
+                }
+            })
+        })
         
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if self.currUser != nil, let text = self.txtIngredient.text, !text.isEmpty {
-                self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().setValue(self.txtIngredient.text)
-                self.txtIngredient.text = ""
-            }else {
-                self.txtIngredient.text = "please sign in"
-                //TODO redirect to login page...
+        alert.addAction(append)
+        
+        alert.addTextField(configurationHandler: { (txt) in
+            txt.placeholder = "Eg... Eggs"
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: txt, queue: OperationQueue.main) { (notification) in
+                append.isEnabled = txt.hasText
             }
-        }
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: {
+                print("Cancel")
+            })
+        }))
+        
+        
+        present(alert, animated: true, completion: nil)
     }
-    
+    //        Auth.auth().addStateDidChangeListener { (auth, user) in
+    //            if self.currUser != nil, let text = self.txtIngredient.text, !text.isEmpty {
+    //                self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().setValue(self.txtIngredient.text)
+    //                self.txtIngredient.text = ""
+    //            }else {
+    //                self.txtIngredient.text = "please sign in"
+    //                //TODO redirect to login page...
+    //            }
+    //        }
+
     @IBAction func btnDeleteAll(_ sender: Any) {
-        //implement "are you sure?" error handle 
-        self.ref.child("users").child(self.currUser!).child("ShoppingList").removeValue()
+        //implement "are you sure?" error handle
+        let alert = UIAlertController(title: "Are you done?", message: "Are you sure you want to clear your shopping list", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            self.ref.child("users").child(self.currUser!).child("ShoppingList").removeValue()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+            alert.dismiss(animated: true, completion: {
+                print("Delete all canceled")
+            })
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     
