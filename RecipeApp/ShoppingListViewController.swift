@@ -15,6 +15,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtIngredient: UITextField!
     
+    //IMPLEMENT A KEYBOARD DISMISAL PLEASE MARCUS DON'T FORGET
+    //EVEN IF YOU HAVE TO ASK NICK TO REMIND YOU...
+    
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var ingredientsArray: [String] = []
@@ -89,6 +92,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction func btnDeleteAll(_ sender: Any) {
+        //implement "are you sure?" error handle 
         self.ref.child("users").child(self.currUser!).child("ShoppingList").removeValue()
     }
     
