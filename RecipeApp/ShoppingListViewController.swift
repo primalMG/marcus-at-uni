@@ -115,10 +115,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         })
 
         alert.addAction(append)
-
+        append.isEnabled = false
         alert.addTextField(configurationHandler: { (txt) in
             txt.placeholder = "Eg... Eggs"
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: txt, queue: OperationQueue.main) { (notification) in
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: txt, queue: OperationQueue.main) { (notification) in
                 append.isEnabled = txt.hasText
             }
         })
