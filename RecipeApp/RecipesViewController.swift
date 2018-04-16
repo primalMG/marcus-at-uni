@@ -15,7 +15,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     var recipeArray = [Recipe]()
     var filteredRecipe = [Recipe]()
     var selectedRecipe: String!
- 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
