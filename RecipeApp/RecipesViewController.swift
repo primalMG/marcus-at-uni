@@ -15,7 +15,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     var recipeArray = [Recipe]()
     var filteredRecipe = [Recipe]()
     var selectedRecipe: String!
- 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,23 +148,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     var menuState = false
     
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-    @IBAction func btnMenu(_ sender: Any) {
-        if (menuState){
-            //closes menu
-            leadingConstraint.constant = 430
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-        }else{
-            //opens menu
-           leadingConstraint.constant = 175
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-        }
-        menuState = !menuState
-    }
-    
+
     @IBAction func btnAccount(_ sender: Any) {
     let currentUser = Auth.auth().currentUser?.uid
         Auth.auth().addStateDidChangeListener { (auth, user) in
