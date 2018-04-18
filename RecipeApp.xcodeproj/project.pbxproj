@@ -10,6 +10,7 @@
 		65E7895FC4A0E1A38892EA6E /* Pods_RecipeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403EB8326BDEB5427A9D4D8F /* Pods_RecipeAppTests.framework */; };
 		6CC592D5D89966EC3C144BD8 /* Pods_RecipeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB8DAC65B2D4A80FBD7E05F /* Pods_RecipeAppUITests.framework */; };
 		97A14D80FBC7A8D507061FFA /* Pods_RecipeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26911C52873CCB47686FD696 /* Pods_RecipeApp.framework */; };
+		E726E6712087793700EE9B75 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726E6702087793700EE9B75 /* AccountSettingsViewController.swift */; };
 		E733EECD2034A5B200665AFC /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E733EECC2034A5B200665AFC /* TipsViewController.swift */; };
 		E7449AB0203DA751008314AC /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */; };
 		E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7449AB1203DEE3E008314AC /* TipsModel.swift */; };
@@ -60,6 +61,7 @@
 		817AD4F1E46E28AF0E89412A /* Pods-RecipeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.release.xcconfig"; sourceTree = "<group>"; };
 		8264FAD3599E3BDD076A5C6C /* Pods-RecipeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7D248A64142519EB122ED8 /* Pods-RecipeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E726E6702087793700EE9B75 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		E733EECC2034A5B200665AFC /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		E7449AB1203DEE3E008314AC /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */,
 				E7AD277C20333F900041B3F5 /* RecipesViewController.swift */,
 				E7AD277E20333F900041B3F5 /* Main.storyboard */,
+				E726E6702087793700EE9B75 /* AccountSettingsViewController.swift */,
 				E74DBCE9205171460086311C /* ShoppingListViewController.swift */,
 				E7AD278120333F900041B3F5 /* Assets.xcassets */,
 				E7AD278320333F900041B3F5 /* LaunchScreen.storyboard */,
@@ -579,6 +582,7 @@
 				E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */,
 				E76BA36F205AD3410016B4FC /* RecipeTableViewCell.swift in Sources */,
 				E7449AB0203DA751008314AC /* RecipeDetailViewController.swift in Sources */,
+				E726E6712087793700EE9B75 /* AccountSettingsViewController.swift in Sources */,
 				E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */,
 				E7AD27A9203347A10041B3F5 /* AccountPageViewController.swift in Sources */,
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,

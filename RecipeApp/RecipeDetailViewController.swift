@@ -14,24 +14,17 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var ingredientsArray: [String] = []
     var stepsArray: [String] = []
+    var currentRecipe = [Recipe]()
     var ref : DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var recipeID: String!
     let currentUser = Auth.auth().currentUser?.uid
  
-    func loadingTings(){
-        var recipeName: Recipe? {
-            didSet {
-                navigationItem.title = recipeName?.name
-                print("something")
-            }
-        }
-    }
     
-   
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
+    @IBOutlet weak var recipeImage: UIImageView!
     
 
     override func viewDidLoad() {
@@ -41,6 +34,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         getIngredients()
         getSteps()
+        recipe()
 
     }
     
@@ -55,10 +49,30 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
     }*/
     
+    func recipe() {
+        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+          
+            
+            
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                self.navigationItem.title = recipe.name
+                if let recipeImgUrl = recipe.img {
+                    self.recipeImage.LoadingImageUsingCache(urlString: recipeImgUrl)
+                } else {
+                    print("error")
+                }
+
+            }
+            
+        })
+    }
+    
     
     func getIngredients() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
-            print(snapshot)
+            //print(snapshot)
             
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
@@ -73,7 +87,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func getSteps(){
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.value, with: { (snapshot) in
-          print(snapshot)
+          //print(snapshot)
             
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
@@ -110,6 +124,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         case 1:
             let stepsCell = tableView.dequeueReusableCell(withIdentifier: "steps", for: indexPath)
             stepsCell.textLabel?.text = stepsArray[indexPath.row]
+            stepsCell.textLabel?.textColor = UIColor.black
             return stepsCell
         default:
             return UITableViewCell()
@@ -137,5 +152,14 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
         }
     }
+    
+    @IBAction func btnAddAll(_ sender: Any) {
+    }
+    
+    @IBAction func btnShare(_ sender: Any) {
+    }
+    
+    
+    
 }
 

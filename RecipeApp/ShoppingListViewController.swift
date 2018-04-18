@@ -38,29 +38,39 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func ShoppingList(){
         let currUser = Auth.auth().currentUser?.uid
-        databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
-            print(snapshot)
+        if Auth.auth().currentUser != nil {
+            databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
+                print(snapshot)
+                
+                if let dictionary = snapshot.value as? String {
+                    self.ingredientsArray.append(dictionary)
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            })
+        } else {
+            print("please sign in")
+        }
 
-            if let dictionary = snapshot.value as? String {
-               self.ingredientsArray.append(dictionary)
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-
-        })
     }
 
     func clear(){
         let currUser = Auth.auth().currentUser?.uid
-        databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childRemoved, with: { (snapshot) in
+        if Auth.auth().currentUser != nil{
+            databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childRemoved, with: { (snapshot) in
+                
+                self.ingredientsArray.removeAll()
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+        } else {
+            print("please sign in")
+        }
 
-            self.ingredientsArray.removeAll()
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -63,7 +63,9 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
             cell.detailTextLabel?.text = recipes.price
-          
+            if let recipeImgUrl = recipes.img {
+                cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
+            }
 
         } else {
             cell.imageView?.image = UIImage(named: "placeholder")
