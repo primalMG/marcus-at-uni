@@ -146,7 +146,17 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currentUser != nil {
-                self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId().setValue(indexPath)
+                let ingredient = self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId()
+                let ingredientKey = ingredient.key
+                let name = ["nameID": ingredientKey,
+                            "imgName": indexPath]
+                ingredient.setValue(name)
+                let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                let delay = DispatchTime.now() + 0.5
+                DispatchQueue.main.asyncAfter(deadline: delay){
+                    alert.dismiss(animated: true, completion: nil)
+                }
             } else {
                 print("error")
             }
