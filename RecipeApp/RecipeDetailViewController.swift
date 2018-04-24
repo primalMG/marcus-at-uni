@@ -45,9 +45,9 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    /*deinit {
+    deinit {
         self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
-    }*/
+    }
     
     func recipe() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in

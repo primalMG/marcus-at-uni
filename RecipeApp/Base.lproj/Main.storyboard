@@ -47,7 +47,7 @@
                                 <rect key="frame" x="0.0" y="109" width="414" height="578"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipes" textLabel="Bdy-Ve-VRm" detailTextLabel="MVc-2S-LNd" rowHeight="73" style="IBUITableViewCellStyleSubtitle" id="Exh-jw-hs1" customClass="RecipeTableViewCell" customModule="RecipeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recipes" textLabel="Bdy-Ve-VRm" detailTextLabel="MVc-2S-LNd" rowHeight="73" style="IBUITableViewCellStyleSubtitle" id="Exh-jw-hs1" customClass="RecipeTableViewCell" customModule="RecipeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Exh-jw-hs1" id="a4Y-hv-F5e">
@@ -127,7 +127,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tips" textLabel="kO4-Zb-gr2" detailTextLabel="OpD-fe-wXN" rowHeight="61" style="IBUITableViewCellStyleSubtitle" id="RXo-K3-gQI" customClass="RecipeTableViewCell" customModule="RecipeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tips" textLabel="kO4-Zb-gr2" detailTextLabel="OpD-fe-wXN" rowHeight="61" style="IBUITableViewCellStyleSubtitle" id="RXo-K3-gQI" customClass="RecipeTableViewCell" customModule="RecipeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RXo-K3-gQI" id="1eD-s5-H2c">
@@ -254,7 +254,7 @@
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingList" id="BtZ-j3-bSi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingList" id="BtZ-j3-bSi">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BtZ-j3-bSi" id="cBQ-pP-DYd">
@@ -528,7 +528,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="734-tM-vrI">
-                                <rect key="frame" x="0.0" y="253" width="414" height="53"/>
+                                <rect key="frame" x="0.0" y="260" width="414" height="46"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0db-Fo-hxa">
                                         <rect key="frame" x="348" y="8" width="49" height="30"/>
@@ -552,7 +552,7 @@
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="RKO-gU-JwN" firstAttribute="centerY" secondItem="734-tM-vrI" secondAttribute="centerY" id="0Cv-23-oi1">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="-3.5"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstAttribute="trailing" secondItem="RKO-gU-JwN" secondAttribute="trailing" constant="74" id="i4T-aB-gHE">
                                         <variation key="heightClass=regular-widthClass=compact" constant="84"/>
@@ -563,11 +563,11 @@
                                     <constraint firstItem="RKO-gU-JwN" firstAttribute="baseline" secondItem="0db-Fo-hxa" secondAttribute="baseline" id="xQy-ru-e68"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9R-2i-PkQ">
-                                <rect key="frame" x="87" y="64" width="241" height="188"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9R-2i-PkQ">
+                                <rect key="frame" x="63" y="64" width="289" height="197"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="TNR-0Y-TJp">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="188"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="197"/>
                                     </constraint>
                                 </constraints>
                             </imageView>
@@ -577,31 +577,31 @@
                             <constraint firstAttribute="bottomMargin" secondItem="e5Z-ZG-emm" secondAttribute="bottom" constant="-69" id="439-VQ-YJg"/>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="top" secondItem="ND6-ie-6kJ" secondAttribute="top" id="6Km-yY-Lht"/>
                             <constraint firstAttribute="trailing" secondItem="A9R-2i-PkQ" secondAttribute="trailing" id="6R0-b1-WbA">
-                                <variation key="heightClass=regular-widthClass=compact" constant="86"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="62"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="trailing" secondItem="734-tM-vrI" secondAttribute="trailing" id="707-ut-Sub">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-86"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-62"/>
                             </constraint>
                             <constraint firstItem="e5Z-ZG-emm" firstAttribute="top" secondItem="734-tM-vrI" secondAttribute="bottom" constant="1" id="HEC-TZ-hz3">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="trailing" secondItem="e5Z-ZG-emm" secondAttribute="trailing" id="KCi-0m-HJO">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-86"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-62"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="leading" secondItem="e5Z-ZG-emm" secondAttribute="leading" id="NTk-Wh-QJb">
-                                <variation key="heightClass=regular-widthClass=compact" constant="87"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
                             </constraint>
                             <constraint firstItem="e5Z-ZG-emm" firstAttribute="top" secondItem="A9R-2i-PkQ" secondAttribute="bottom" constant="53" id="P9p-Ku-AQf">
-                                <variation key="heightClass=regular-widthClass=compact" constant="54"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="45"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="leading" secondItem="734-tM-vrI" secondAttribute="leading" id="TST-WN-3oF">
-                                <variation key="heightClass=regular-widthClass=compact" constant="87"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="leading" secondItem="Lnx-Sp-Nvk" secondAttribute="leading" id="gfw-iA-nI3">
-                                <variation key="heightClass=regular-widthClass=compact" constant="87"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
                             </constraint>
                             <constraint firstItem="734-tM-vrI" firstAttribute="top" secondItem="ND6-ie-6kJ" secondAttribute="top" constant="139" id="k5T-eI-Wic">
-                                <variation key="heightClass=regular-widthClass=compact" constant="189"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="196"/>
                             </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ND6-ie-6kJ"/>
