@@ -21,6 +21,7 @@
 		E750970120359E3A00D6A6C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */; };
 		E761A926203C775C00049563 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E761A925203C775C00049563 /* Recipe.swift */; };
 		E76BA36F205AD3410016B4FC /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76BA36E205AD3410016B4FC /* RecipeTableViewCell.swift */; };
+		E784D5652090C3DD0051317D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E784D5642090C3DD0051317D /* MapViewController.swift */; };
 		E7895C122039C4300053F733 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7895C112039C4300053F733 /* SignUpViewController.swift */; };
 		E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A42E21204EE2D8005D259F /* UserModel.swift */; };
 		E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD277A20333F900041B3F5 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		E761A925203C775C00049563 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		E76BA36E205AD3410016B4FC /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		E76BA370205AEAA30016B4FC /* RecipeApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecipeApp.entitlements; sourceTree = "<group>"; };
+		E784D5642090C3DD0051317D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E7895C112039C4300053F733 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E7A42E21204EE2D8005D259F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		E7AD277720333F900041B3F5 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				E76BA370205AEAA30016B4FC /* RecipeApp.entitlements */,
 				E75096FE20359E3900D6A6C2 /* GoogleService-Info.plist */,
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
+				E784D5642090C3DD0051317D /* MapViewController.swift */,
 				E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */,
 				E7AD277C20333F900041B3F5 /* RecipesViewController.swift */,
 				E7AD277E20333F900041B3F5 /* Main.storyboard */,
@@ -255,8 +258,6 @@
 				E7AD278720333F900041B3F5 /* Sources */,
 				E7AD278820333F900041B3F5 /* Frameworks */,
 				E7AD278920333F900041B3F5 /* Resources */,
-				69C428D0BC7421E042962261 /* [CP] Embed Pods Frameworks */,
-				806EE16B578BDCB2D6D8907B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,8 +277,6 @@
 				E7AD279220333F900041B3F5 /* Sources */,
 				E7AD279320333F900041B3F5 /* Frameworks */,
 				E7AD279420333F900041B3F5 /* Resources */,
-				1F3109580460B37EF8BB02DD /* [CP] Embed Pods Frameworks */,
-				089449FE5E8D82475E3F665D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -305,6 +304,9 @@
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 0;
@@ -374,21 +376,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		089449FE5E8D82475E3F665D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0D1948AEBEF941F3E8C697B6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -397,40 +384,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -457,21 +428,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1F3109580460B37EF8BB02DD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppUITests/Pods-RecipeAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		23B2A5D5B2F285A70D5EC140 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,10 +437,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RecipeApp/Pods-RecipeApp-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
@@ -492,10 +445,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
@@ -520,36 +470,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		69C428D0BC7421E042962261 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		806EE16B578BDCB2D6D8907B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipeAppTests/Pods-RecipeAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D471A4EF0A689A11D31A891D /* [CP] Check Pods Manifest.lock */ = {
@@ -590,6 +510,7 @@
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,
 				E7E671E42059922B00FD31AB /* Caching.swift in Sources */,
 				E7A42E22204EE2D8005D259F /* UserModel.swift in Sources */,
+				E784D5652090C3DD0051317D /* MapViewController.swift in Sources */,
 				E7895C122039C4300053F733 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,6 +678,7 @@
 			baseConfigurationReference = 8264FAD3599E3BDD076A5C6C /* Pods-RecipeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RecipeApp/RecipeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BKJ97444K2;
 				INFOPLIST_FILE = RecipeApp/Info.plist;
@@ -773,6 +695,7 @@
 			baseConfigurationReference = 817AD4F1E46E28AF0E89412A /* Pods-RecipeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RecipeApp/RecipeApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BKJ97444K2;
 				INFOPLIST_FILE = RecipeApp/Info.plist;

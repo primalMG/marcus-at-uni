@@ -92,7 +92,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return delete
     }
 
-    //self.ingredientsArray[indexPath.row]
 
     @IBAction func btnAddIng(_ sender: Any) {
         let currUser = Auth.auth().currentUser?.uid
