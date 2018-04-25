@@ -106,8 +106,8 @@
                         <outlet property="searchBar" destination="yR9-sN-ay3" id="9jh-hz-Eie"/>
                         <outlet property="tableView" destination="Pmc-wo-vIB" id="2Os-4l-o86"/>
                         <segue destination="Ybf-FI-6P7" kind="show" identifier="recipeSegue" id="SRS-pT-Tzl"/>
-                        <segue destination="QkJ-ez-abi" kind="show" identifier="signedInSegue" id="dhW-1M-NHS"/>
-                        <segue destination="YNk-5V-3KY" kind="show" identifier="loginSegue" id="Pud-eA-h4Z"/>
+                        <segue destination="YNk-5V-3KY" kind="show" identifier="signInSegue" id="2Bc-cK-ekx"/>
+                        <segue destination="QkJ-ez-abi" kind="show" identifier="accountSettings" id="lBB-nr-8pN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -342,7 +342,7 @@
         <!--Account Settings View Controller-->
         <scene sceneID="9r3-jV-KQf">
             <objects>
-                <viewController id="QkJ-ez-abi" customClass="AccountSettingsViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountSettingsViewController" id="QkJ-ez-abi" customClass="AccountSettingsViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IS8-OU-mqh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -373,15 +373,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q3o-QJ-nF1"/>
                     </view>
+                    <connections>
+                        <segue destination="UHg-iy-T7Z" kind="unwind" identifier="accountSettingsUnwind" unwindAction="accountSettingsUnwind:" id="IQb-K8-Y7c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GxS-Qx-URt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UHg-iy-T7Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2499" y="-511"/>
         </scene>
         <!--Account-->
         <scene sceneID="KhI-Y9-f9U">
             <objects>
-                <viewController id="YNk-5V-3KY" customClass="AccountPageViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountPageViewController" id="YNk-5V-3KY" customClass="AccountPageViewController" customModule="RecipeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l00-No-yKT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

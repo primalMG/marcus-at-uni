@@ -151,7 +151,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 let name = ["nameID": ingredientKey,
                             "imgName": indexPath]
                 ingredient.setValue(name)
-                let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Ingredient Added to Shopping List", message: nil, preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
                 let delay = DispatchTime.now() + 0.5
                 DispatchQueue.main.asyncAfter(deadline: delay){
