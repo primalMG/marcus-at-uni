@@ -48,7 +48,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     /*deinit {
         self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
     }*/
-    
+        
     func recipe() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
           
