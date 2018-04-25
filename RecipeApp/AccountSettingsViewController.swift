@@ -28,6 +28,14 @@ class AccountSettingsViewController: UIViewController {
         
         do {
             try firebaseAuth.signOut()
+            let alert = UIAlertController(title: "Logout Successful", message: "Successfully logged in", preferredStyle: .alert)
+            let OkAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler:{
+                (_) in
+                self.performSegue(withIdentifier: "accountSettingsUnwind", sender: self)
+            })
+            alert.addAction(OkAction)
+            self.present(alert, animated: true, completion: nil)
+            
         } catch let error as NSError {
             print("error signing out", error)
         }

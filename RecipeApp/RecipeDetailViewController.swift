@@ -45,10 +45,15 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
-    /*deinit {
+    deinit {
         self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
+<<<<<<< HEAD
     }*/
         
+=======
+    }
+    
+>>>>>>> 55fac37f41126103db13d4de7a98fb2ab8211ec6
     func recipe() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
           
@@ -146,7 +151,17 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currentUser != nil {
-                self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId().setValue(indexPath)
+                let ingredient = self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId()
+                let ingredientKey = ingredient.key
+                let name = ["nameID": ingredientKey,
+                            "imgName": indexPath]
+                ingredient.setValue(name)
+                let alert = UIAlertController(title: "Ingredient Added to Shopping List", message: nil, preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                let delay = DispatchTime.now() + 0.5
+                DispatchQueue.main.asyncAfter(deadline: delay){
+                    alert.dismiss(animated: true, completion: nil)
+                }
             } else {
                 print("error")
             }

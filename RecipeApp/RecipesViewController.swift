@@ -145,6 +145,10 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
         
     }
+    
+    @IBAction func accountSettingsUnwind(_ sender: UIStoryboardSegue){
+        
+    }
 
     //Drawer Menu
     var menuState = false
@@ -153,14 +157,11 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
 
     @IBAction func btnAccount(_ sender: Any) {
     let currentUser = Auth.auth().currentUser?.uid
-        Auth.auth().addStateDidChangeListener { (auth, user) in
             if currentUser != nil {
-                self.performSegue(withIdentifier: "signedInSegue", sender: nil)
+                  self.performSegue(withIdentifier: "accountSettings", sender: nil)
             } else {
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                self.performSegue(withIdentifier: "signInSegue", sender: nil)
             }
-        }
-        
     }
     
     

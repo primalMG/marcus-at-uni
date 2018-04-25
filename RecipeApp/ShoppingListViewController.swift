@@ -17,7 +17,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle!
-    var ingredientsArray: [String] = []
+    var ingredientsArray = [UserModel]()
     
     
     
@@ -26,7 +26,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         ref = Database.database().reference()
         // Do any additional setup after loading the view.
         ShoppingList()
-        clear()
+        
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,17 +40,20 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func ShoppingList(){
         let currUser = Auth.auth().currentUser?.uid
+        
+        
         if Auth.auth().currentUser != nil {
             databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
-                print(snapshot)
                 
-                if let dictionary = snapshot.value as? String {
-                    self.ingredientsArray.append(dictionary)
+                if let dictionary = snapshot.value as? [String: AnyObject]{
+                    let ingredient = UserModel(dictionary: dictionary)
+                    self.ingredientsArray.append(ingredient)
                 }
+                
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                
+
             })
         } else {
             print("please sign in")
@@ -56,22 +61,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 
     }
 
-    func clear(){
-        let currUser = Auth.auth().currentUser?.uid
-        if Auth.auth().currentUser != nil{
-            databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childRemoved, with: { (snapshot) in
-                
-                self.ingredientsArray.removeAll()
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
-        } else {
-            print("please sign in")
-        }
-
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray.count
@@ -79,10 +68,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingList", for: indexPath)
-        cell.textLabel?.text = ingredientsArray[indexPath.row]
+        cell.textLabel?.text = ingredientsArray[indexPath.row].imgName
         return cell
     }
     
+
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteAction(at: indexPath)
@@ -92,9 +82,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let currUser = Auth.auth().currentUser?.uid
         let ingredient = self.ref.child("users").child(currUser!).child("ShoppingList")
-        let key = ingredient.key
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completetion) in
-            ingredient.child(self.ingredientsArray[indexPath.row]).removeValue()
+            ingredient.child(self.ingredientsArray[indexPath.row].nameID!).removeValue()
             self.ingredientsArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
 
@@ -114,8 +103,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             Auth.auth().addStateDidChangeListener({ (auth, user) in
                 if let txt = alert?.textFields![0], currUser != nil{
                     let name = ["nameID": ingredientKey,
-                                "Name": txt.text!] as [String : Any]
-                    ingredient.setValue(txt.text)
+                                "imgName": txt.text!] as [String : Any]
+                    ingredient.setValue(name)
                     //self.ref.child("users").child(self.currUser!).child("ShoppingList").setValue(self.ingredientKey)
                 } else {
                     print("error")
@@ -139,18 +128,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             })
         }))
 
-
         present(alert, animated: true, completion: nil)
     }
-//            Auth.auth().addStateDidChangeListener { (auth, user) in
-//                if self.currUser != nil, let text = self.txtIngredient.text, !text.isEmpty {
-//                    self.ref.child("users").child(self.currUser!).child("ShoppingList").childByAutoId().setValue(self.txtIngredient.text)
-//                    self.txtIngredient.text = ""
-//                }else {
-//                    self.txtIngredient.text = "please sign in"
-//                    //TODO redirect to login page...
-//                }
-//            }
+
 
     @IBAction func btnDeleteAll(_ sender: Any) {
         
@@ -158,6 +138,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         let alert = UIAlertController(title: "Are you done?", message: "Are you sure you want to clear your shopping list", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             self.ref.child("users").child(currUser!).child("ShoppingList").removeValue()
+            self.ingredientsArray.removeAll()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: {
@@ -167,6 +151,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 
         present(alert, animated: true, completion: nil)
     }
+
 
 
     @IBAction func unwindToShoppingList(_ sender: UIStoryboardSegue){
