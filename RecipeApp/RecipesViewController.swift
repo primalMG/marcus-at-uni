@@ -62,9 +62,9 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         cell.textLabel?.text = recipes.name
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
-            cell.detailTextLabel?.text = recipes.price
-            if let recipeImgUrl = recipes.img {
-                cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
+            cell.detailTextLabel?.text = filteredRecipe[indexPath.row].price
+            if let recipeImgUrl = filteredRecipe[indexPath.row].img {
+                cell.imageView?.LoadingImageUsingCache(recipeImgUrl)
             }
 
         } else {
@@ -73,8 +73,8 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
             cell.detailTextLabel?.text = recipes.price
             
             //implementation for images
-            if let recipeImgUrl = recipes.img {
-                cell.imageView?.LoadingImageUsingCache(urlString: recipeImgUrl)
+            if let recipeImgUrl = recipeArray[indexPath.row].img {
+                cell.imageView?.LoadingImageUsingCache(recipeImgUrl)
             }
         }
         return cell
@@ -84,42 +84,31 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         return 70
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "recipeSegue", sender: self)
-//        let cell = tableView.cellForRow(at: indexPath)
-//        selectedRecipe = cell!.textLabel?.text
-//    }
-//
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "recipeSegue"{
-//            if (searchActive){
-//                if let indexPath = self.tableView.indexPathForSelectedRow {
-//                    let controller = segue.destination as! RecipeDetailViewController
-//                    let recipes = filteredRecipe[indexPath.row].name
-//                    controller.recipeID = recipes!
-//                }
-//            } else {
-//                if let indexPath = self.tableView.indexPathForSelectedRow {
-//                    let controller = segue.destination as! RecipeDetailViewController
-//                    guard let recipes = recipeArray[indexPath.row].name else { return }
-//                    controller.recipeID = recipes
-//                }
-//            }
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let recipe = recipeArray[indexPath.row].recipeID{
-            selectedRecipe = recipe
-            performSegue(withIdentifier: "recipeSegue", sender: self)
+        if (searchActive) {
+            if let recipe = filteredRecipe[indexPath.row].recipeID{
+                selectedRecipe = recipe
+                performSegue(withIdentifier: "recipeSegue", sender: self)
+            }
+        } else {
+            if let recipe = recipeArray[indexPath.row].recipeID{
+                selectedRecipe = recipe
+                performSegue(withIdentifier: "recipeSegue", sender: self)
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "recipeSegue"{
-            if let destination = segue.destination as? RecipeDetailViewController {
-                destination.recipeID = selectedRecipe
+            if (searchActive) {
+                if let destination = segue.destination as? RecipeDetailViewController {
+                    destination.recipeID = selectedRecipe
+                }
+            } else {
+                if let destination = segue.destination as? RecipeDetailViewController {
+                    destination.recipeID = selectedRecipe
+                }
             }
         }
     }
@@ -133,6 +122,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         })
         if(filteredRecipe.count == 0){
             searchActive = false;
+            print("no recipes")
         } else {
             searchActive = true;
         }

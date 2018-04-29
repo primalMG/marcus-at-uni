@@ -9,9 +9,11 @@
 import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
+
+
 extension UIImageView {
     
-    func LoadingImageUsingCache(urlString: String){
+    func LoadingImageUsingCache(_ urlString: String){
         
        //self.image = nil
         
@@ -20,28 +22,26 @@ extension UIImageView {
             return
         }
         
-        if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        let url = URL(string: urlString)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    print(error ?? "")
                     return
                 }
-                if let imageData = data {
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async(execute: {
                         
-                        if let downloadedImage = UIImage(data: imageData) {
+                        if let downloadedImage = UIImage(data: data!) {
                             imageCache.setObject(downloadedImage, forKey: urlString as AnyObject)
                             self.image = downloadedImage
                         }
-                
-                    }
-                } else {
-                    print("image data is nil")
-                }
+                    })
+
             }).resume()
-        } else {
-            print("url is nil")
-        }
+    }
+    
+    
+    func LoadingVidsUsingCache() {
+        
     }
     
 }

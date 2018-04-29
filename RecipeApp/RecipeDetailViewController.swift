@@ -62,7 +62,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 let recipe = Recipe(dictionary: dictionary)
                 self.navigationItem.title = recipe.name
                 if let recipeImgUrl = recipe.img {
-                    self.recipeImage.LoadingImageUsingCache(urlString: recipeImgUrl)
+                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
                 } else {
                     print("error")
                 }
