@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import AVFoundation
+import AVKit
 
 class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,8 +21,10 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var databaseHandle: DatabaseHandle!
     var recipeID: String!
     let currentUser = Auth.auth().currentUser?.uid
- 
     
+    var recipes: Recipe?
+ 
+ 
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
@@ -34,8 +38,24 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         getIngredients()
         getSteps()
-        recipe()
-
+        //recipe()
+        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+            
+            
+            
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                self.navigationItem.title = recipe.name
+                if let recipeImgUrl = recipe.img {
+                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
+                } else {
+                    print("error")
+                }
+                
+            }
+            
+        })
     }
     
 
@@ -52,25 +72,25 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     
 
-    func recipe() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
-          
-            
-            
-            
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let recipe = Recipe(dictionary: dictionary)
-                self.navigationItem.title = recipe.name
-                if let recipeImgUrl = recipe.img {
-                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
-                } else {
-                    print("error")
-                }
-
-            }
-            
-        })
-    }
+//    func recipe() {
+//        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+//
+//
+//
+//
+//            if let dictionary = snapshot.value as? [String: AnyObject]{
+//                let recipe = Recipe(dictionary: dictionary)
+//                self.navigationItem.title = recipe.name
+//                if let recipeImgUrl = recipe.img {
+//                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
+//                } else {
+//                    print("error")
+//                }
+//
+//            }
+//
+//        })
+//    }
     
     
     func getIngredients() {
@@ -156,7 +176,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 ingredient.setValue(name)
                 let alert = UIAlertController(title: "Ingredient Added to Shopping List", message: nil, preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
-                let delay = DispatchTime.now() + 0.5
+                let delay = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: delay){
                     alert.dismiss(animated: true, completion: nil)
                 }
@@ -164,6 +184,48 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 print("error")
             }
         }
+    }
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        aiv.translatesAutoresizingMaskIntoConstraints = false
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
+    
+    
+    var playerLayer: AVPlayerLayer?
+    var player: AVPlayer?
+    
+    
+    @IBAction func btnPlay(_ sender: Any) {
+        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                if let videoUrlString = recipe.video, let url = URL(string: videoUrlString) {
+                    self.player = AVPlayer(url: url)
+                    let videoPlayer = AVPlayerViewController()
+                    videoPlayer.player = self.player
+                    
+                    self.present(videoPlayer, animated: true, completion: {
+                        self.player?.play()
+                        self.activityIndicatorView.startAnimating()
+                    })
+                } else {
+                    let alert = UIAlertController(title: "No video Found", message: "Sorry, but there is no video for this recipe. Please try another", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (action: UIAlertAction!) in
+                        alert.dismiss(animated: true, completion: {
+                            print("video string empty")
+                        })
+                    }))
+                }
+            }
+        })
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     @IBAction func btnAddAll(_ sender: Any) {

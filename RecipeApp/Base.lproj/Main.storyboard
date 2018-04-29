@@ -500,11 +500,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="steps" rowHeight="76" id="bbh-Dw-mdN">
-                                        <rect key="frame" x="0.0" y="83" width="414" height="76"/>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="steps" rowHeight="141" id="bbh-Dw-mdN">
+                                        <rect key="frame" x="0.0" y="83" width="414" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bbh-Dw-mdN" id="5m2-Qo-KWk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -536,26 +536,38 @@
                                             <action selector="btnShare:" destination="Ybf-FI-6P7" eventType="touchDown" id="xEd-hD-4oM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PO4-ED-Fyd">
+                                        <rect key="frame" x="149" y="7" width="73" height="30"/>
+                                        <state key="normal" title="Play Guide">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnPlay:" destination="qrP-HI-Ugm" eventType="touchDown" id="eb0-V0-Vy3"/>
+                                            <action selector="btnPlay:" destination="Ybf-FI-6P7" eventType="touchDown" id="gEw-0U-soE"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="RKO-gU-JwN" firstAttribute="centerY" secondItem="734-tM-vrI" secondAttribute="centerY" id="0Cv-23-oi1">
                                         <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                                     </constraint>
+                                    <constraint firstItem="PO4-ED-Fyd" firstAttribute="top" secondItem="734-tM-vrI" secondAttribute="top" constant="7" id="eY5-Ad-chr"/>
                                     <constraint firstAttribute="trailing" secondItem="RKO-gU-JwN" secondAttribute="trailing" constant="74" id="i4T-aB-gHE">
                                         <variation key="heightClass=regular-widthClass=compact" constant="84"/>
                                     </constraint>
                                     <constraint firstItem="0db-Fo-hxa" firstAttribute="leading" secondItem="RKO-gU-JwN" secondAttribute="trailing" constant="8" symbolic="YES" id="pZs-27-wty">
                                         <variation key="heightClass=regular-widthClass=compact" constant="18"/>
                                     </constraint>
+                                    <constraint firstItem="RKO-gU-JwN" firstAttribute="leading" secondItem="PO4-ED-Fyd" secondAttribute="trailing" constant="68" id="vfW-8e-Xlp"/>
                                     <constraint firstItem="RKO-gU-JwN" firstAttribute="baseline" secondItem="0db-Fo-hxa" secondAttribute="baseline" id="xQy-ru-e68"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9R-2i-PkQ">
-                                <rect key="frame" x="63" y="64" width="289" height="197"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A9R-2i-PkQ">
+                                <rect key="frame" x="71" y="64" width="272" height="203"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="TNR-0Y-TJp">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="197"/>
+                                        <variation key="heightClass=regular-widthClass=compact" constant="203"/>
                                     </constraint>
                                 </constraints>
                             </imageView>
@@ -565,28 +577,28 @@
                             <constraint firstAttribute="bottomMargin" secondItem="e5Z-ZG-emm" secondAttribute="bottom" constant="-69" id="439-VQ-YJg"/>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="top" secondItem="ND6-ie-6kJ" secondAttribute="top" id="6Km-yY-Lht"/>
                             <constraint firstAttribute="trailing" secondItem="A9R-2i-PkQ" secondAttribute="trailing" id="6R0-b1-WbA">
-                                <variation key="heightClass=regular-widthClass=compact" constant="62"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="71"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="trailing" secondItem="734-tM-vrI" secondAttribute="trailing" id="707-ut-Sub">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-62"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-71"/>
                             </constraint>
                             <constraint firstItem="e5Z-ZG-emm" firstAttribute="top" secondItem="734-tM-vrI" secondAttribute="bottom" constant="1" id="HEC-TZ-hz3">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="trailing" secondItem="e5Z-ZG-emm" secondAttribute="trailing" id="KCi-0m-HJO">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-62"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="-71"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="leading" secondItem="e5Z-ZG-emm" secondAttribute="leading" id="NTk-Wh-QJb">
-                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="71"/>
                             </constraint>
                             <constraint firstItem="e5Z-ZG-emm" firstAttribute="top" secondItem="A9R-2i-PkQ" secondAttribute="bottom" constant="53" id="P9p-Ku-AQf">
-                                <variation key="heightClass=regular-widthClass=compact" constant="45"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="39"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="leading" secondItem="734-tM-vrI" secondAttribute="leading" id="TST-WN-3oF">
-                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="71"/>
                             </constraint>
                             <constraint firstItem="A9R-2i-PkQ" firstAttribute="leading" secondItem="Lnx-Sp-Nvk" secondAttribute="leading" id="gfw-iA-nI3">
-                                <variation key="heightClass=regular-widthClass=compact" constant="63"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="71"/>
                             </constraint>
                             <constraint firstItem="734-tM-vrI" firstAttribute="top" secondItem="ND6-ie-6kJ" secondAttribute="top" constant="139" id="k5T-eI-Wic">
                                 <variation key="heightClass=regular-widthClass=compact" constant="196"/>
@@ -602,8 +614,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA7-BD-Opo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qrP-HI-Ugm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1693" y="1083"/>
+            <point key="canvasLocation" x="1692.753623188406" y="1082.608695652174"/>
         </scene>
         <!--Map-->
         <scene sceneID="uZn-wk-QFD">

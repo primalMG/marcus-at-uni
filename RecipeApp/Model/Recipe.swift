@@ -14,6 +14,7 @@ class Recipe: NSObject {
     var ingredients: String?
     var steps: String?
     var img: String?
+    var video: String?
     var recipeID: String?
 
     
@@ -21,6 +22,7 @@ class Recipe: NSObject {
         self.name = dictionary["name"] as? String ?? ""
         self.price = dictionary["price"] as? String ?? ""
         self.img = dictionary["img"] as? String ?? ""
+        self.video = dictionary["video"] as? String ?? ""
         self.recipeID = dictionary["recipeID"] as? String ?? ""
         self.ingredients = dictionary["Ingredients"] as? String ?? ""
         self.steps = dictionary["steps"] as? String ?? ""

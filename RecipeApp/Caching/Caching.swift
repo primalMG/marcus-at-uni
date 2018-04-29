@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
 
@@ -40,8 +41,19 @@ extension UIImageView {
     }
     
     
-    func LoadingVidsUsingCache() {
-        
-    }
+//    func LoadingVidsUsingCache(_ urlString: String) {
+//        let url = URL(string: urlString)
+//        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+//            if error != nil {
+//                print(error ?? "")
+//                return
+//            }
+//            DispatchQueue.main.async(execute: {
+//                if let downloadedVideo = AVPlayer(data: data!) {
+//
+//                }
+//            })
+//        })
+//    }
     
 }
