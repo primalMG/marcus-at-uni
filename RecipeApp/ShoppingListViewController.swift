@@ -90,34 +90,35 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return delete
     }
 
-
+    
+    
+    
     @IBAction func btnAddIng(_ sender: Any) {
         let currUser = Auth.auth().currentUser?.uid
-        let ingredient = self.ref.child("users").child(currUser!).child("ShoppingList").childByAutoId()
-        let ingredientKey = ingredient.key
         let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
         let append = UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (action) in
-            Auth.auth().addStateDidChangeListener({ (auth, user) in
-                if let txt = alert?.textFields![0], currUser != nil{
+            if let txt = alert?.textFields![0], currUser != nil{
+                
+                let ingredient = self.ref.child("users").child(currUser!).child("ShoppingList").childByAutoId()
+                    let ingredientKey = ingredient.key
                     let name = ["nameID": ingredientKey,
                                 "imgName": txt.text!] as [String : Any]
                     ingredient.setValue(name)
-                    //self.ref.child("users").child(self.currUser!).child("ShoppingList").setValue(self.ingredientKey)
                 } else {
-                    let alert = UIAlertController(title: "Sign In", message: "Please sign up to use the shopping list feature", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action: UIAlertAction!) in
-                        //direct the user to login page.
-                    }))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-                        alert.dismiss(animated: true, completion: {
-                            print("sign in cancelled")
-                        })
-                    }))
                     print("error")
-
                 }
-            })
         })
+        
+//        let alert = UIAlertController(title: "Sign In", message: "Please sign up to use the shopping list feature", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action: UIAlertAction!) in
+//            //direct the user to login page.
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+//            alert.dismiss(animated: true, completion: {
+//                print("sign in cancelled")
+//            })
+//        }))
+//        self.present(alert, animated: true, completion: nil)
 
         alert.addAction(append)
         append.isEnabled = false
@@ -127,7 +128,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 append.isEnabled = txt.hasText
             }
         })
-
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: {
                 print("Cancel")
