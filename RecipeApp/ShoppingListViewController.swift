@@ -40,8 +40,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func ShoppingList(){
         let currUser = Auth.auth().currentUser?.uid
-        
-        
         if Auth.auth().currentUser != nil {
             databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
                 
