@@ -40,7 +40,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func ShoppingList(){
         let currUser = Auth.auth().currentUser?.uid
-        if Auth.auth().currentUser != nil {
+        if currUser != nil {
             databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
                 
                 if let dictionary = snapshot.value as? [String: AnyObject]{
@@ -79,7 +79,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let currUser = Auth.auth().currentUser?.uid
-        let ingredient = self.ref.child("users").child(currUser!).child("ShoppingList")
+        let ingredient = self.ref.child("users").child(currUser!).child("ShoppingList") 
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completetion) in
             ingredient.child(self.ingredientsArray[indexPath.row].nameID!).removeValue()
             self.ingredientsArray.remove(at: indexPath.row)
