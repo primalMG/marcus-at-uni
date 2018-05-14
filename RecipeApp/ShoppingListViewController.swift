@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, UITabBarControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtIngredient: UITextField!
@@ -19,25 +19,28 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     var databaseHandle: DatabaseHandle!
     var ingredientsArray = [UserModel]()
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         // Do any additional setup after loading the view.
+        self.tabBarController?.delegate = self
         ShoppingList()
-        
-        
         tableView.allowsMultipleSelectionDuringEditing = true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 2 {
+            print("do something...")
+            ShoppingList()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func btnRefresh(_ sender: Any) {
-        self.tableView.reloadData()
     }
     
     
@@ -57,9 +60,22 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 
             })
         } else {
-            print("please sign in")
+            let alert = UIAlertController(title: "Please Sign In", message: "Sign into your account to use the shopping list, blessed. ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
+                //perform segue to account page...
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+                alert.dismiss(animated: true, completion: {
+                    print("Cancel")
+                })
+            }))
+            present(alert, animated: true, completion: nil)
         }
+        
+
     }
+    
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray.count
@@ -110,17 +126,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 }
         })
         
-//        let alert = UIAlertController(title: "Sign In", message: "Please sign up to use the shopping list feature", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Sign In", style: .default, handler: { (action: UIAlertAction!) in
-//            //direct the user to login page.
-//        }))
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-//            alert.dismiss(animated: true, completion: {
-//                print("sign in cancelled")
-//            })
-//        }))
-//        self.present(alert, animated: true, completion: nil)
-
         alert.addAction(append)
         append.isEnabled = false
         alert.addTextField(configurationHandler: { (txt) in
@@ -158,7 +163,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
 
         present(alert, animated: true, completion: nil)
     }
-
+    
+    
 
 
     @IBAction func unwindToShoppingList(_ sender: UIStoryboardSegue){

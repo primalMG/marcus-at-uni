@@ -58,7 +58,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         })
     }
     
-
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -148,6 +148,9 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             let stepsCell = tableView.dequeueReusableCell(withIdentifier: "steps", for: indexPath)
             stepsCell.textLabel?.text = stepsArray[indexPath.row]
             stepsCell.textLabel?.textColor = UIColor.black
+            stepsCell.textLabel?.isEnabled = false 
+            stepsCell.textLabel?.numberOfLines = 0
+            stepsCell.textLabel?.lineBreakMode = .byWordWrapping
             return stepsCell
         default:
             return UITableViewCell()
@@ -219,13 +222,16 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                             print("video string empty")
                         })
                     }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         })
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
     
     @IBAction func btnAddAll(_ sender: Any) {

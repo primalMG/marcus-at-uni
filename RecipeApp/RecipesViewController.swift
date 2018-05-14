@@ -113,6 +113,9 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         }
     }
 
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredRecipe = recipeArray.filter({ (text) -> Bool in
@@ -154,6 +157,14 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
             }
     }
     
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.showsCancelButton = false
+        searchBar.endEditing(true)
+        self.tableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
     
 }
 

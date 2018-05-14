@@ -54,6 +54,7 @@ class SignUpViewController: UIViewController {
                     self.ref.child("users").child(userID!).setValue(["username": self.txtUsername.text])
                 } else {
                     self.lblBlank.isHidden = false
+                    print("email \(String(describing: email)) or password \(String(describing: pass)) is empty")
                 }
             })
         }

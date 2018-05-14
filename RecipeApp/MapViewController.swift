@@ -90,10 +90,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
     }
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        <#code#>
+    }
 
     
     func setupUserTrackingButtonAndScaleView() {
-        
         
         let button = MKUserTrackingButton(mapView: mapView)
         button.layer.backgroundColor = UIColor(white: 1, alpha: 0.8).cgColor
