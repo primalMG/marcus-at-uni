@@ -253,9 +253,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-qj-6EO">
                                 <rect key="frame" x="0.0" y="64" width="375" height="37"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnt-It-quU">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnt-It-quU">
                                         <rect key="frame" x="157" y="17" width="101" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Add Ingredient">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -263,23 +262,36 @@
                                             <action selector="btnAddIng:" destination="KQi-OJ-SdY" eventType="touchDown" id="pWX-bQ-Pvy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-Kc-BVv">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-Kc-BVv">
                                         <rect key="frame" x="286" y="17" width="74" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Remove all"/>
                                         <connections>
                                             <action selector="btnDeleteAll:" destination="KQi-OJ-SdY" eventType="touchDown" id="qe0-bN-Fnj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgt-rH-4Wk">
-                                        <rect key="frame" x="69" y="17" width="36" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgt-rH-4Wk">
+                                        <rect key="frame" x="96" y="17" width="36" height="30"/>
                                         <state key="normal" title="Copy">
                                             <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYn-Wn-V6J">
+                                        <rect key="frame" x="25" y="17" width="53" height="30"/>
+                                        <state key="normal" title="Refresh"/>
+                                        <connections>
+                                            <action selector="btnRefresh:" destination="KQi-OJ-SdY" eventType="touchDown" id="IcV-zW-2F0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="XYn-Wn-V6J" firstAttribute="leading" secondItem="hjp-qj-6EO" secondAttribute="leading" constant="25" id="57z-ha-Mio"/>
+                                    <constraint firstItem="Mgt-rH-4Wk" firstAttribute="leading" secondItem="XYn-Wn-V6J" secondAttribute="trailing" constant="18" id="AA9-My-B0M"/>
+                                    <constraint firstItem="XYn-Wn-V6J" firstAttribute="baseline" secondItem="Mgt-rH-4Wk" secondAttribute="baseline" id="Csd-LC-lSU"/>
+                                    <constraint firstItem="XYn-Wn-V6J" firstAttribute="baseline" secondItem="rnt-It-quU" secondAttribute="baseline" id="Kfe-Cf-JMc"/>
+                                    <constraint firstItem="XYn-Wn-V6J" firstAttribute="top" secondItem="hjp-qj-6EO" secondAttribute="top" constant="17" id="R5T-xG-gvi"/>
+                                    <constraint firstItem="XYn-Wn-V6J" firstAttribute="baseline" secondItem="gEU-Kc-BVv" secondAttribute="baseline" id="pX5-ds-DM4"/>
+                                </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0K-B7-sKZ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>

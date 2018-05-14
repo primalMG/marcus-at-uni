@@ -36,6 +36,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnRefresh(_ sender: Any) {
+        self.tableView.reloadData()
+    }
     
     
     func ShoppingList(){
