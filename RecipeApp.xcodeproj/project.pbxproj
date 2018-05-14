@@ -34,6 +34,7 @@
 		E7ADA69C209771FE001DB353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */; };
 		E7ADA69D209771FE001DB353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */; };
 		E7E671E42059922B00FD31AB /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E671E32059922B00FD31AB /* Caching.swift */; };
+		FB053C8C20AA1BB900D304AB /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB053C8B20AA1BB900D304AB /* MapModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		E7ADA69820975E75001DB353 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E7E671E32059922B00FD31AB /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
+		FB053C8B20AA1BB900D304AB /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				E7449AB1203DEE3E008314AC /* TipsModel.swift */,
 				E761A925203C775C00049563 /* Recipe.swift */,
 				E7A42E21204EE2D8005D259F /* UserModel.swift */,
+				FB053C8B20AA1BB900D304AB /* MapModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				E726E6712087793700EE9B75 /* AccountSettingsViewController.swift in Sources */,
 				E7449AB2203DEE3E008314AC /* TipsModel.swift in Sources */,
 				E7AD27A9203347A10041B3F5 /* AccountPageViewController.swift in Sources */,
+				FB053C8C20AA1BB900D304AB /* MapModel.swift in Sources */,
 				E761A926203C775C00049563 /* Recipe.swift in Sources */,
 				E74DBCEA205171460086311C /* ShoppingListViewController.swift in Sources */,
 				E7AD277B20333F900041B3F5 /* AppDelegate.swift in Sources */,

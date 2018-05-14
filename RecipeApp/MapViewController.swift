@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 final class annotations: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
@@ -26,6 +27,9 @@ final class annotations: NSObject, MKAnnotation {
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
+    var ref : DatabaseReference!
+    var databaseHandle:DatabaseHandle!
+    var shopNames: [String] = []
     
     @IBOutlet weak var mapView: MKMapView!
  
@@ -40,21 +44,54 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         //locationManager.startUpdatingLocation()
-        //mapView.isZoomEnabled = true
-        //mapView.isScrollEnabled = true
         setupUserTrackingButtonAndScaleView()
         userlocation()
+        ref = Database.database().reference()
         
+        getShops()
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        let sains = CLLocationCoordinate2D(latitude: 50.3807, longitude: -4.1332)
-        let sainAnnotation = annotations(coordinate: sains, title: "Sainsbury's local", subtitle: "little shop")
-        mapView.addAnnotation(sainAnnotation)
+//        let sains = CLLocationCoordinate2D(latitude: 50.3807, longitude: -4.1332)
+//        let sainAnnotation = annotations(coordinate: sains, title: "Sainsbury's local", subtitle: "little shop")
+//        mapView.addAnnotation(sainAnnotation)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getShops(){
+         ref.child("ShopLocation").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            print(snapshot)
+            
+            for child in snapshot.children {
+                let dictionary = child as! DataSnapshot
+                
+                if let dictionaryy = dictionary.value as? [String: AnyObject] {
+                    let lat = dictionaryy["lat"] as! CLLocationDegrees
+                    let long = dictionaryy["long"] as! CLLocationDegrees
+                    let name = dictionaryy["name"] as! String
+                    
+                    let coords = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    
+                    self.shopNames.append(name)
+                    
+                    let pinCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
+                    
+                    let annotation = annotations(coordinate: pinCoord, title: name, subtitle: name)
+                    
+                    annotation.coordinate = pinCoord
+                    self.mapView.addAnnotation(annotation)
+                }
+                
+            }
+            
+            
+            
+            
+        })
+        
     }
     
     func userlocation(){
@@ -90,8 +127,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        <#code#>
+ 
+     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotations = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
+            annotations.animatesWhenAdded = true
+            annotations.titleVisibility = .adaptive
+            annotations.subtitleVisibility = .adaptive
+            
+            return annotations
+        }
+        return nil
     }
 
     
@@ -120,15 +165,3 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
 }
 
-extension UIViewController: MKMapViewDelegate {
-    public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotations = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
-            annotations.animatesWhenAdded = true
-            annotations.titleVisibility = .adaptive
-            annotations.subtitleVisibility = .adaptive
-            
-            return annotations
-        }
-        return nil
-    }
-}
