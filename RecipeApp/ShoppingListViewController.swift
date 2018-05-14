@@ -56,9 +56,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             print("please sign in")
         }
-
     }
-
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientsArray.count
