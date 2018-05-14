@@ -36,13 +36,16 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnRefresh(_ sender: Any) {
+        self.tableView.reloadData()
+    }
     
     
     func ShoppingList(){
         let currUser = Auth.auth().currentUser?.uid
         if currUser != nil {
             databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
-                
+                print(snapshot)
                 if let dictionary = snapshot.value as? [String: AnyObject]{
                     let ingredient = UserModel(dictionary: dictionary)
                     self.ingredientsArray.append(ingredient)
