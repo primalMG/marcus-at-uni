@@ -11,25 +11,10 @@ import MapKit
 import CoreLocation
 import Firebase
 
-final class annotations: NSObject, MKAnnotation {
-    var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
-
-    init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?){
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-        
-        super.init()
-    }
-}
-
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
-    var shopNames: [String] = []
     var selectedShop: String!
     
     @IBOutlet weak var mapView: MKMapView!
@@ -43,12 +28,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
 
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        //locationManager.startUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         userlocation()
         ref = Database.database().reference()
         
         getShops()
+        
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
@@ -64,23 +50,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
-                
                 if let dictionaryy = dictionary.value as? [String: AnyObject] {
                     let lat = dictionaryy["lat"] as! CLLocationDegrees
                     let long = dictionaryy["long"] as! CLLocationDegrees
                     let name = dictionaryy["name"] as! String
                     let subName = dictionaryy["subName"] as! String
-                    
+                    let key = dictionaryy["key"] as! String
+                   
                     
                     let pinCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
                     
-                    let annotation = annotations(coordinate: pinCoord, title: name, subtitle: subName)
+                    let annotation = annotations(coordinate: pinCoord, title: name, subtitle: subName, key: key)
                     
+                    let region : CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(lat, long), radius: 200, identifier: "buff")
+                    
+                    
+                    region.notifyOnEntry = true
+                    region.notifyOnExit = true
+                    self.locationManager.startMonitoring(for: region)
                     annotation.coordinate = pinCoord
                     self.mapView.addAnnotation(annotation)
                 }
             }
         })
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("welcome to the region")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("you've left the region")
     }
     
     func userlocation(){
@@ -136,7 +136,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let annoations = view.annotation as! annotations
-        selectedShop = annoations.title!
+        selectedShop = annoations.key!
         self.performSegue(withIdentifier: "ShopIngredients", sender: self)
     }
     

@@ -39,7 +39,7 @@ class AccountPageViewController: UIViewController {
     @IBAction func btnlogin(_ sender: Any) {
         if let email = txtUsername.text, let pass = txtPass.text{
             Auth.auth().signIn(withEmail: email, password: pass, completion: { (emailExists, Error) in
-                if emailExists != nil{
+                if (emailExists?.isEmailVerified)!{
                     let alert = UIAlertController(title: "Login Successful", message: "Successfully logged in", preferredStyle: .alert)
                     let OkAction = UIAlertAction(title: "Aight Boom", style: UIAlertActionStyle.default, handler:{
                         (_) in

@@ -150,7 +150,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             stepsCell.textLabel?.textColor = UIColor.black
             stepsCell.textLabel?.isEnabled = false 
             stepsCell.textLabel?.numberOfLines = 0
-            stepsCell.textLabel?.lineBreakMode = .byWordWrapping
+            //stepsCell.textLabel?.lineBreakMode = .
             return stepsCell
         default:
             return UITableViewCell()
@@ -231,7 +231,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
     }
     
     @IBAction func btnAddAll(_ sender: Any) {

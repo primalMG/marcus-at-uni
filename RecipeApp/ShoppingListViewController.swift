@@ -93,6 +93,22 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         let delete = deleteAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
     }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let addToShop = addAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [addToShop])
+    }
+    
+    func addAction(at indexPath: IndexPath) -> UIContextualAction {
+        let currUser = Auth.auth().currentUser?.uid
+        let ingredient = self.ref.child("users").child(currUser!).child("ShoppingList")
+        let addToShop = UIContextualAction(style: .normal, title: "Add") { (action, view, completetion) in
+            ingredient.child(self.ingredientsArray[indexPath.row].nameID!).removeValue()
+            //ingredient.child(self.ingredientsArray[indexPath.row].nameID!).setValue()
+
+        }
+        return addToShop
+    }
 
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let currUser = Auth.auth().currentUser?.uid

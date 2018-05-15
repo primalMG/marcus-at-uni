@@ -39,19 +39,22 @@ class SignUpViewController: UIViewController {
     
     @IBAction func btnSignUp(_ sender: Any) {
         ref = Database.database().reference()
-        let userID = Auth.auth().currentUser?.uid
+        //let userID = Auth.auth().currentUser?.uid
         
         if let email = txtEmail.text, let pass = txtPass.text{
             Auth.auth().createUser(withEmail: email, password: pass, completion: { (correctEmail, error) in
                 if correctEmail != nil {
-                    let alert = UIAlertController(title: "Sign up Successful!", message: "You have sucessfully signed up to Marcus at Uni", preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
-                        (_)in
-                        self.performSegue(withIdentifier: "unwindSegue", sender: self)
+                    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                        let alert = UIAlertController(title: "Sign up Successful!", message: "You have sucessfully signed up to Marcus at Uni", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+                            (_)in
+                            self.performSegue(withIdentifier: "unwindSegue", sender: self)
                     })
-                    alert.addAction(OKAction)
-                    self.present(alert, animated: true, completion: nil)
-                    self.ref.child("users").child(userID!).setValue(["username": self.txtUsername.text])
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true, completion: nil)
+                    })
+                    
+                    //self.ref.child("users").child(userID!).setValue(["username": self.txtUsername.text])
                 } else {
                     self.lblBlank.isHidden = false
                     print("email \(String(describing: email)) or password \(String(describing: pass)) is empty")
