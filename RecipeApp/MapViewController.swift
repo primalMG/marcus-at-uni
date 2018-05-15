@@ -25,11 +25,12 @@ final class annotations: NSObject, MKAnnotation {
     }
 }
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
     var shopNames: [String] = []
+    var selectedShop: String!
     
     @IBOutlet weak var mapView: MKMapView!
  
@@ -44,16 +45,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         //locationManager.startUpdatingLocation()
-        setupUserTrackingButtonAndScaleView()
         userlocation()
         ref = Database.database().reference()
         
         getShops()
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-//        let sains = CLLocationCoordinate2D(latitude: 50.3807, longitude: -4.1332)
-//        let sainAnnotation = annotations(coordinate: sains, title: "Sainsbury's local", subtitle: "little shop")
-//        mapView.addAnnotation(sainAnnotation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +60,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func getShops(){
          ref.child("ShopLocation").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            print(snapshot)
+        
             
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
@@ -72,26 +69,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let lat = dictionaryy["lat"] as! CLLocationDegrees
                     let long = dictionaryy["long"] as! CLLocationDegrees
                     let name = dictionaryy["name"] as! String
+                    let subName = dictionaryy["subName"] as! String
                     
-                    let coords = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                    
-                    self.shopNames.append(name)
                     
                     let pinCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
                     
-                    let annotation = annotations(coordinate: pinCoord, title: name, subtitle: name)
+                    let annotation = annotations(coordinate: pinCoord, title: name, subtitle: subName)
                     
                     annotation.coordinate = pinCoord
                     self.mapView.addAnnotation(annotation)
                 }
-                
             }
-            
-            
-            
-            
         })
-        
     }
     
     func userlocation(){
@@ -102,17 +91,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(button)
-        
+
         let scale = MKScaleView(mapView: mapView)
         scale.legendAlignment = .trailing
         scale.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scale)
-        
+
         NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
                                      button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
                                      scale.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -40),
                                      scale.centerYAnchor.constraint(equalTo: button.centerYAnchor)])
-        
+
     }
 
     
@@ -127,41 +116,41 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
     }
     
+    
  
      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotations = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
             annotations.animatesWhenAdded = true
-            annotations.titleVisibility = .adaptive
-            annotations.subtitleVisibility = .adaptive
+            annotations.canShowCallout = true
+            
+            let info = UIButton(type: .detailDisclosure)
+            annotations.rightCalloutAccessoryView = info
             
             return annotations
         }
         return nil
     }
+    
+    
 
     
-    func setupUserTrackingButtonAndScaleView() {
-        
-        let button = MKUserTrackingButton(mapView: mapView)
-        button.layer.backgroundColor = UIColor(white: 1, alpha: 0.8).cgColor
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 5
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
-        
-        let scale = MKScaleView(mapView: mapView)
-        scale.legendAlignment = .trailing
-        scale.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scale)
-        
-        NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-                                     button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-                                     scale.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -10),
-                                     scale.centerYAnchor.constraint(equalTo: button.centerYAnchor)])
-        
-        print("is this running")
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let annoations = view.annotation as! annotations
+        selectedShop = annoations.title!
+        self.performSegue(withIdentifier: "ShopIngredients", sender: self)
+    }
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShopIngredients" {
+            if let destination = segue.destination as? ShopIngredientsViewController {
+                destination.shopID = selectedShop
+            }
+        }
     }
 
 }
+
+
 

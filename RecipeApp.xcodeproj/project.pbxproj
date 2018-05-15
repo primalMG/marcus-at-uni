@@ -35,6 +35,7 @@
 		E7ADA69D209771FE001DB353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */; };
 		E7E671E42059922B00FD31AB /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E671E32059922B00FD31AB /* Caching.swift */; };
 		FB053C8C20AA1BB900D304AB /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB053C8B20AA1BB900D304AB /* MapModel.swift */; };
+		FB390C4020AAFF1F0064C2AD /* ShopIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E7E671E32059922B00FD31AB /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 		FB053C8B20AA1BB900D304AB /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopIngredientsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */,
 				E76BA370205AEAA30016B4FC /* RecipeApp.entitlements */,
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
+				FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */,
 				E784D5642090C3DD0051317D /* MapViewController.swift */,
 				E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */,
 				E7AD277C20333F900041B3F5 /* RecipesViewController.swift */,
@@ -510,6 +513,7 @@
 				E7AD277D20333F900041B3F5 /* RecipesViewController.swift in Sources */,
 				E733EECD2034A5B200665AFC /* TipsViewController.swift in Sources */,
 				E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */,
+				FB390C4020AAFF1F0064C2AD /* ShopIngredientsViewController.swift in Sources */,
 				E76BA36F205AD3410016B4FC /* RecipeTableViewCell.swift in Sources */,
 				E7449AB0203DA751008314AC /* RecipeDetailViewController.swift in Sources */,
 				E726E6712087793700EE9B75 /* AccountSettingsViewController.swift in Sources */,
