@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import CoreLocation
 
-class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, UITabBarControllerDelegate{
+class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtIngredient: UITextField!
@@ -19,7 +20,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     var databaseHandle: DatabaseHandle!
     var ingredientsArray = [UserModel]()
     
-
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,13 +118,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             ingredient.child(self.ingredientsArray[indexPath.row].nameID!).removeValue()
             self.ingredientsArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-
         }
         delete.image = #imageLiteral(resourceName: "Trash")
         return delete
     }
 
-    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+    }
     
     
     @IBAction func btnAddIng(_ sender: Any) {

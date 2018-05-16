@@ -16,6 +16,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
     var selectedShop: String!
+    var shop = [MapModel]()
+    var shopRegion : CLCircularRegion!
     
     @IBOutlet weak var mapView: MKMapView!
  
@@ -60,20 +62,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     
                     let pinCoord: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
                     
-                    let annotation = annotations(coordinate: pinCoord, title: name, subtitle: subName, key: key)
+                    let annotation = MapModel(coordinate: pinCoord, title: name, subtitle: subName, key: key)
                     
-                    let region : CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(lat, long), radius: 200, identifier: "buff")
+                    self.shopRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(lat, long), radius: 200, identifier: "buff")
                     
                     
-                    region.notifyOnEntry = true
-                    region.notifyOnExit = true
-                    self.locationManager.startMonitoring(for: region)
+                    self.shopRegion.notifyOnEntry = true
+                    self.shopRegion.notifyOnExit = true
+                    self.locationManager.startMonitoring(for: self.shopRegion)
                     annotation.coordinate = pinCoord
                     self.mapView.addAnnotation(annotation)
                 }
             }
         })
     }
+    
+//    if currUser == region {
+//    add ingreidnt to shop within regions list
+//    } else {
+//    tell them they are not within the region...
+//    }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("welcome to the region")
@@ -97,9 +105,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         scale.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scale)
 
-        NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-                                     button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-                                     scale.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -40),
+        NSLayoutConstraint.activate([button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+                                     button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+                                     scale.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -50),
                                      scale.centerYAnchor.constraint(equalTo: button.centerYAnchor)])
 
     }
@@ -135,7 +143,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        let annoations = view.annotation as! annotations
+        let annoations = view.annotation as! MapModel
         selectedShop = annoations.key!
         self.performSegue(withIdentifier: "ShopIngredients", sender: self)
     }
