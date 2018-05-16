@@ -171,7 +171,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         let indexPath = ingredientsArray[indexPath.row]
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            if self.currentUser != nil {
+            if self.currentUser != nil && (user?.isEmailVerified)!{
                 let ingredient = self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId()
                 let ingredientKey = ingredient.key
                 let name = ["nameID": ingredientKey,

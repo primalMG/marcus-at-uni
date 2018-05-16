@@ -149,13 +149,16 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
 
     @IBAction func btnAccount(_ sender: Any) {
-    let currentUser = Auth.auth().currentUser?.uid
-            if currentUser != nil {
-                  self.performSegue(withIdentifier: "accountSettings", sender: nil)
+        let currentUser = Auth.auth().currentUser
+        if currentUser != nil && (currentUser?.isEmailVerified)! {
+                self.performSegue(withIdentifier: "accountSettings", sender: nil)
             } else {
                 self.performSegue(withIdentifier: "signInSegue", sender: nil)
             }
-    }
+        }
+        
+            //
+    
     
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

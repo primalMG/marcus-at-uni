@@ -41,4 +41,45 @@ class AccountSettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func btnChangeEmail(_ sender: Any) {
+        let changeEmailAlert = UIAlertController(title: "Change Email", message: nil, preferredStyle: .alert)
+        changeEmailAlert.addTextField { (textField) in
+            textField.placeholder = "New Email"
+        }
+        changeEmailAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+            let changeEmail = changeEmailAlert.textFields?.first?.text
+            Auth.auth().currentUser?.updateEmail(to: changeEmail!, completion: { (error) in
+                if error != nil {
+                    print("email change failed")
+                } else {
+                    print("email changed worked.")
+                }
+            })
+        }))
+    }
+    
+    @IBAction func btnChangePassword(_ sender: Any) {
+
+        let changePasswordAlert = UIAlertController(title: "Change Password", message: nil, preferredStyle: .alert)
+//        changePasswordAlert.addTextField { (textField) in
+//            textField.placeholder = "Current Password"
+//        }
+        changePasswordAlert.addTextField { (textField) in
+            textField.placeholder = "New Password"
+        }
+        changePasswordAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+            let changePassword = changePasswordAlert.textFields?.first?.text
+            Auth.auth().currentUser?.updatePassword(to: changePassword!, completion: { (error) in
+                if error != nil {
+                    print("password change fail")
+                } else {
+                    print("passwor changed")
+                }
+            })
+        }))
+        self.present(changePasswordAlert, animated: true, completion: nil)
+        
+    }
+
+ 
 }

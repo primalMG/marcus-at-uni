@@ -46,9 +46,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func ShoppingList(){
-        let currUser = Auth.auth().currentUser?.uid
-        if currUser != nil {
-            databaseHandle = ref.child("users").child(currUser!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
+        let currUser = Auth.auth().currentUser
+        if currUser != nil && (currUser?.isEmailVerified)! {
+            databaseHandle = ref.child("users").child(currUser!.uid).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
                 print(snapshot)
                 if let dictionary = snapshot.value as? [String: AnyObject]{
                     let ingredient = UserModel(dictionary: dictionary)
