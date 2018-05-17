@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import CoreLocation
 
-class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate, CLLocationManagerDelegate {
+class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtIngredient: UITextField!
@@ -19,6 +19,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     var ref: DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var ingredientsArray = [UserModel]()
+    var array: [String] = []
     
     let locationManager = CLLocationManager()
     
@@ -35,7 +36,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 2 {
             print("do something...")
-            ShoppingList()
+            //ShoppingList()
         }
     }
 
@@ -46,33 +47,40 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func ShoppingList(){
-        let currUser = Auth.auth().currentUser
-        if currUser != nil && (currUser?.isEmailVerified)! {
-            databaseHandle = ref.child("users").child(currUser!.uid).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
-                print(snapshot)
-                if let dictionary = snapshot.value as? [String: AnyObject]{
-                    let ingredient = UserModel(dictionary: dictionary)
-                    self.ingredientsArray.append(ingredient)
-                }
-                
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil && (user!.isEmailVerified) {
+                self.databaseHandle = self.ref.child("users").child((user?.uid)!).child("ShoppingList").observe(.childAdded, with: { (snapshot) in
+                    print(snapshot)
+                    if let dictionary = snapshot.value as? [String: AnyObject]{
+                        let ingredient = UserModel(dictionary: dictionary)
+                        self.ingredientsArray.append(ingredient)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    
+                })
+            } else {
+                self.ingredientsArray.removeAll()
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-
-            })
-        } else {
-            let alert = UIAlertController(title: "Please Sign In", message: "Sign into your account to use the shopping list, blessed. ", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
-                //perform segue to account page...
-            }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-                alert.dismiss(animated: true, completion: {
-                    print("Cancel")
-                })
-            }))
-            present(alert, animated: true, completion: nil)
-        }
+                let alert = UIAlertController(title: "Please Sign In", message: "Sign into your account to use the shopping list, blessed. ", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action: UIAlertAction!) in
+                    //perform segue to account page...
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
+                    alert.dismiss(animated: true, completion: {
+                        print("Cancel")
+                    })
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
         
+        }
+
 
     }
     
@@ -123,8 +131,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         return delete
     }
 
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-    }
     
     
     @IBAction func btnAddIng(_ sender: Any) {
@@ -182,6 +188,16 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
+    
+    @IBAction func btnCopy(_ sender: Any) {
+        
+        
+    }
+    
+    func setItems(_ items: [[String : Any]],
+                  options: [UIPasteboardOption : Any] = [:]) {
+        
+    }
 
 
     @IBAction func unwindToShoppingList(_ sender: UIStoryboardSegue){

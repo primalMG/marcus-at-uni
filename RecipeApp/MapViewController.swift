@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
 
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
@@ -23,8 +23,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
  
 
     
-    let locationManager = CLLocationManager()
+   
   
+    let locationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         ref = Database.database().reference()
         
         getShops()
-        
+        registerAnnotationViewClasses()
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
@@ -92,6 +94,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func userlocation(){
+        mapView.showsUserLocation = true
+        
         let button = MKUserTrackingButton(mapView: mapView)
         button.layer.backgroundColor = UIColor(white: 1, alpha: 0.8).cgColor
         button.layer.borderColor = UIColor.white.cgColor
@@ -113,32 +117,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
 
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations[0]
-        let center = location.coordinate
-        let span = MKCoordinateSpanMake(0.005, 0.005)
-        let region = MKCoordinateRegionMake(center, span)
-
-        mapView.setRegion(region, animated: true)
-        mapView.showsUserLocation = true
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//
+//        let location = locations[0]
+//        let center = location.coordinate
+//        let span = MKCoordinateSpanMake(0.005, 0.005)
+//        let region = MKCoordinateRegionMake(center, span)
+//
+//        mapView.setRegion(region, animated: true)
+//        mapView.showsUserLocation = true
+//    }
     
+    func registerAnnotationViewClasses() {
+        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
     
  
      func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotations = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
             annotations.animatesWhenAdded = true
             annotations.canShowCallout = true
-            
+
             let info = UIButton(type: .detailDisclosure)
             annotations.rightCalloutAccessoryView = info
-            
+
             return annotations
         }
         return nil
     }
-    
+
     
 
     

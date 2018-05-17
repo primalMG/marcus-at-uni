@@ -36,6 +36,7 @@
 		E7E671E42059922B00FD31AB /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E671E32059922B00FD31AB /* Caching.swift */; };
 		FB053C8C20AA1BB900D304AB /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB053C8B20AA1BB900D304AB /* MapModel.swift */; };
 		FB390C4020AAFF1F0064C2AD /* ShopIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */; };
+		FB9B3C0020ACE6F400D0A2B1 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B3BFF20ACE6F300D0A2B1 /* AnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		E7E671E32059922B00FD31AB /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 		FB053C8B20AA1BB900D304AB /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopIngredientsViewController.swift; sourceTree = "<group>"; };
+		FB9B3BFF20ACE6F300D0A2B1 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
 				FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */,
 				E784D5642090C3DD0051317D /* MapViewController.swift */,
+				FB9B3BFF20ACE6F300D0A2B1 /* AnnotationView.swift */,
 				E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */,
 				E7AD277C20333F900041B3F5 /* RecipesViewController.swift */,
 				E7AD277E20333F900041B3F5 /* Main.storyboard */,
@@ -511,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7AD277D20333F900041B3F5 /* RecipesViewController.swift in Sources */,
+				FB9B3C0020ACE6F400D0A2B1 /* AnnotationView.swift in Sources */,
 				E733EECD2034A5B200665AFC /* TipsViewController.swift in Sources */,
 				E74DBCE820516A5C0086311C /* TipsDetailViewController.swift in Sources */,
 				FB390C4020AAFF1F0064C2AD /* ShopIngredientsViewController.swift in Sources */,
