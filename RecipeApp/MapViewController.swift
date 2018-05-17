@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     var ref : DatabaseReference!
     var databaseHandle:DatabaseHandle!
@@ -21,7 +21,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet weak var mapView: MKMapView!
  
-
+    @IBOutlet weak var btnAddIngredient: UIBarButtonItem!
+    
     
    
   
@@ -36,9 +37,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.startUpdatingLocation()
         userlocation()
         ref = Database.database().reference()
-        
+   
         getShops()
-        registerAnnotationViewClasses()
+   
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     }
@@ -87,6 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("welcome to the region")
+       btnAddIngredient.isEnabled = true
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -127,24 +129,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        mapView.setRegion(region, animated: true)
 //        mapView.showsUserLocation = true
 //    }
-    
-    func registerAnnotationViewClasses() {
-        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-    }
+
     
  
-     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if let annotations = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
-            annotations.animatesWhenAdded = true
-            annotations.canShowCallout = true
-
-            let info = UIButton(type: .detailDisclosure)
-            annotations.rightCalloutAccessoryView = info
-
-            return annotations
-        }
-        return nil
-    }
 
     
 
@@ -164,8 +151,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
     }
-
 }
+
+
+
 
 
 

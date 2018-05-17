@@ -46,7 +46,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
-                self.navigationItem.title = recipe.name
+                self.navigationItem.title =  recipe.name
                 if let recipeImgUrl = recipe.img {
                     self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
                 } else {
