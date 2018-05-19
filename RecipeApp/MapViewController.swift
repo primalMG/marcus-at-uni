@@ -95,6 +95,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         print("you've left the region")
     }
     
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("user lurking in region")
+    }
+    
     func userlocation(){
         mapView.showsUserLocation = true
         

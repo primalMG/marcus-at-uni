@@ -17,6 +17,7 @@ class TipsDetailViewController: UIViewController {
     var tipsArray = [TipsModel]()
     var tipsID = ""
     
+    
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var txtViewDescription: UITextView!
     

@@ -12,10 +12,12 @@ class TipsModel: NSObject {
     var name: String?
     var brief: String?
     var descript: String?
+    var id: String?
     
     init(dictionary: [String: Any]) {
         self.name = dictionary["name"] as? String ?? ""
-        self.brief = dictionary["Brief"] as? String ?? ""
+        self.brief = dictionary["brief"] as? String ?? ""
         self.descript = dictionary["Description"] as? String ?? ""
+        self.id = dictionary["tipID"] as? String ?? ""
     }
 }
