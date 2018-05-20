@@ -30,10 +30,9 @@
 		E7AD279B20333F900041B3F5 /* RecipeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD279A20333F900041B3F5 /* RecipeAppUITests.swift */; };
 		E7AD27A9203347A10041B3F5 /* AccountPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AD27A8203347A10041B3F5 /* AccountPageViewController.swift */; };
 		E7ADA69920975E75001DB353 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7ADA69820975E75001DB353 /* ExternalAccessory.framework */; };
-		E7ADA69B209771FE001DB353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */; };
-		E7ADA69D209771FE001DB353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */; };
 		E7E671E42059922B00FD31AB /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E671E32059922B00FD31AB /* Caching.swift */; };
 		FB053C8C20AA1BB900D304AB /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB053C8B20AA1BB900D304AB /* MapModel.swift */; };
+		FB223AF520B2012D007C47E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB223AF420B2012D007C47E9 /* GoogleService-Info.plist */; };
 		FB390C4020AAFF1F0064C2AD /* ShopIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */; };
 		FB4266E520B198690043A92F /* RecipeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4266E420B198690043A92F /* RecipeAppTests.swift */; };
 		FB9B3C0020ACE6F400D0A2B1 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B3BFF20ACE6F300D0A2B1 /* AnnotationView.swift */; };
@@ -97,10 +96,10 @@
 		E7AD279C20333F900041B3F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7AD27A8203347A10041B3F5 /* AccountPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPageViewController.swift; sourceTree = "<group>"; };
 		E7ADA69820975E75001DB353 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
-		E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E7E671E32059922B00FD31AB /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 		F3BDBB6164433F2516B7A54D /* Pods-RecipeApp-RecipeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeApp-RecipeAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecipeApp-RecipeAppTests/Pods-RecipeApp-RecipeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FB053C8B20AA1BB900D304AB /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		FB223AF420B2012D007C47E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopIngredientsViewController.swift; sourceTree = "<group>"; };
 		FB4266E220B198690043A92F /* RecipeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB4266E420B198690043A92F /* RecipeAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppTests.swift; sourceTree = "<group>"; };
@@ -192,8 +191,8 @@
 		E7AD277920333F900041B3F5 /* RecipeApp */ = {
 			isa = PBXGroup;
 			children = (
-				E7ADA69A209771FD001DB353 /* GoogleService-Info.plist */,
 				E76BA370205AEAA30016B4FC /* RecipeApp.entitlements */,
+				FB223AF420B2012D007C47E9 /* GoogleService-Info.plist */,
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
 				FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */,
 				E784D5642090C3DD0051317D /* MapViewController.swift */,
@@ -396,7 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7AD278520333F900041B3F5 /* LaunchScreen.storyboard in Resources */,
-				E7ADA69B209771FE001DB353 /* GoogleService-Info.plist in Resources */,
+				FB223AF520B2012D007C47E9 /* GoogleService-Info.plist in Resources */,
 				E7AD278220333F900041B3F5 /* Assets.xcassets in Resources */,
 				E7AD278020333F900041B3F5 /* Main.storyboard in Resources */,
 			);
@@ -406,7 +405,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7ADA69D209771FE001DB353 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

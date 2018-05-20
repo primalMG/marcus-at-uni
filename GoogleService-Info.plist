@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>47512234516-djk05dihciar1l4ian9rti0osoq9oipb.apps.googleusercontent.com</string>
+	<string>47512234516-58fph33p4r0cor4ovitl9bppqbqqd634.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.47512234516-djk05dihciar1l4ian9rti0osoq9oipb</string>
+	<string>com.googleusercontent.apps.47512234516-58fph33p4r0cor4ovitl9bppqbqqd634</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBxGhznw__Kg0J0mxiCaKvERHui8C1cffc</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>marcus.RecipeApp</string>
+	<string>com.recipeapp.marcusatuni</string>
 	<key>PROJECT_ID</key>
 	<string>marcus-at-uni</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:47512234516:ios:38e9f9df58df9c4c</string>
+	<string>1:47512234516:ios:975c017adf877199</string>
 	<key>DATABASE_URL</key>
 	<string>https://marcus-at-uni.firebaseio.com</string>
 </dict>

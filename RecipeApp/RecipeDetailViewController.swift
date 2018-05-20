@@ -71,28 +71,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         
 
     
-
-//    func recipe() {
-//        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
-//
-//
-//
-//
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//                let recipe = Recipe(dictionary: dictionary)
-//                self.navigationItem.title = recipe.name
-//                if let recipeImgUrl = recipe.img {
-//                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
-//                } else {
-//                    print("error")
-//                }
-//
-//            }
-//
-//        })
-//    }
-    
-    
     func getIngredients() {
         databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
             //print(snapshot)
@@ -238,6 +216,12 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func btnShare(_ sender: Any) {
+        guard let link = URL(string: "https://gsdf8.app.goo.gl/Marcus-at-uni") else { return }
+        let goTo = [link]
+        let activityViewController = UIActivityViewController(activityItems: goTo, applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     
