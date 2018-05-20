@@ -8,16 +8,39 @@
 
 import XCTest
 @testable import RecipeApp
+import Firebase
 
 class RecipeAppTests: XCTestCase {
     
-    func testHelloWorld(){
-        var helloWorld: String?
-        
-        XCTAssertNil(helloWorld)
-        
-        helloWorld = "hello world"
-        XCTAssertEqual(helloWorld, "hello world")
+
+    var databaseHandle: DatabaseHandle!
+    var ref: DatabaseReference!
+    var recipeArray = [Recipe]()
+    
+    
+    func testDatabase(){
+        FirebaseApp.configure()
     }
+    
+    
+    
+    func testFetchRecipes(){
+        FirebaseApp.configure()
+        ref = Database.database().reference()
+        
+        databaseHandle = ref.child("Recipe").observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                self.recipeArray.append(recipe)
+                XCTAssertEqual(recipe.name, "Roast Chicken")
+            }
+            
+        })
+        
+        XCTAssertTrue((databaseHandle != nil))
+    }
+    
+
+
     
 }

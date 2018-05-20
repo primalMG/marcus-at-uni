@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PzV-N6-QYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PzV-N6-QYL">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -58,14 +58,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H3T-wt-acv">
-                                                    <rect key="frame" x="20.000000000000004" y="17" width="33.333333333333336" height="20.333333333333332"/>
+                                                    <rect key="frame" x="15" y="17" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="35I-rN-BhB">
-                                                    <rect key="frame" x="19.999999999999996" y="40.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <rect key="frame" x="14.999999999999996" y="40.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -138,14 +138,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kO4-Zb-gr2">
-                                                    <rect key="frame" x="20.000000000000004" y="9.9999999999999982" width="33.333333333333336" height="20.333333333333332"/>
+                                                    <rect key="frame" x="15" y="9.9999999999999982" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OpD-fe-wXN">
-                                                    <rect key="frame" x="19.999999999999996" y="33.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <rect key="frame" x="14.999999999999996" y="33.333333333333329" width="43.666666666666664" height="14.333333333333334"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -380,16 +380,17 @@
                         <viewLayoutGuide key="safeArea" id="rZO-kV-JbG"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="732-bU-vWx"/>
                                 <exclude reference="0Sc-fw-NrB"/>
                                 <exclude reference="8Up-99-nTb"/>
                                 <exclude reference="MhJ-5X-dXn"/>
                                 <exclude reference="Udd-89-UR5"/>
                                 <exclude reference="lv6-uA-OeT"/>
-                                <exclude reference="732-bU-vWx"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="732-bU-vWx"/>
                                 <include reference="0Sc-fw-NrB"/>
                                 <exclude reference="2Mz-4y-eqW"/>
                                 <include reference="8Up-99-nTb"/>
@@ -399,7 +400,6 @@
                                 <include reference="Udd-89-UR5"/>
                                 <include reference="lv6-uA-OeT"/>
                                 <exclude reference="n0d-81-Otp"/>
-                                <include reference="732-bU-vWx"/>
                                 <exclude reference="8TQ-sd-qdw"/>
                                 <exclude reference="nGQ-3w-rJC"/>
                                 <exclude reference="vJz-5f-TOy"/>
@@ -933,6 +933,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bep-vD-ycp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="871.01449275362324" y="160.59782608695653"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ECn-sY-qXa">
+            <objects>
+                <viewController id="ZEH-k6-ZPn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kff-6s-tXh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aZ9-6p-uC3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZf-pB-RqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1365" y="407"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Adb-fB-60o">
