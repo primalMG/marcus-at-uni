@@ -19,11 +19,27 @@ end
 
   target 'RecipeAppTests' do
     inherit! :search_paths
+	pod 'Firebase'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Core'
+	pod 'Firebase/Storage'
+	pod 'Firebase/Database'
+	pod 'FirebaseUI/Facebook'
+	pod 'FirebaseUI/Twitter'
+	pod 'Firebase/DynamicLinks'
     # Pods for testing
   end
 
   target 'RecipeAppUITests' do
     inherit! :search_paths
+	pod 'Firebase'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Core'
+	pod 'Firebase/Storage'
+	pod 'Firebase/Database'
+	pod 'FirebaseUI/Facebook'
+	pod 'FirebaseUI/Twitter'
+	pod 'Firebase/DynamicLinks'
     # Pods for testing
   end
 

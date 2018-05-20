@@ -66,7 +66,7 @@ class TipsViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "tipsDetailSegue"{
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! TipsDetailViewController
-                let selectedTip = tipsArray[indexPath.row].name
+                let selectedTip = tipsArray[indexPath.row].id
                 controller.tipsID = selectedTip!
             }
         }
