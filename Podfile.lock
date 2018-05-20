@@ -89,7 +89,7 @@ DEPENDENCIES:
   - FirebaseUI/Twitter
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -129,6 +129,6 @@ SPEC CHECKSUMS:
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 398c30ca58f31499e656dd6bbd2ab263cb9f0696
+PODFILE CHECKSUM: c7d3c5866111131045ee926ec484ddfadc253f4e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2
