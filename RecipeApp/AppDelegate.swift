@@ -51,7 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func handleIncomingDynamicLink(dynamicLink: DynamicLink){
-        print("dynamicLink")
+        let path = dynamicLink.url?.path
+        
+        if path == path {
+            print("dynamicLink")
+        } else {
+            print("redirect to another screen")
+        }
+        
     }
 
     

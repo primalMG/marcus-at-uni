@@ -45,5 +45,7 @@ class TipsDetailViewController: UIViewController {
         
     }
 
+
+    
     
 }
