@@ -17,7 +17,7 @@ extension MapViewController: MKMapViewDelegate {
         let reusePin = "pin"
         
         var annotations = mapView.dequeueReusableAnnotationView(withIdentifier: reusePin) as? MKMarkerAnnotationView
-        if annotations == nil {
+        if annotations == nil {            
             annotations = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reusePin)
             annotations?.animatesWhenAdded = true
             annotations?.canShowCallout = true

@@ -228,8 +228,8 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
 
     @IBAction func btnShare(_ sender: Any) {
-        let pageLink = self.longLink?.absoluteString
-        let msg = "hey check this out " + pageLink! + recipeID
+        let pageLink = "https://gsdf8.app.goo.gl/Marcus-at-uni"
+        let msg = pageLink
         let activityViewController = UIActivityViewController(activityItems: [msg], applicationActivities: nil)
 
         activityViewController.popoverPresentationController?.sourceView = self.view
@@ -250,7 +250,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     enum Params: String {
-        case link = "Chicken wings"
+        case link = "gsdf8.app.goo.gl"
         case source = "Source"
         case medium = "Medium"
         case campaign = "Campaign"

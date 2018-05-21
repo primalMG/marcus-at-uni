@@ -450,6 +450,19 @@
                                     <action selector="btnLogout:" destination="QkJ-ez-abi" eventType="touchDown" id="VBQ-Fx-Eq5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3o-10-Of0">
+                                <rect key="frame" x="104" y="572" width="207" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="Wia-T5-5zu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="DELETE ACCOUNT">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDeleteAccount:" destination="QkJ-ez-abi" eventType="touchDown" id="orN-T0-tKr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66666668650000005" green="0.5347731792" blue="0.65173576749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -457,10 +470,13 @@
                             <constraint firstItem="M5S-bX-DPh" firstAttribute="top" secondItem="ueh-fT-vfq" secondAttribute="bottom" constant="41" id="7PV-bF-XiY"/>
                             <constraint firstItem="FO1-vY-e4e" firstAttribute="centerX" secondItem="IS8-OU-mqh" secondAttribute="centerX" id="HzV-Qf-p2f"/>
                             <constraint firstItem="ueh-fT-vfq" firstAttribute="centerX" secondItem="M5S-bX-DPh" secondAttribute="centerX" id="L4W-0B-iYW"/>
+                            <constraint firstItem="o3o-10-Of0" firstAttribute="leading" secondItem="Q3o-QJ-nF1" secondAttribute="leading" constant="104" id="NKo-vt-dgB"/>
+                            <constraint firstItem="Q3o-QJ-nF1" firstAttribute="bottom" secondItem="o3o-10-Of0" secondAttribute="bottom" constant="53" id="QCm-9d-jBa"/>
                             <constraint firstItem="Q3o-QJ-nF1" firstAttribute="bottom" secondItem="FO1-vY-e4e" secondAttribute="bottom" constant="258" id="Z71-px-0lH">
                                 <variation key="heightClass=regular-widthClass=compact" constant="265"/>
                             </constraint>
                             <constraint firstItem="ueh-fT-vfq" firstAttribute="centerX" secondItem="FO1-vY-e4e" secondAttribute="centerX" id="fTJ-VL-F02"/>
+                            <constraint firstItem="o3o-10-Of0" firstAttribute="centerX" secondItem="FO1-vY-e4e" secondAttribute="centerX" id="fjI-1z-FuH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q3o-QJ-nF1"/>
                     </view>
@@ -472,7 +488,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GxS-Qx-URt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UHg-iy-T7Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2498.4000000000001" y="-511.39430284857576"/>
+            <point key="canvasLocation" x="2497.1014492753625" y="-511.95652173913049"/>
         </scene>
         <!--Account-->
         <scene sceneID="KhI-Y9-f9U">
@@ -664,12 +680,17 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Servings:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHY-6m-wFd">
-                                        <rect key="frame" x="38" y="13" width="88" height="21"/>
+                                        <rect key="frame" x="113" y="13" width="88" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaN-aQ-1TQ">
+                                        <rect key="frame" x="20" y="9" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.77158023345431481" green="0.61417293341460222" blue="0.75789211309049143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -822,7 +843,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QIQ-qr-UpE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Shop Name" id="nyf-wm-f9n"/>
+                    <navigationItem key="navigationItem" title="Shop Name" id="nyf-wm-f9n">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="muW-GO-hQQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="fRn-K2-0Tf" id="P7p-fg-bmX"/>
                     </connections>

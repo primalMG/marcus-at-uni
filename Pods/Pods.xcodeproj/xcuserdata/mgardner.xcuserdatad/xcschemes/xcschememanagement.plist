@@ -63,7 +63,7 @@
 		<key>Pods-RecipeApp-RecipeAppTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>14</integer>
 		</dict>
 		<key>Pods-RecipeApp-RecipeAppUITests.xcscheme</key>
 		<dict>
