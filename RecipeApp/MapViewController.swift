@@ -21,7 +21,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
  
-    @IBOutlet weak var btnAddIngredient: UIBarButtonItem!
+
     
     
    
@@ -88,7 +88,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("welcome to the region")
-       btnAddIngredient.isEnabled = true
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {

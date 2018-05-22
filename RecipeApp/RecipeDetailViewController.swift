@@ -36,7 +36,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference()
+        self.ref = Database.database().reference().child("Recipe").child(recipeID)
         tableView.delegate = self
         tableView.dataSource = self
         getIngredients()
@@ -54,7 +54,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             Section(name: .other, items: [.otherFallbackURL])
         ]
         
-        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.observe(.value, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
                 self.navigationItem.title =  recipe.name
@@ -77,14 +77,14 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     deinit {
-        self.ref.child("Recipe").child(recipeID).removeObserver(withHandle: databaseHandle)
+        self.ref.removeObserver(withHandle: self.databaseHandle)
     }
+    
         
 
     
     func getIngredients() {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("Ingredients").observe(.value, with: { (snapshot) in
-            //print(snapshot)
+        self.ref.child("Ingredients").observe(DataEventType.value, with: { (snapshot) in
             
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
@@ -98,7 +98,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func getSteps(){
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("steps").observe(.value, with: { (snapshot) in
+        self.ref.child("steps").observe(.value, with: { (snapshot) in
           //print(snapshot)
             
             for child in snapshot.children {
@@ -113,9 +113,8 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func getCommets(){
-        databaseHandle = self.ref.child("Recipe").child(recipeID).child("comments").observe(.value, with: { (snapshot) in
-            print(snapshot)
-            
+       self.ref.child("comments").observe(.value, with: { (snapshot) in
+        
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
                 self.comments.append(dictionary.value as! String)
@@ -212,7 +211,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     
     @IBAction func btnPlay(_ sender: Any) {
-        databaseHandle = self.ref.child("Recipe").child(recipeID).observe(.value, with: { (snapshot) in
+        databaseHandle = self.ref.observe(.value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
