@@ -67,8 +67,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     
                     let annotation = MapModel(coordinate: pinCoord, title: name, subtitle: subName, key: key)
                     
-                    self.shopRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(lat, long), radius: 200, identifier: "buff")
-                    
+                  
+                    self.shopRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(50.3755, -4.1427), radius: 1000, identifier: "buff")
                     
                     self.shopRegion.notifyOnEntry = true
                     self.shopRegion.notifyOnExit = true

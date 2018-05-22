@@ -56,14 +56,12 @@ class AccountSettingsViewController: UIViewController {
                 }
             })
         }))
+        self.present(changeEmailAlert, animated: true, completion: nil)
     }
     
     @IBAction func btnChangePassword(_ sender: Any) {
 
         let changePasswordAlert = UIAlertController(title: "Change Password", message: nil, preferredStyle: .alert)
-//        changePasswordAlert.addTextField { (textField) in
-//            textField.placeholder = "Current Password"
-//        }
         changePasswordAlert.addTextField { (textField) in
             textField.placeholder = "New Password"
         }
@@ -80,6 +78,20 @@ class AccountSettingsViewController: UIViewController {
         self.present(changePasswordAlert, animated: true, completion: nil)
         
     }
+    
+    @IBAction func btnDeleteAccount(_ sender: Any) {
+        let user = Auth.auth().currentUser
+        
+        user?.delete { error in
+            if let error = error {
+                print(error)
+            } else {
+                print("account gone bye bye")
+            }
+            
+        }
+    }
+    
 
  
 }
