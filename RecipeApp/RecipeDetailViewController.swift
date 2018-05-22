@@ -17,6 +17,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var ingredientsArray: [String] = []
     var stepsArray: [String] = []
+    var comments: [String] = []
     var currentRecipe = [Recipe]()
     var ref : DatabaseReference!
     var databaseHandle: DatabaseHandle!
@@ -40,7 +41,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         getIngredients()
         getSteps()
-        //recipe()
+        getCommets()
         self.buildFDLLink()
         
         sections = [
@@ -111,8 +112,23 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         })
     }
     
+    func getCommets(){
+        databaseHandle = self.ref.child("Recipe").child(recipeID).child("comments").observe(.value, with: { (snapshot) in
+            print(snapshot)
+            
+            for child in snapshot.children {
+                let dictionary = child as! DataSnapshot
+                self.comments.append(dictionary.value as! String)
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,11 +137,14 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             return ingredientsArray.count
         case 1:
             return stepsArray.count
+        case 2:
+            return comments.count
         default:
             return 0
         }
     }
     
+    //populating the tableview cells with the data stored in the array.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -140,14 +159,18 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             stepsCell.textLabel?.numberOfLines = 0
             //stepsCell.textLabel?.lineBreakMode = .
             return stepsCell
+        case 2:
+            let commentsCell = tableView.dequeueReusableCell(withIdentifier: "comments", for: indexPath)
+            commentsCell.textLabel?.text = comments[indexPath.row]
+            return commentsCell
         default:
             return UITableViewCell()
         }
-   
     }
-    
-    let headerTitles = ["Ingredients","Steps"]
+    //headers for the tableview
+    let headerTitles = ["Ingredients","Steps","Comments"]
 
+    //setting the headers within the tableview
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section < headerTitles.count {
             return headerTitles[section]
@@ -162,8 +185,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             if self.currentUser != nil && (user?.isEmailVerified)!{
                 let ingredient = self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId()
                 let ingredientKey = ingredient.key
-                let name = ["nameID": ingredientKey,
-                            "imgName": indexPath]
+                let name = ["nameID": ingredientKey, "imgName": indexPath]
                 ingredient.setValue(name)
                 let alert = UIAlertController(title: "Ingredient Added to Shopping List", message: nil, preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
@@ -217,12 +239,31 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
+    @IBAction func btnComment(_ sender: Any) {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if self.currentUser != nil && (user?.isEmailVerified)!{
+            let comment = self.ref.child("Recipe").child(self.recipeID).child("comments").childByAutoId()
+            let alert = UIAlertController(title: "Comment", message: nil, preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "Comment"
+            })
+            alert.addAction(UIAlertAction(title: "Comment", style: .default, handler: { (action) in
+                comment.setValue(alert.textFields![0].text)
+            }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                print("error")
+            }
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+            return UITableViewAutomaticDimension
     }
     
     @IBAction func btnAddAll(_ sender: Any) {
+        
     }
     
     
