@@ -13,13 +13,14 @@ import FirebaseAuth
 import AVFoundation
 import AVKit
 
-class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var ingredientsArray: [String] = []
     var stepsArray: [String] = []
     var comments: [String] = []
     var currentRecipe = [Recipe]()
     var ref : DatabaseReference!
+    var referr : DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var recipeID: String!
     let currentUser = Auth.auth().currentUser?.uid
@@ -32,6 +33,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
     @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var rating: UILabel!
     
 
     override func viewDidLoad() {
@@ -42,6 +44,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         getIngredients()
         getSteps()
         getCommets()
+        getRecipeRating()
         self.buildFDLLink()
         
         sections = [
@@ -55,6 +58,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         ]
         
         databaseHandle = self.ref.observe(.value, with: { (snapshot) in
+            print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
                 self.navigationItem.title =  recipe.name
@@ -81,7 +85,21 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
         
-
+    func getRecipeRating(){
+        self.ref.child("ratings").observe(.value) { (snapshot) in
+            print(snapshot)
+            let count = snapshot.childrenCount
+            var total: Double = 0.0
+            for child in snapshot.children {
+                let dictionary = child as! DataSnapshot
+                let val = dictionary.value as! Double
+                total += val
+            }
+            let average = total/Double(count)
+            print(average)
+            self.rating.text = String(average)
+        }
+    }
     
     func getIngredients() {
         self.ref.child("Ingredients").observe(DataEventType.value, with: { (snapshot) in
@@ -96,6 +114,8 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             }
         })
     }
+    
+    
     
     func getSteps(){
         self.ref.child("steps").observe(.value, with: { (snapshot) in
@@ -261,9 +281,51 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             return UITableViewAutomaticDimension
     }
     
-    @IBAction func btnAddAll(_ sender: Any) {
-        
+    var choices = [1,2,3,4,5]
+    var pickerView = UIPickerView()
+    var typeValue = Int()
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return choices.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(choices[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+       typeValue = choices[row]
+    }
+ 
+    @IBAction func btnRate(_ sender: Any) {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil && (user?.isEmailVerified)!{
+                let rating = self.ref.child("ratings").child(self.currentUser!)
+                let alert = UIAlertController(title: "Comment", message: "Please rate out of 5 \n\n\n\n\n\n\n\n", preferredStyle: .alert)
+                let pickerView = UIPickerView(frame: CGRect(x: 10, y: 20, width: 250, height: 140))
+                pickerView.dataSource = self
+                pickerView.delegate = self
+                
+                alert.view.addSubview(pickerView)
+                alert.addAction(UIAlertAction(title: "Rate", style: .default, handler: { (action) in
+                    rating.setValue(self.typeValue)
+                    print(self.typeValue)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                print("error")
+            }
+        }
+    }
+    
+    
+    
     
     
 
