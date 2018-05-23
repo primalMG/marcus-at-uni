@@ -24,11 +24,11 @@ class ShopIngredientsViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference()
+        self.ref = Database.database().reference().child("ShopLocation").child(shopID).child("List")
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.ref.child("ShopLocation").child(shopID).child("List").observeSingleEvent(of:  DataEventType.value, with: { (snapshot) in
+        self.ref.observeSingleEvent(of:  DataEventType.value, with: { (snapshot) in
         print(snapshot)
         for child in snapshot.children {
             let dictionary = child as! DataSnapshot
@@ -56,9 +56,19 @@ class ShopIngredientsViewController: UIViewController, UITableViewDelegate, UITa
         cell.textLabel?.text = ingredients[indexPath.row]
         
         return cell
-
     }
 
+    @IBAction func btnAdd(_ sender: Any) {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if (user?.isEmailVerified)! && user != nil{
+                let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
+                
+            }
+        }
+        
+        self.ref.setValue(<#T##value: Any?##Any?#>)
+    }
+    
  
 
 }
