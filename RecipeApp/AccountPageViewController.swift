@@ -11,29 +11,64 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseFacebookAuthUI
+import FBSDKLoginKit
+import FBSDKCoreKit
 
-class AccountPageViewController: UIViewController {
+class AccountPageViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var lblFalse: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         lblFalse.isHidden = true
+        
+        let fbButton = FBSDKLoginButton()
+        
+        view.addSubview(fbButton)
+        fbButton.readPermissions = ["email"]
+        //NSLayoutConstraint.activate([fbButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+                                     //fbButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100)])
+        fbButton.frame = CGRect(x: 16, y: 100, width: view.frame.width - 32, height: 50)
+        
+        fbButton.delegate = self
+        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("logout successful")
     }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+        }
+        print("login successful")
+        fbEmail()
+    }
+    
+    func fbEmail(){
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else { return }
+        
+        let credientals = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        Auth.auth().signInAndRetrieveData(with: credientals) { (user, error) in
+            if error != nil {
+                print("error")
+                return
+            }else{
+                print("auth succesful")
+            }
+        }
+    }
+
     
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPass: UITextField!
   
-    @IBAction func btnForgotPass(_ sender: Any) {
-            //send the user an email... with a link to allow them to reset pass
-    }
     
   
     @IBAction func btnlogin(_ sender: Any) {

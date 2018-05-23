@@ -20,7 +20,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var comments: [String] = []
     var currentRecipe = [Recipe]()
     var ref : DatabaseReference!
-    var referr : DatabaseReference!
+    var refer : DatabaseReference!
     var databaseHandle: DatabaseHandle!
     var recipeID: String!
     let currentUser = Auth.auth().currentUser?.uid
@@ -39,6 +39,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = Database.database().reference().child("Recipe").child(recipeID)
+        self.refer = Database.database().reference().child("users")
         tableView.delegate = self
         tableView.dataSource = self
         getIngredients()
@@ -198,13 +199,14 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = ingredientsArray[indexPath.row]
-        
+        let idexPath = ingredientsArray[indexPath.row]
+        let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        selectedCell.contentView.backgroundColor = UIColor.orange
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currentUser != nil && (user?.isEmailVerified)!{
-                let ingredient = self.ref.child("users").child(self.currentUser!).child("ShoppingList").childByAutoId()
+                let ingredient = self.refer.child(self.currentUser!).child("ShoppingList").childByAutoId()
                 let ingredientKey = ingredient.key
-                let name = ["nameID": ingredientKey, "imgName": indexPath]
+                let name = ["nameID": ingredientKey, "imgName": idexPath]
                 ingredient.setValue(name)
                 let alert = UIAlertController(title: "Ingredient Added to Shopping List", message: nil, preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
@@ -261,7 +263,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBAction func btnComment(_ sender: Any) {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if self.currentUser != nil && (user?.isEmailVerified)!{
-            let comment = self.ref.child("Recipe").child(self.recipeID).child("comments").childByAutoId()
+            let comment = self.ref.child("comments").childByAutoId()
             let alert = UIAlertController(title: "Comment", message: nil, preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
                 textField.placeholder = "Comment"
@@ -269,6 +271,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
             alert.addAction(UIAlertAction(title: "Comment", style: .default, handler: { (action) in
                 comment.setValue(alert.textFields![0].text)
             }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
                 print("error")

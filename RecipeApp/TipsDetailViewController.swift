@@ -9,22 +9,22 @@
 import UIKit
 import FirebaseDatabase
 
-class TipsDetailViewController: UIViewController {
+class TipsDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var ref: DatabaseReference!
     var databaseHandle:DatabaseHandle!
-    var tipsArray = [TipsModel]()
+    var tipsArray: [String] = []
     var tipsID = ""
     
     
-    @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var txtViewDescription: UITextView!
+    @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.ref = Database.database().reference()
+        self.ref = Database.database().reference().child("Tips").child(tipsID)
         TipsDirections()
         
         self.title = tipsID
@@ -36,16 +36,34 @@ class TipsDetailViewController: UIViewController {
     }
     
     func TipsDirections(){
-        databaseHandle = self.ref.child("Tips").child(tipsID).child("Description").observe(.value , with: { (snapshot) in
+        self.ref.child("steps").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             print(snapshot)
-            if let des = snapshot.value as? String {
-                self.txtViewDescription.text = des
+            
+            for child in snapshot.children{
+                let dictionary = child as! DataSnapshot
+                self.tipsArray.append(dictionary.value as! String)
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         })
         
     }
-
-
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tipsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "steps", for: indexPath)
+        cell.textLabel?.text = tipsArray[indexPath.row]
+        
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
 }

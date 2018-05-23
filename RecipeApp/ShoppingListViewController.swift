@@ -190,16 +190,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     
     
-    
-    @IBAction func btnCopy(_ sender: Any) {
-        
-        
-    }
-    
-    func setItems(_ items: [[String : Any]],
-                  options: [UIPasteboardOption : Any] = [:]) {
-        
-    }
+
+
 
 
     @IBAction func unwindToShoppingList(_ sender: UIStoryboardSegue){
