@@ -27,18 +27,17 @@ class RecipeTableViewCell: UITableViewCell {
         override func layoutSubviews() {
             super.layoutSubviews()
             
-            textLabel?.frame = CGRect(x: 64, y: textLabel!.frame.origin.y - 2, width: textLabel!.frame.width, height: textLabel!.frame.height)
+            textLabel?.frame = CGRect(x: 84, y: textLabel!.frame.origin.y - 2, width: textLabel!.frame.width, height: textLabel!.frame.height)
             
-            detailTextLabel?.frame = CGRect(x: 64, y: detailTextLabel!.frame.origin.y + 2, width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height)
-            
+            detailTextLabel?.frame = CGRect(x: 84, y: detailTextLabel!.frame.origin.y + 2, width: detailTextLabel!.frame.width, height: detailTextLabel!.frame.height)
         }
         
         let recipeImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = 24
+            imageView.layer.cornerRadius = 40
             imageView.layer.masksToBounds = true
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFill
             return imageView
         }()
     
@@ -48,10 +47,10 @@ class RecipeTableViewCell: UITableViewCell {
             
             addSubview(recipeImageView)
             
-            recipeImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+            recipeImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
             recipeImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-            recipeImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-            recipeImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            recipeImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+            recipeImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -60,15 +59,15 @@ class RecipeTableViewCell: UITableViewCell {
 
     
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
 
 }

@@ -34,7 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
+        
         userlocation()
         ref = Database.database().reference()
    
@@ -99,6 +99,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func userlocation(){
+        locationManager.startUpdatingLocation()
         mapView.showsUserLocation = true
         
         let button = MKUserTrackingButton(mapView: mapView)
@@ -134,7 +135,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 //    }
 
     
- 
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        let location = locations.last as! CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.mapView.setRegion(region, animated: true)
+    }
 
     
 

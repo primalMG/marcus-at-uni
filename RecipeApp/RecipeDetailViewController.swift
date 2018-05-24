@@ -27,7 +27,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var recipes: Recipe?
  
- 
+ //SWIPE GESTURE VIEW FOR THE IMAGE PLEASE LORD WORK.
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
@@ -47,8 +47,8 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         getCommets()
         getRecipeRating()
         
+
         databaseHandle = self.ref.observe(.value, with: { (snapshot) in
-            print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
                 self.navigationItem.title =  recipe.name
@@ -58,9 +58,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 } else {
                     print("error")
                 }
-                
             }
-            
         })
     }
     
@@ -78,7 +76,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         
     func getRecipeRating(){
         self.ref.child("ratings").observe(.value) { (snapshot) in
-            print(snapshot)
             let count = snapshot.childrenCount
             var total: Double = 0.0
             for child in snapshot.children {
@@ -94,7 +91,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func getIngredients() {
         self.ref.child("Ingredients").observe(DataEventType.value, with: { (snapshot) in
-            
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
                 self.ingredientsArray.append(dictionary.value as! String)
@@ -110,8 +106,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func getSteps(){
         self.ref.child("steps").observe(.value, with: { (snapshot) in
-          //print(snapshot)
-            
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
                 self.stepsArray.append(dictionary.value as! String)
@@ -221,6 +215,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var playerLayer: AVPlayerLayer?
     var player: AVPlayer?
     
+    @IBOutlet weak var playButton: UIButton!
     
     @IBAction func btnPlay(_ sender: Any) {
         databaseHandle = self.ref.observe(.value, with: { (snapshot) in
@@ -237,13 +232,8 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                         self.activityIndicatorView.startAnimating()
                     })
                 } else {
-                    let alert = UIAlertController(title: "No video Found", message: "Sorry, but there is no video for this recipe. Please try another", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (action: UIAlertAction!) in
-                        alert.dismiss(animated: true, completion: {
-                            print("video string empty")
-                        })
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    self.playButton.setTitleColor(.gray, for: .normal)
+                    self.playButton.isEnabled = false
                 }
             }
         })
@@ -318,6 +308,17 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
+    @IBAction func btnAddAll(_ sender: Any) {
+
+        
+        ingredientsArray.forEach { (ingredient) in
+            let ingredients = self.refer.child(self.currentUser!).child("ShoppingList").childByAutoId()
+            let ingredientKey = ingredients.key
+          let name = ["nameID": ingredientKey, "imgName": ingredient]
+            print(name)
+            ingredients.setValue(name)
+        }
+    }
     
     
     

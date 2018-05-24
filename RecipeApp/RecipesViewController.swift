@@ -23,6 +23,8 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         ref = Database.database().reference()
         getRecipes()
         //searchbar()
+        
+        tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: "recipes")
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,25 +65,26 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
             cell.detailTextLabel?.text = filteredRecipe[indexPath.row].price
+            cell.backgroundColor = UIColor(red: 252, green: 191, blue: 138, alpha: 1.0)
             if let recipeImgUrl = filteredRecipe[indexPath.row].img {
-                cell.imageView?.LoadingImageUsingCache(recipeImgUrl)
+                cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
             }
 
         } else {
-            cell.imageView?.image = UIImage(named: "placeholder")
+
             cell.textLabel?.text = recipes.name
             cell.detailTextLabel?.text = recipes.price
-            
+            cell.backgroundColor = UIColor(red: 252, green: 191, blue: 138, alpha: 1.0)
             //implementation for images
             if let recipeImgUrl = recipeArray[indexPath.row].img {
-                cell.imageView?.LoadingImageUsingCache(recipeImgUrl)
+                cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
             }
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 74
     }
     
     

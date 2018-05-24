@@ -126,6 +126,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             ingredient.child(self.ingredientsArray[indexPath.row].nameID!).removeValue()
             self.ingredientsArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completetion(true)
         }
         delete.image = #imageLiteral(resourceName: "Trash")
         return delete
