@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuthUI
 import FBSDKCoreKit
+import FBSDKLoginKit
 
 
 @UIApplicationMain
@@ -41,10 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
    
 
-        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-       
-        return handled && application(app, open: url,
-                           sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+      
+        
+        
+        return application(app, open: url,
+                          sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                            annotation: "")
         
     }
@@ -56,8 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         print("not working at all b")
-        return false
+       
         
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        
+        return handled && false
     }
     
 
