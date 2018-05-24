@@ -62,13 +62,22 @@ class ShopIngredientsViewController: UIViewController, UITableViewDelegate, UITa
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if (user?.isEmailVerified)! && user != nil{
                 let alert = UIAlertController(title: "Add Ingredient", message: nil, preferredStyle: .alert)
-                
+                let append = UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (action) in
+                    if let txt = alert?.textFields![0] {
+                        self.ref.childByAutoId().setValue(txt.text)
+                    }
+                })
+                append.isEnabled = false
+                alert.addTextField(configurationHandler: { (txt) in
+                    NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: txt, queue: OperationQueue.main, using: { (notifaction) in
+                        append.isEnabled = txt.hasText
+                    })
+                })
+                alert.addAction(append)
+                alert.addAction((UIAlertAction(title: "Cancel", style: .destructive, handler: nil)))
+                self.present(alert, animated: true, completion: nil)
             }
         }
-        
-        self.ref.setValue(<#T##value: Any?##Any?#>)
     }
-    
- 
 
 }

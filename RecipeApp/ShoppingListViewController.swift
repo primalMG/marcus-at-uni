@@ -157,11 +157,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 append.isEnabled = txt.hasText
             }
         })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: {
-                print("Cancel")
-            })
-        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil  ))
 
         present(alert, animated: true, completion: nil)
     }

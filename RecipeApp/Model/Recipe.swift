@@ -16,6 +16,7 @@ class Recipe: NSObject {
     var img: String?
     var video: String?
     var recipeID: String?
+    var serving: String?
 
     
     init(dictionary: [String: Any]) {
@@ -26,6 +27,7 @@ class Recipe: NSObject {
         self.recipeID = dictionary["recipeID"] as? String ?? ""
         self.ingredients = dictionary["Ingredients"] as? String ?? ""
         self.steps = dictionary["steps"] as? String ?? ""
+        self.serving = dictionary["serving"] as? String ?? ""
     }
     
 }
