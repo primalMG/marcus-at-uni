@@ -18,6 +18,7 @@ class TipsDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var tipsID = ""
     
     
+    
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -26,8 +27,13 @@ class TipsDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         self.ref = Database.database().reference().child("Tips").child(tipsID)
         TipsDirections()
-        
-        self.title = tipsID
+      
+        self.ref.observeSingleEvent(of: DataEventType.value) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let tip = TipsModel(dictionary: dictionary)
+                self.navigationItem.title = tip.name
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +43,6 @@ class TipsDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func TipsDirections(){
         self.ref.child("steps").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-            print(snapshot)
-            
             for child in snapshot.children{
                 let dictionary = child as! DataSnapshot
                 self.tipsArray.append(dictionary.value as! String)
@@ -58,12 +62,11 @@ class TipsDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "steps", for: indexPath)
         cell.textLabel?.text = tipsArray[indexPath.row]
-        
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
 }

@@ -36,12 +36,10 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     func getRecipes(){
         
         databaseHandle = ref.child("Recipe").observe(.childAdded, with: { (snapshot) in
-         //   print(snapshot)
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 let recipe = Recipe(dictionary: dictionary)
                 self.recipeArray.append(recipe)
             }
-            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -65,7 +63,6 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
             cell.detailTextLabel?.text = filteredRecipe[indexPath.row].price
-            cell.backgroundColor = UIColor(red: 252, green: 191, blue: 138, alpha: 1.0)
             if let recipeImgUrl = filteredRecipe[indexPath.row].img {
                 cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
             }
@@ -74,7 +71,6 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
 
             cell.textLabel?.text = recipes.name
             cell.detailTextLabel?.text = recipes.price
-            cell.backgroundColor = UIColor(red: 252, green: 191, blue: 138, alpha: 1.0)
             //implementation for images
             if let recipeImgUrl = recipeArray[indexPath.row].img {
                 cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)

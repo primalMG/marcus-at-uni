@@ -37,7 +37,6 @@ class TipsViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let tips = TipsModel(dictionary: dictionary)
                 self.tipsArray.append(tips)
             }
-            print(snapshot)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

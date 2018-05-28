@@ -175,11 +175,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 self.tableView.reloadData()
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: {
-                print("Delete all canceled")
-            })
-        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
 
         present(alert, animated: true, completion: nil)
     }

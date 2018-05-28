@@ -27,7 +27,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     var recipes: Recipe?
  
- //SWIPE GESTURE VIEW FOR THE IMAGE PLEASE LORD WORK.
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
@@ -84,7 +83,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 total += val
             }
             let average = total/Double(count)
-            print(average)
             self.rating.text = String(average)
         }
     }
@@ -296,7 +294,6 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
                 alert.view.addSubview(pickerView)
                 alert.addAction(UIAlertAction(title: "Rate", style: .default, handler: { (action) in
                     rating.setValue(self.typeValue)
-                    print(self.typeValue)
                 }))
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     
@@ -309,13 +306,10 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     
     @IBAction func btnAddAll(_ sender: Any) {
-
-        
         ingredientsArray.forEach { (ingredient) in
             let ingredients = self.refer.child(self.currentUser!).child("ShoppingList").childByAutoId()
             let ingredientKey = ingredients.key
           let name = ["nameID": ingredientKey, "imgName": ingredient]
-            print(name)
             ingredients.setValue(name)
         }
     }

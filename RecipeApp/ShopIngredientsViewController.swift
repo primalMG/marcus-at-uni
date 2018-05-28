@@ -28,12 +28,11 @@ class ShopIngredientsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.ref.observeSingleEvent(of:  DataEventType.value, with: { (snapshot) in
-        print(snapshot)
-        for child in snapshot.children {
-            let dictionary = child as! DataSnapshot
-            self.ingredients.append(dictionary.value as! String)
-        }
+        self.ref.observe(.childAdded, with: { (snapshot) in
+        
+            if let ingredient = snapshot.value {
+                self.ingredients.append(ingredient as! String)
+            }
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

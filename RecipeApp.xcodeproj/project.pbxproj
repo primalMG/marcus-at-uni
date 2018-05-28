@@ -196,7 +196,6 @@
 				E7AD277A20333F900041B3F5 /* AppDelegate.swift */,
 				FB390C3F20AAFF1F0064C2AD /* ShopIngredientsViewController.swift */,
 				E784D5642090C3DD0051317D /* MapViewController.swift */,
-				FB9B3BFF20ACE6F300D0A2B1 /* AnnotationView.swift */,
 				E7449AAF203DA751008314AC /* RecipeDetailViewController.swift */,
 				E7AD277C20333F900041B3F5 /* RecipesViewController.swift */,
 				E7AD277E20333F900041B3F5 /* Main.storyboard */,
@@ -237,6 +236,7 @@
 		E7E671E02059911D00FD31AB /* Caching */ = {
 			isa = PBXGroup;
 			children = (
+				FB9B3BFF20ACE6F300D0A2B1 /* AnnotationView.swift */,
 				E7E671E32059922B00FD31AB /* Caching.swift */,
 			);
 			path = Caching;

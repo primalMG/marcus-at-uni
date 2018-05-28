@@ -76,7 +76,11 @@ class AccountPageViewController: UIViewController, FBSDKLoginButtonDelegate {
         let pass = txtPass.text
                 Auth.auth().signIn(withEmail: email!, password: pass!, completion: { (emailExists, Error) in
                     //add a nested if loop here to get the proper error validation??
-                    if emailExists != nil && (emailExists?.isEmailVerified)! {
+                    if self.txtUsername.text == nil{
+                        self.txtUsername.text = "please enter email addess"
+                    } else if self.txtPass.text == nil {
+                        self.txtPass.text = "please enter password"
+                    } else if emailExists != nil && (emailExists?.isEmailVerified)! {
                         let alert = UIAlertController(title: "Login Successful", message: "Successfully logged in", preferredStyle: .alert)
                         let OkAction = UIAlertAction(title: "Aight Boom", style: UIAlertActionStyle.default, handler:{
                             (_) in
