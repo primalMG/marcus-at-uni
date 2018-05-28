@@ -88,7 +88,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func getIngredients() {
-        self.ref.child("Ingredients").observe(DataEventType.value, with: { (snapshot) in
+        self.ref.child("Ingredients").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
                 self.ingredientsArray.append(dictionary.value as! String)
@@ -103,7 +103,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func getSteps(){
-        self.ref.child("steps").observe(.value, with: { (snapshot) in
+        self.ref.child("steps").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             for child in snapshot.children {
                 let dictionary = child as! DataSnapshot
                 self.stepsArray.append(dictionary.value as! String)
