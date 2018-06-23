@@ -21,25 +21,32 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var ref : DatabaseReference!
     var refer : DatabaseReference!
     var databaseHandle: DatabaseHandle!
-    var recipeID: Recipe? {
-        didSet {
-            if let recipe = self.recipeID {
-                navigationItem.title = recipe.name
-            }
     
+    @IBOutlet weak var serving: UILabel! {
+        didSet {
+            guard let servings = recipeID?.serving else { return }
+            serving.text = String(servings)
         }
     }
+    
+    
     let currentUser = Auth.auth().currentUser?.uid
     
-    var recipes: Recipe?
  
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imgSelectRecipe: UIImageView!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var rating: UILabel!
-    @IBOutlet weak var serving: UILabel!
     
+    var recipeID: Recipe? {
+        didSet {
+            
+                if let recipe = self.recipeID {
+                    navigationItem.title = recipe.name
+                }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

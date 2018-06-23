@@ -16,10 +16,12 @@ struct Recipe: Codable, Identifiable {
     var id: String? = nil
     var name: String
     var recipeImg: String?
+    var serving: Int
 
-    init(name: String, recipeImg: String) {
+    init(name: String, recipeImg: String, serving: Int) {
         self.name = name
         self.recipeImg = recipeImg
+        self.serving = serving
     }
 }
 

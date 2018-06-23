@@ -48,18 +48,18 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
             //cell.detailTextLabel?.text = filteredRecipe[indexPath.row].price
-            if let recipeImgUrl = filteredRecipe[indexPath.row].recipeImg {
-                cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
-            }
+//            if let recipeImgUrl = filteredRecipe[indexPath.row].recipeImg {
+//                cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
+//            }
 
         } else {
 
             cell.textLabel?.text = recipes.name
             //cell.detailTextLabel?.text = recipes.price
             //implementation for images
-            if let recipeImgUrl = recipeArray[indexPath.row].recipeImg {
-                cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
-            }
+//            if let recipeImgUrl = recipeArray[indexPath.row].recipeImg {
+//                cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
+//            }
         }
         return cell
     }
