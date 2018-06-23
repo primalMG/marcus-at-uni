@@ -13,6 +13,7 @@ target 'RecipeApp' do
 	pod 'FirebaseUI/Twitter'
 	pod 'Firebase/DynamicLinks'
 	pod 'FBSDKLoginKit'
+	pod 'Firebase/Firestore'
 
   target 'RecipeAppTests' do
     inherit! :complete

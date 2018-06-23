@@ -1,52 +1,37 @@
 import UIKit
 import Firebase
-import FirebaseDatabase
-
 
 class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var ref : DatabaseReference!
-    var databaseHandle:DatabaseHandle!
+    
     var tableIndex = 0
     var searchActive = false
     var recipeArray = [Recipe]()
     var filteredRecipe = [Recipe]()
-    var selectedRecipe: String!
+    var selectedRecipe: Recipe?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        ref = Database.database().reference()
-        getRecipes()
-        //searchbar()
         
         tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: "recipes")
+        
+        FirestoreService.shared.readRecipes(from: .Recipe, returning: Recipe.self) { (recipe) in
+            self.recipeArray = recipe
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // getting the recipes from the database
-    func getRecipes(){
-        
-        databaseHandle = ref.child("Recipe").observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                let recipe = Recipe(dictionary: dictionary)
-                self.recipeArray.append(recipe)
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-    }
-   
-   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (searchActive) {
@@ -62,17 +47,17 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
         cell.textLabel?.text = recipes.name
         if (searchActive) {
             cell.textLabel?.text = filteredRecipe[indexPath.row].name
-            cell.detailTextLabel?.text = filteredRecipe[indexPath.row].price
-            if let recipeImgUrl = filteredRecipe[indexPath.row].img {
+            //cell.detailTextLabel?.text = filteredRecipe[indexPath.row].price
+            if let recipeImgUrl = filteredRecipe[indexPath.row].recipeImg {
                 cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
             }
 
         } else {
 
             cell.textLabel?.text = recipes.name
-            cell.detailTextLabel?.text = recipes.price
+            //cell.detailTextLabel?.text = recipes.price
             //implementation for images
-            if let recipeImgUrl = recipeArray[indexPath.row].img {
+            if let recipeImgUrl = recipeArray[indexPath.row].recipeImg {
                 cell.recipeImageView.LoadingImageUsingCache(recipeImgUrl)
             }
         }
@@ -86,15 +71,16 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (searchActive) {
-            if let recipe = filteredRecipe[indexPath.row].recipeID{
-                selectedRecipe = recipe
-                performSegue(withIdentifier: "recipeSegue", sender: self)
-            }
+            //let recipe = filteredRecipe[indexPath.row].id
+            
+            selectedRecipe = filteredRecipe[indexPath.row]
+            
+            performSegue(withIdentifier: "recipeSegue", sender: self)
+            
         } else {
-            if let recipe = recipeArray[indexPath.row].recipeID{
-                selectedRecipe = recipe
+                selectedRecipe = recipeArray[indexPath.row]
                 performSegue(withIdentifier: "recipeSegue", sender: self)
-            }
+            
         }
     }
     
@@ -118,7 +104,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredRecipe = recipeArray.filter({ (text) -> Bool in
-            let temp: NSString = text.name! as NSString
+            let temp: NSString = text.name as NSString
             let range = temp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
             return range.location != NSNotFound
         })
@@ -156,7 +142,7 @@ class RecipesViewController: UIViewController, UITableViewDelegate, UISearchBarD
             }
         }
         
-            //
+    
     
     
     
