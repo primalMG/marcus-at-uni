@@ -18,9 +18,11 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     var ingredientsArray: [String] = []
     var stepsArray: [String] = []
     var comments: [String] = []
+    var currentRecipe = [Recipe]()
     var ref : DatabaseReference!
     var refer : DatabaseReference!
     var databaseHandle: DatabaseHandle!
+<<<<<<< HEAD
     
     @IBOutlet weak var serving: UILabel! {
         didSet {
@@ -30,6 +32,9 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
+=======
+    var recipeID: String!
+>>>>>>> parent of 71f738b... Code refactor Day 1
     let currentUser = Auth.auth().currentUser?.uid
     
  
@@ -50,8 +55,7 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ref = Database.database().reference().child("Recipe")
-       
+        self.ref = Database.database().reference().child("Recipe").child(recipeID)
         self.refer = Database.database().reference().child("users")
         tableView.delegate = self
         tableView.dataSource = self
@@ -60,19 +64,21 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
         getCommets()
         getRecipeRating()
         
-//        databaseHandle = self.ref.observe(.value, with: { (snapshot) in
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//                let recipe = Recipe(dictionary: dictionary)
-//                self.navigationItem.title =  recipe.name
-//                self.serving.text = "Serving: " + recipe.serving!
-//                if let recipeImgUrl = recipe.img {
-//                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
-//                } else {
-//                    print("error")
-//                }
-//            }
-//        })
+
+        databaseHandle = self.ref.observe(.value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                self.navigationItem.title =  recipe.name
+                self.serving.text = "Serving: " + recipe.serving!
+                if let recipeImgUrl = recipe.img {
+                    self.recipeImage.LoadingImageUsingCache(recipeImgUrl)
+                } else {
+                    print("error")
+                }
+            }
+        })
     }
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -228,25 +234,25 @@ class RecipeDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var playButton: UIButton!
     
     @IBAction func btnPlay(_ sender: Any) {
-//        databaseHandle = self.ref.observe(.value, with: { (snapshot) in
-//            
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//                let recipe = Recipe(dictionary: dictionary)
-//                if let videoUrlString = recipe.video, let url = URL(string: videoUrlString) {
-//                    self.player = AVPlayer(url: url)
-//                    let videoPlayer = AVPlayerViewController()
-//                    videoPlayer.player = self.player
-//                    
-//                    self.present(videoPlayer, animated: true, completion: {
-//                        self.player?.play()
-//                        self.activityIndicatorView.startAnimating()
-//                    })
-//                } else {
-//                    self.playButton.setTitleColor(.gray, for: .normal)
-//                    self.playButton.isEnabled = false
-//                }
-//            }
-//        })
+        databaseHandle = self.ref.observe(.value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                let recipe = Recipe(dictionary: dictionary)
+                if let videoUrlString = recipe.video, let url = URL(string: videoUrlString) {
+                    self.player = AVPlayer(url: url)
+                    let videoPlayer = AVPlayerViewController()
+                    videoPlayer.player = self.player
+                    
+                    self.present(videoPlayer, animated: true, completion: {
+                        self.player?.play()
+                        self.activityIndicatorView.startAnimating()
+                    })
+                } else {
+                    self.playButton.setTitleColor(.gray, for: .normal)
+                    self.playButton.isEnabled = false
+                }
+            }
+        })
     }
     
     
